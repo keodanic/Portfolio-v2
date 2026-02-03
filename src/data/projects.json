@@ -1,0 +1,58 @@
+{
+  "id": "dumpy-app",
+  "name": "Dumpy",
+  "shortDescription": "Rede social para a rede de academias Simplifit",
+  "fullDescription": "Rede social completa desenvolvida para a rede de academia Simplifit. Responsável pelo backend, frontend, banco de dados, arquitetura, versão web e versão mobile.",
+  "category": "Web & Mobile",
+  "year": "2025",
+  "color": "#EF4444",
+  "isPrivate": true,
+  "tags": ["social", "fitness", "mobile", "web"],
+  "images": [
+    "/projects/Dumpy/home.png",
+    "/projects/Dumpy/profile.png",
+    "/projects/Dumpy/chat.png"
+  ],
+  "github": null,
+  "liveUrl": null,
+  "role": "Arquiteto e Desenvolvedor Full-Stack - responsável pelo backend, frontend, banco de dados, arquitetura, além das versões web e mobile.",
+  "duration": "8 meses",
+  "teamSize": "3 desenvolvedores",
+  "impact": [
+    { "metric": "Academias integradas", "value": "12" },
+    { "metric": "Usuários Ativos Mensais", "value": "8k+" },
+    { "metric": "Mensagens trocadas/dia", "value": "20k+" }
+  ],
+  "features": [
+    "Feed social com likes e comentários",
+    "Perfis de usuário e perfis de academia",
+    "Chat em tempo real entre usuários e instrutores",
+    "Compartilhamento de treinos, planos e rotinas",
+    "Notificações push e em-app",
+    "Gerenciamento de assinaturas e planos",
+    "Moderação de conteúdo e relatórios"
+  ],
+  "challenges": [
+    "Escalar chat em tempo real para milhares de conexões simultâneas",
+    "Garantir entregabilidade de notificações push em iOS e Android",
+    "Sincronização entre web e mobile para estados offline"
+  ],
+  "techStack": {
+    "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    "backend": ["Node.js", "NestJS", "Express", "Socket.IO"],
+    "database": ["PostgreSQL", "Redis"],
+    "devops": ["Docker", "Kubernetes", "AWS", "CI/CD"]
+  },
+  "technologies": [
+    "Next.js",
+    "React Native",
+    "Node.js",
+    "NestJS",
+    "PostgreSQL",
+    "Prisma",
+    "Socket.IO",
+    "Redis",
+    "Docker",
+    "Kubernetes"
+  ]
+}
