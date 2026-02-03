@@ -4,42 +4,41 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GlassCard } from "@/components/ui/glass-card";
-import { Search, Lightbulb, Palette, Rocket } from "lucide-react";
-
+import { Terminal, ShieldCheck, Database, Layout } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
     number: "01",
-    title: "Discovery",
+    title: "System Architecture",
     description:
-      "Every great design starts with understanding. I dive deep into user research, stakeholder interviews, and competitive analysis to uncover the real problems worth solving.",
-    icon: Search,
-    details: ["User Interviews", "Competitive Analysis", "Stakeholder Workshops", "Problem Definition"],
+      "Before coding, I design the blueprint. I define the data flow, choose the right database schema (PostgreSQL/NoSQL), and architect scalable backend services using NestJS.",
+    icon: Terminal,
+    details: ["Data Modeling", "API Design", "Schema Definition", "System Blueprint"],
   },
   {
     number: "02",
-    title: "Strategy",
+    title: "Security-First Dev",
     description:
-      "With insights in hand, I map out the experience architecture. Information hierarchy, user flows, and strategic roadmaps that align business goals with user needs.",
-    icon: Lightbulb,
-    details: ["Information Architecture", "User Flows", "Content Strategy", "KPI Definition"],
+      "Security isn't an afterthought. I implement robust authentication (JWT/OAuth2) and follow OWASP best practices to protect data from the ground up.",
+    icon: ShieldCheck,
+    details: ["Encryption", "Authentication", "Rate Limiting", "OWASP Standards"],
   },
   {
     number: "03",
-    title: "Design",
+    title: "Backend Core",
     description:
-      "This is where ideas take shape. From wireframes to high-fidelity prototypes, I craft interfaces that balance aesthetic beauty with functional clarity.",
-    icon: Palette,
-    details: ["Wireframing", "Visual Design", "Prototyping", "Design Systems"],
+      "Building the engine. I develop performant APIs with Node.js and Prisma, ensuring type safety, clean code, and seamless integration with infrastructure.",
+    icon: Database,
+    details: ["NestJS/Node.js", "TypeORM/Prisma", "Clean Code", "Docker"],
   },
   {
     number: "04",
-    title: "Refine",
+    title: "Full-Stack Delivery",
     description:
-      "Design is never done. Through user testing, iterative refinement, and close collaboration with engineering, I ensure the final product exceeds expectations.",
-    icon: Rocket,
-    details: ["Usability Testing", "Iteration", "Developer Handoff", "Launch Support"],
+      "Connecting the dots. I craft modern Web (Next.js) and Mobile (React Native) interfaces that consume the secure backend, ensuring a smooth, end-to-end user experience.",
+    icon: Layout,
+    details: ["React & Next.js", "React Native", "State Management", "Performance Optimization"],
   },
 ];
 
@@ -133,7 +132,7 @@ export function Process() {
             My Process
           </span>
           <h2 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] max-w-3xl mx-auto">
-            A proven approach to exceptional design
+            A technical approach to scalable systems
           </h2>
         </div>
 

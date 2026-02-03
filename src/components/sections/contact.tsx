@@ -5,13 +5,26 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { Mail, MapPin, Linkedin,ArrowUpRight, Send } from "lucide-react";
+import { Mail, MapPin, Linkedin, ArrowUpRight, Send, Instagram, MessageCircle } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
-  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/victordaniel-dev" },
-  { name: "Portfolio", icon: ArrowUpRight, href: "https://victordev-port.vercel.app" },
+  { 
+    name: "WhatsApp", 
+    icon: MessageCircle, 
+    href: "https://wa.me/86981509299"
+  },
+  { 
+    name: "LinkedIn", 
+    icon: Linkedin, 
+    href: "https://www.linkedin.com/in/victordaniel-dev" 
+  },
+  { 
+    name: "Instagram", 
+    icon: Instagram, 
+    href: "https://instagram.com/victoor__sc" 
+  }
 ];
 
 export function Contact() {
@@ -74,38 +87,30 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormState({ name: "", email: "", message: "" });
-
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="contact"
-      className="relative py-32 px-4 sm:px-6 lg:px-8"
-    >
+    <section ref={sectionRef} id="contact" className="relative py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Column - Info */}
           <div ref={contentRef}>
             <span className="text-[#0066ff] text-sm tracking-widest uppercase mb-4 block">
-              Entre em Contato
+              Get in Touch
             </span>
             <h2 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] mb-6">
-              Vamos criar algo incrível juntos
+              Let's build something exceptional
             </h2>
             <p className="text-lg text-white/60 mb-12 max-w-lg">
-              Tem um projeto em mente? Adoraria ouvir sobre isso. Vamos
-              discutir como podemos trabalhar juntos para dar vida à sua visão.
+              Have a complex project or a security challenge in mind? I'd love to hear about it. 
+              Let’s discuss how we can engineer a robust solution together.
             </p>
 
-            {/* Contact Info */}
             <div className="space-y-6 mb-12">
               <a
                 href="mailto:victordanielsnt@gmail.com"
@@ -125,15 +130,14 @@ export function Contact() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-white/50">Localização</div>
-                  <div className="text-white">Teresina, Piauí, Brasil</div>
+                  <div className="text-sm text-white/50">Location</div>
+                  <div className="text-white">Teresina, Piauí, Brazil</div>
                 </div>
               </div>
             </div>
 
-              {/* Social Links */}
             <div>
-              <div className="text-sm text-white/50 mb-4">Me siga</div>
+              <div className="text-sm text-white/50 mb-4">Follow me</div>
               <div className="flex gap-3">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
@@ -141,6 +145,8 @@ export function Contact() {
                     <a
                       key={social.name}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0066ff] hover:border-[#0066ff]/50 hover:bg-[#0066ff]/5 transition-all duration-300"
                       aria-label={social.name}
                     >
@@ -161,71 +167,56 @@ export function Contact() {
                     <Send className="w-8 h-8 text-[#0066ff]" />
                   </div>
                   <h3 className="font-[family-name:var(--font-cabinet)] text-2xl font-bold text-white mb-2">
-                    Mensagem Enviada!
+                    Message Sent!
                   </h3>
                   <p className="text-white/60">
-                    Obrigado pelo contato. Retornarei em breve.
+                    Thank you for reaching out. I'll get back to you shortly.
                   </p>
                 </div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm text-white/70 mb-2"
-                    >
-                      Nome
+                    <label htmlFor="name" className="block text-sm text-white/70 mb-2">
+                      Name
                     </label>
                     <input
                       type="text"
                       id="name"
                       value={formState.name}
-                      onChange={(e) =>
-                        setFormState({ ...formState, name: e.target.value })
-                      }
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-[#0066ff]/50 focus:ring-1 focus:ring-[#0066ff]/50 transition-colors"
-                      placeholder="Seu nome"
+                      placeholder="Your name"
                     />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm text-white/70 mb-2"
-                    >
-                      Email
+                    <label htmlFor="email" className="block text-sm text-white/70 mb-2">
+                      Email Address
                     </label>
                     <input
                       type="email"
                       id="email"
                       value={formState.email}
-                      onChange={(e) =>
-                        setFormState({ ...formState, email: e.target.value })
-                      }
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-[#0066ff]/50 focus:ring-1 focus:ring-[#0066ff]/50 transition-colors"
-                      placeholder="seu@email.com"
+                      placeholder="your@email.com"
                     />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm text-white/70 mb-2"
-                    >
-                      Mensagem
+                    <label htmlFor="message" className="block text-sm text-white/70 mb-2">
+                      Message
                     </label>
                     <textarea
                       id="message"
                       value={formState.message}
-                      onChange={(e) =>
-                        setFormState({ ...formState, message: e.target.value })
-                      }
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       required
                       rows={5}
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-[#0066ff]/50 focus:ring-1 focus:ring-[#0066ff]/50 transition-colors resize-none"
-                      placeholder="Conte-me sobre seu projeto..."
+                      placeholder="Tell me about your project or security needs..."
                     />
                   </div>
 
@@ -238,30 +229,15 @@ export function Contact() {
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
-                        <svg
-                          className="animate-spin h-5 w-5"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            fill="none"
-                          />
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          />
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
-                        Enviando...
+                        Sending...
                       </span>
                     ) : (
                       <span className="flex items-center justify-center gap-2">
-                        Enviar Mensagem
+                        Send Message
                         <ArrowUpRight className="w-5 h-5" />
                       </span>
                     )}

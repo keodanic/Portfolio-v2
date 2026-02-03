@@ -15,16 +15,16 @@ const skills = [
 
 const experiences = [
   {
-    title: "Simplifit Academias",
-    description: "Desenvolvedor Full-Stack Pleno. Criação de aplicativos em React Native, back-end com Node.js (NestJS) e front-end com Next.js. Setembro 2025 - Presente",
+    title: "Simplifit",
+    description: "Lead Full-Stack Developer. Architecting scalable backends with NestJS and PostgreSQL, while leading the development of high-performance mobile applications using React Native. September 2025 - Present",
   },
   {
     title: "Prefeitura Municipal de Timon",
-    description: "Desenvolvedor de software. Desenvolvimento e implementação de plataformas governamentais. Junho 2025 - Agosto 2025",
+    description: "Software Developer. Focused on the development and implementation of government-scale digital platforms, enhancing public service accessibility through robust software solutions. June 2025 - August 2025",
   },
   {
     title: "FAPEMA - IFMA",
-    description: "Bolsista em projeto de sistema de monitoramento de CO2 com tecnologia maker. Novembro 2024 - Julho 2025",
+    description: "Research Fellow. Developed a real-time CO2 monitoring system using Maker technology and Node.js, bridging the gap between hardware sensors and data visualization. November 2024 - July 2025",
   },
 ];
 
@@ -116,23 +116,22 @@ export function About() {
               About Me
             </span>
             <h2 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl font-bold text-white tracking-[-0.03em] mb-8">
-              Desenvolvedor Full-Stack
+              Software Engineer
             </h2>
             <div className="space-y-6 text-lg text-white/60 leading-relaxed">
               <p>
-                Graduado em Sistemas para Internet pelo IFMA com experiência
-                em Node.js (NestJS, Adonis, Express), PostgreSQL, React e
-                React Native. Foco em desenvolvimento Web e Mobile.
+                Systems for Internet graduate from IFMA with specialized experience in
+                Node.js ecosystems (NestJS, Express), PostgreSQL, and high-performance
+                mobile development.
               </p>
               <p>
-                Atualmente atuo como Desenvolvedor Full-Stack Pleno na
-                Simplifit Academias, criando soluções completas desde o
-                back-end até aplicativos mobile.
+                Currently leading full-stack initiatives at Simplifit,
+                architecting scalable backend systems and cross-platform mobile
+                solutions from the ground up.
               </p>
               <p>
-                Sou apaixonado por tecnologia e inovação, sempre buscando
-                criar código limpo, escalável e que gere valor real para
-                os usuários e negócios.
+                Focused on building secure, resilient code and exploring the intersection
+                of backend architecture and cybersecurity to deliver high-impact digital products.
               </p>
             </div>
 
@@ -185,7 +184,10 @@ export function About() {
                         {item.title}
                       </h4>
                       <p className="text-white/50 leading-relaxed">
-                        {item.description}
+                        {item.description.split('. ').slice(0, -1).join('. ')}.
+                        <span className="block mt-2 text-sm text-white/30 italic">
+                          {item.description.split('. ').pop()}
+                        </span>
                       </p>
                     </div>
                   </div>
