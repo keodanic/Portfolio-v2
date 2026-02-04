@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { X, Download, FileText } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { MagneticButton } from "@/components/ui/magnetic-button";
+import { X, ExternalLink, FileText } from "lucide-react";
 import { gsap } from "gsap";
 
 interface CVModalProps {
@@ -19,7 +17,6 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
     if (isOpen) {
       document.body.style.overflow = "hidden";
 
-      // Animate modal entrance
       if (contentRef.current) {
         gsap.fromTo(
           contentRef.current,
@@ -49,14 +46,16 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
     }
   }, [isOpen, onClose]);
 
-  const handleDownload = (language: "pt" | "en") => {
-    // Aqui você colocará os links reais dos seus CVs
+  const handleViewCV = (language: "pt" | "en") => {
     const cvLinks = {
       pt: "/cv/Victor_Daniel_CV_PT.pdf",
       en: "/cv/Victor_Daniel_CV_EN.pdf",
     };
 
-    // Cria um link temporário e clica nele para iniciar o download
+    // Abre o CV em uma nova aba para visualização
+    window.open(cvLinks[language], "_blank", "noopener,noreferrer");
+
+    // Também faz o download automaticamente
     const link = document.createElement("a");
     link.href = cvLinks[language];
     link.download = `Victor_Daniel_CV_${language.toUpperCase()}.pdf`;
@@ -64,8 +63,8 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
     link.click();
     document.body.removeChild(link);
 
-    // Fecha o modal após o download
-    setTimeout(() => onClose(), 500);
+    // Fecha o modal após abrir e baixar
+    setTimeout(() => onClose(), 300);
   };
 
   if (!isOpen) return null;
@@ -125,7 +124,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
             {/* Title */}
             <h2 className="font-[family-name:var(--font-cabinet)] text-3xl font-bold text-white text-center mb-3 tracking-[-0.02em]">
-              Download CV
+              View & Download CV
             </h2>
 
             {/* Subtitle */}
@@ -137,7 +136,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
             <div className="space-y-3">
               {/* Portuguese Button */}
               <button
-                onClick={() => handleDownload("pt")}
+                onClick={() => handleViewCV("pt")}
                 className="w-full group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0066ff]/0 via-[#0066ff]/10 to-[#0066ff]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -151,13 +150,13 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                       <div className="text-xs text-white/50">Brazilian Portuguese</div>
                     </div>
                   </div>
-                  <Download className="w-5 h-5 text-white/50 group-hover:text-[#0066ff] transition-colors" />
+                  <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-[#0066ff] transition-colors" />
                 </div>
               </button>
 
               {/* English Button */}
               <button
-                onClick={() => handleDownload("en")}
+                onClick={() => handleViewCV("en")}
                 className="w-full group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -171,7 +170,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                       <div className="text-xs text-white/50">International</div>
                     </div>
                   </div>
-                  <Download className="w-5 h-5 text-white/50 group-hover:text-purple-500 transition-colors" />
+                  <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-purple-500 transition-colors" />
                 </div>
               </button>
             </div>
