@@ -12,33 +12,33 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 1,
-    title: "Fintech Dashboard",
-    category: "Product Design",
-    year: "2024",
+    title: "Simplifit Social & Management Ecosystem",
+    category: "Full-Stack Development",
+    year: "2025",
     description:
-      "A comprehensive financial analytics platform designed for institutional investors. Features real-time data visualization and intuitive portfolio management.",
-    tags: ["UX Research", "UI Design", "Design System"],
+      "Architected a scalable social network for a fitness chain, integrating real-time user interactions with a robust gym management backend. Focused on high-availability and secure data flow.",
+    tags: ["NestJS", "React Native", "PostgreSQL", "System Architecture"],
     color: "#0066FF",
   },
   {
     id: 2,
-    title: "E-commerce Experience",
-    category: "Web Design",
-    year: "2024",
+    title: "Equipment Maintenance & QR Alert System",
+    category: "Backend & IoT Integration",
+    year: "2025",
     description:
-      "Redesigning the shopping experience for a luxury fashion brand. Focused on storytelling and immersive product discovery.",
-    tags: ["Brand Strategy", "Interaction Design", "Prototyping"],
-    color: "#8B5CF6",
+      "Developed an automated maintenance alert system using QR codes to bridge hardware status with administrative management, optimizing equipment uptime through real-time reporting.",
+    tags: ["Node.js", "API Design", "Infrastructure", "Real-time Alerts"],
+    color: "#10B981",
   },
   {
     id: 3,
-    title: "Health & Wellness App",
-    category: "Mobile Design",
-    year: "2023",
+    title: "Secure API & Auth Architecture",
+    category: "Cybersecurity & Backend",
+    year: "2026",
     description:
-      "A mindful approach to health tracking. Creating calm in the chaos of daily wellness routines through thoughtful interaction design.",
-    tags: ["User Research", "Mobile UI", "Motion Design"],
-    color: "#10B981",
+      "A deep dive into secure coding practices, implementing advanced JWT authentication, rate limiting, and protection against OWASP Top 10 vulnerabilities in Node.js environments.",
+    tags: ["Cybersecurity", "OWASP", "Auth Service", "Docker"],
+    color: "#8B5CF6",
   },
 ];
 
@@ -108,10 +108,10 @@ export function FeaturedWork() {
         {/* Section Header */}
         <div ref={headerRef} className="mb-20">
           <span className="text-[#0066ff] text-sm tracking-widest uppercase mb-4 block">
-            Selected Work
+            Technical Portfolio
           </span>
-          <h2 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] max-w-3xl">
-            Projects that define my approach to design
+          <h2 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] max-w-4xl">
+            Engineering robust systems with a security-first mindset
           </h2>
         </div>
 

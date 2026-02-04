@@ -166,7 +166,7 @@ export function About() {
           {/* Right Column - Experience */}
           <div ref={philosophyRef} className="lg:pt-20">
             <h3 className="font-[family-name:var(--font-cabinet)] text-2xl font-bold text-white mb-8 tracking-[-0.02em]">
-              Experiência Profissional
+              Professional Experience
             </h3>
             <div className="space-y-8">
               {experiences.map((item, index) => (
@@ -196,42 +196,51 @@ export function About() {
             </div>
 
             {/* Education & Stats */}
-            <GlassCard variant="highlight" className="mt-12 p-8">
-              <div className="mb-6 pb-6 border-b border-white/10">
-                <div className="text-sm text-[#0066ff] uppercase tracking-wider mb-2">Formação Acadêmica</div>
-                <div className="font-[family-name:var(--font-cabinet)] text-xl font-bold text-white mb-1">
-                  Sistemas para Internet
-                </div>
-                <div className="text-white/60">IFMA - Instituto Federal do Maranhão</div>
-                <div className="text-sm text-white/40">2023 - 2025</div>
-              </div>
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <div className="font-[family-name:var(--font-cabinet)] text-4xl font-bold text-white mb-1">
-                    2+
-                  </div>
-                  <div className="text-sm text-white/50">Anos de Experiência</div>
-                </div>
-                <div>
-                  <div className="font-[family-name:var(--font-cabinet)] text-4xl font-bold text-white mb-1">
-                    10+
-                  </div>
-                  <div className="text-sm text-white/50">Projetos Entregues</div>
-                </div>
-                <div>
-                  <div className="font-[family-name:var(--font-cabinet)] text-4xl font-bold text-white mb-1">
-                    3
-                  </div>
-                  <div className="text-sm text-white/50">Empresas</div>
-                </div>
-                <div>
-                  <div className="font-[family-name:var(--font-cabinet)] text-4xl font-bold text-white mb-1">
-                    Full
-                  </div>
-                  <div className="text-sm text-white/50">Stack Dev</div>
-                </div>
-              </div>
-            </GlassCard>
+            <GlassCard variant="highlight" className="mt-12 p-8 relative overflow-hidden group">
+  {/* Background Glow sutil para dar profundidade */}
+  <div className="absolute -right-8 -top-8 w-32 h-32 bg-[#0066ff]/10 rounded-full blur-3xl group-hover:bg-[#0066ff]/20 transition-colors" />
+
+  <div className="mb-8 pb-6 border-b border-white/10">
+    <div className="text-xs text-[#0066ff] uppercase tracking-[0.2em] font-bold mb-3">Academic Foundation</div>
+    <div className="font-[family-name:var(--font-cabinet)] text-2xl font-bold text-white mb-1">
+      Systems for Internet
+    </div>
+    <div className="text-white/70 flex items-center gap-2">
+      IFMA <span className="text-white/20">|</span> Federal Institute of Maranhão
+    </div>
+    <div className="text-sm text-white/40 mt-1 font-mono">2023 — 2025</div>
+  </div>
+
+  <div className="grid grid-cols-2 gap-y-10 gap-x-8">
+    <div className="relative">
+      <div className="font-[family-name:var(--font-cabinet)] text-5xl font-bold text-white mb-2 tracking-tighter">
+        2+
+      </div>
+      <div className="text-xs uppercase tracking-widest text-white/40 font-bold">Years of <br/>Engineering</div>
+    </div>
+    
+    <div className="relative">
+      <div className="font-[family-name:var(--font-cabinet)] text-5xl font-bold text-white mb-2 tracking-tighter">
+        10+
+      </div>
+      <div className="text-xs uppercase tracking-widest text-white/40 font-bold">Systems <br/>Deployed</div>
+    </div>
+
+    <div className="relative">
+      <div className="font-[family-name:var(--font-cabinet)] text-5xl font-bold text-white mb-2 tracking-tighter">
+        3
+      </div>
+      <div className="text-xs uppercase tracking-widest text-white/40 font-bold">Strategic <br/>Partnerships</div>
+    </div>
+
+    <div className="relative">
+      <div className="font-[family-name:var(--font-cabinet)] text-5xl font-bold text-[#0066ff] mb-2 tracking-tighter">
+        Mid
+      </div>
+      <div className="text-xs uppercase tracking-widest text-[#0066ff]/60 font-bold">Level <br/>Seniority</div>
+    </div>
+  </div>
+</GlassCard>
           </div>
         </div>
       </div>
