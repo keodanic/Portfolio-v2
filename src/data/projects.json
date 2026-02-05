@@ -1,58 +1,189 @@
-{
-  "id": "dumpy-app",
-  "name": "Dumpy",
-  "shortDescription": "Rede social para a rede de academias Simplifit",
-  "fullDescription": "Rede social completa desenvolvida para a rede de academia Simplifit. Responsável pelo backend, frontend, banco de dados, arquitetura, versão web e versão mobile.",
-  "category": "Web & Mobile",
-  "year": "2025",
-  "color": "#EF4444",
-  "isPrivate": true,
-  "tags": ["social", "fitness", "mobile", "web"],
-  "images": [
-    "/projects/Dumpy/home.png",
-    "/projects/Dumpy/profile.png",
-    "/projects/Dumpy/chat.png"
-  ],
-  "github": null,
-  "liveUrl": null,
-  "role": "Arquiteto e Desenvolvedor Full-Stack - responsável pelo backend, frontend, banco de dados, arquitetura, além das versões web e mobile.",
-  "duration": "8 meses",
-  "teamSize": "3 desenvolvedores",
-  "impact": [
-    { "metric": "Academias integradas", "value": "12" },
-    { "metric": "Usuários Ativos Mensais", "value": "8k+" },
-    { "metric": "Mensagens trocadas/dia", "value": "20k+" }
-  ],
-  "features": [
-    "Feed social com likes e comentários",
-    "Perfis de usuário e perfis de academia",
-    "Chat em tempo real entre usuários e instrutores",
-    "Compartilhamento de treinos, planos e rotinas",
-    "Notificações push e em-app",
-    "Gerenciamento de assinaturas e planos",
-    "Moderação de conteúdo e relatórios"
-  ],
-  "challenges": [
-    "Escalar chat em tempo real para milhares de conexões simultâneas",
-    "Garantir entregabilidade de notificações push em iOS e Android",
-    "Sincronização entre web e mobile para estados offline"
-  ],
-  "techStack": {
-    "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    "backend": ["Node.js", "NestJS", "Express", "Socket.IO"],
-    "database": ["PostgreSQL", "Redis"],
-    "devops": ["Docker", "Kubernetes", "AWS", "CI/CD"]
+[
+  {
+    "id": "dumpy-app",
+    "name": "Dumpy",
+    "shortDescription": "Rede social para a rede de academias Simplifit",
+    "fullDescription": "Rede social completa desenvolvida para a rede de academia Simplifit. Responsável pelo backend, frontend, banco de dados, arquitetura, versão web e versão mobile.",
+    "category": "Web & Mobile",
+    "year": "2025",
+    "color": "#EF4444",
+    "isPrivate": true,
+    "hasImages": true,
+    "tags": ["social", "fitness", "mobile", "web"],
+    "images": [
+      "/projects/Dumpy/home.png",
+      "/projects/Dumpy/profile.png",
+      "/projects/Dumpy/chat.png"
+    ],
+    "github": null,
+    "liveUrl": null,
+    "role": "Arquiteto e Desenvolvedor Full-Stack - responsável pelo backend, frontend, banco de dados, arquitetura, além das versões web e mobile.",
+    "duration": "8 meses",
+    "teamSize": "3 desenvolvedores",
+    "impact": [
+      { "metric": "Academias integradas", "value": "12" },
+      { "metric": "Usuários Ativos Mensais", "value": "8k+" },
+      { "metric": "Mensagens trocadas/dia", "value": "20k+" }
+    ],
+    "features": [
+      "Feed social com likes e comentários",
+      "Perfis de usuário e perfis de academia",
+      "Chat em tempo real entre usuários e instrutores",
+      "Compartilhamento de treinos, planos e rotinas",
+      "Notificações push e em-app",
+      "Gerenciamento de assinaturas e planos",
+      "Moderação de conteúdo e relatórios"
+    ],
+    "challenges": [
+      "Escalar chat em tempo real para milhares de conexões simultâneas",
+      "Garantir entregabilidade de notificações push em iOS e Android",
+      "Sincronização entre web e mobile para estados offline"
+    ],
+    "techStack": {
+      "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "backend": ["Node.js", "NestJS", "Express", "Socket.IO"],
+      "database": ["PostgreSQL", "Redis"],
+      "devops": ["Docker", "Kubernetes", "AWS", "CI/CD"]
+    },
+    "technologies": [
+      "Next.js",
+      "React Native",
+      "Node.js",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "Socket.IO",
+      "Redis",
+      "Docker",
+      "Kubernetes"
+    ]
   },
-  "technologies": [
-    "Next.js",
-    "React Native",
-    "Node.js",
-    "NestJS",
-    "PostgreSQL",
-    "Prisma",
-    "Socket.IO",
-    "Redis",
-    "Docker",
-    "Kubernetes"
-  ]
-}
+  {
+    "id": "penetration-testing-framework",
+    "name": "RedTeam Toolkit",
+    "shortDescription": "Framework de testes de penetração automatizado para análise de vulnerabilidades em aplicações web e infraestrutura",
+    "fullDescription": "Desenvolvimento de um framework completo de pentesting que automatiza a identificação e exploração de vulnerabilidades em aplicações web, APIs e infraestrutura de rede. O sistema integra diversas ferramentas open-source e técnicas de reconhecimento, scanning, exploração e pós-exploração em um único pipeline automatizado com geração de relatórios detalhados.",
+    "category": "Cybersecurity",
+    "year": "2025",
+    "color": "#10B981",
+    "isPrivate": true,
+    "hasImages": false,
+    "tags": ["pentesting", "security", "automation", "red-team"],
+    "images": [],
+    "github": null,
+    "liveUrl": null,
+    "role": "Security Researcher e Desenvolvedor Principal - responsável pela arquitetura do framework, integração de ferramentas, desenvolvimento de módulos de exploração customizados e implementação do sistema de relatórios.",
+    "duration": "6 meses",
+    "teamSize": "Solo",
+    "impact": [
+      { "metric": "Vulnerabilidades identificadas", "value": "500+" },
+      { "metric": "Tempo de análise reduzido", "value": "70%" },
+      { "metric": "Taxa de detecção", "value": "95%" },
+      { "metric": "Relatórios gerados", "value": "150+" }
+    ],
+    "features": [
+      "Reconnaissance automatizado com OSINT e DNS enumeration",
+      "Port scanning e service detection otimizado",
+      "Detecção de vulnerabilidades web (XSS, SQLi, CSRF, LFI/RFI)",
+      "Exploração automatizada com payloads customizados",
+      "Pós-exploração com persistência e privilege escalation",
+      "Integração com CVE database e exploit-db",
+      "Geração de relatórios técnicos e executivos em PDF",
+      "Dashboard web para visualização de resultados",
+      "API REST para integração com CI/CD",
+      "Módulos plugáveis para extensibilidade"
+    ],
+    "challenges": [
+      "Evitar falsos positivos mantendo alta taxa de detecção",
+      "Paralelizar múltiplos testes sem sobrecarregar o alvo",
+      "Implementar rate limiting inteligente para evitar bloqueios",
+      "Garantir segurança dos payloads e prevenir uso malicioso",
+      "Criar sistema de logging forense para auditoria completa"
+    ],
+    "techStack": {
+      "backend": ["Python", "FastAPI", "Celery", "RabbitMQ"],
+      "database": ["PostgreSQL", "MongoDB", "Redis"],
+      "devops": ["Docker", "Docker Compose", "Kubernetes"]
+    },
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "Celery",
+      "RabbitMQ",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Nmap",
+      "Metasploit",
+      "Burp Suite",
+      "SQLMap",
+      "Docker",
+      "Kubernetes"
+    ]
+  },
+  {
+    "id": "threat-intel-platform",
+    "name": "CyberWatch Intelligence",
+    "shortDescription": "Plataforma de threat intelligence para agregação, análise e correlação de indicadores de comprometimento (IoCs)",
+    "fullDescription": "Sistema enterprise de threat intelligence que coleta, processa e correlaciona IoCs de múltiplas fontes públicas e privadas. Utiliza machine learning para identificar padrões, prever ataques emergentes e fornecer recomendações automatizadas de mitigação. Integra-se com SIEMs, firewalls e EDRs para resposta automatizada a incidentes.",
+    "category": "Cybersecurity",
+    "year": "2024",
+    "color": "#8B5CF6",
+    "isPrivate": true,
+    "hasImages": false,
+    "tags": ["threat-intelligence", "siem", "machine-learning", "ioc"],
+    "images": [],
+    "github": null,
+    "liveUrl": null,
+    "role": "Tech Lead e Security Architect - liderança técnica do projeto, design da arquitetura de microserviços, implementação dos modelos de ML e integração com ferramentas de segurança corporativas.",
+    "duration": "12 meses",
+    "teamSize": "5 desenvolvedores + 2 security analysts",
+    "impact": [
+      { "metric": "IoCs processados/dia", "value": "2M+" },
+      { "metric": "Tempo médio de detecção", "value": "< 5min" },
+      { "metric": "Ameaças bloqueadas", "value": "15k+" },
+      { "metric": "Precisão do modelo ML", "value": "93%" }
+    ],
+    "features": [
+      "Agregação de feeds de threat intelligence (OSINT e comerciais)",
+      "Enriquecimento de IoCs com WHOIS, geolocalização e reputação",
+      "Correlação de eventos usando graph database",
+      "Machine learning para detecção de anomalias e APTs",
+      "Dashboard em tempo real com visualizações interativas",
+      "Sistema de alertas customizáveis e workflows de resposta",
+      "API GraphQL para integração com SOC tools",
+      "Hunting queries automatizadas baseadas em MITRE ATT&CK",
+      "Sandbox integration para análise de malware",
+      "Geração de playbooks de resposta a incidentes"
+    ],
+    "challenges": [
+      "Processar volumes massivos de dados em tempo real com baixa latência",
+      "Reduzir falsos positivos sem sacrificar sensibilidade",
+      "Escalar graph database para bilhões de relacionamentos",
+      "Implementar privacidade diferencial para dados sensíveis",
+      "Otimizar modelos de ML para inferência em edge devices"
+    ],
+    "techStack": {
+      "frontend": ["React", "TypeScript", "D3.js", "TanStack Query"],
+      "backend": ["Go", "Python", "gRPC", "Apache Kafka"],
+      "database": ["Neo4j", "TimescaleDB", "Redis", "Elasticsearch"],
+      "devops": ["Kubernetes", "Terraform", "Prometheus", "Grafana", "ArgoCD"]
+    },
+    "technologies": [
+      "Go",
+      "Python",
+      "React",
+      "TypeScript",
+      "gRPC",
+      "Apache Kafka",
+      "Neo4j",
+      "TimescaleDB",
+      "Redis",
+      "Elasticsearch",
+      "Kubernetes",
+      "Terraform",
+      "TensorFlow",
+      "PyTorch"
+    ]
+  }
+]

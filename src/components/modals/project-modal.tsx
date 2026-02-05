@@ -16,6 +16,8 @@ import {
   Layers,
   Zap,
   CheckCircle2,
+  FileText,
+  Shield,
 } from "lucide-react";
 
 interface Project {
@@ -27,6 +29,7 @@ interface Project {
   tags: string[];
   features: string[];
   images: string[];
+  hasImages: boolean; // New field
   github: string | null;
   isPrivate: boolean;
   color: string;
@@ -81,8 +84,8 @@ export function ProjectModal({
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft" && project) prevImage();
-      if (e.key === "ArrowRight" && project) nextImage();
+      if (e.key === "ArrowLeft" && project?.hasImages) prevImage();
+      if (e.key === "ArrowRight" && project?.hasImages) nextImage();
     };
 
     if (isOpen) {
@@ -94,32 +97,33 @@ export function ProjectModal({
   }, [isOpen, currentImageIndex, project]);
 
   const nextImage = () => {
-    if (!project) return;
+    if (!project || !project.hasImages) return;
     setCurrentImageIndex((prev) =>
       prev === project.images.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
-    if (!project) return;
+    if (!project || !project.hasImages) return;
     setCurrentImageIndex((prev) =>
       prev === 0 ? project.images.length - 1 : prev - 1
     );
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (!project?.hasImages) return;
     setIsDragging(true);
     setStartX(e.clientX);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !project?.hasImages) return;
     const diff = e.clientX - startX;
     setTranslateX(diff);
   };
 
   const handleMouseUp = () => {
-    if (!isDragging) return;
+    if (!isDragging || !project?.hasImages) return;
     setIsDragging(false);
 
     if (translateX > 50) {
@@ -131,12 +135,13 @@ export function ProjectModal({
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (!project?.hasImages) return;
     setIsDragging(true);
     setStartX(e.touches[0]?.clientX ?? 0);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !project?.hasImages) return;
     const touch = e.touches[0];
     if (!touch) return;
     const diff = touch.clientX - startX;
@@ -144,7 +149,7 @@ export function ProjectModal({
   };
 
   const handleTouchEnd = () => {
-    if (!isDragging) return;
+    if (!isDragging || !project?.hasImages) return;
     setIsDragging(false);
 
     if (translateX > 50) {
@@ -286,123 +291,194 @@ export function ProjectModal({
 
         {/* Content - Scrollable */}
         <div className="flex-1 overflow-y-auto">
-          <div className="flex flex-col lg:flex-row">
-            {/* Image Carousel */}
-            <div className="relative lg:w-3/5 bg-gradient-to-br from-black/60 to-black/40">
-              <div
-                className="relative aspect-video lg:aspect-auto lg:h-[600px] overflow-hidden cursor-grab active:cursor-grabbing"
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
+          <div className={cn(
+            "flex flex-col",
+            project.hasImages ? "lg:flex-row" : ""
+          )}>
+            {/* Image Carousel - Only shows if hasImages is true */}
+            {project.hasImages && (
+              <div className="relative lg:w-3/5 bg-gradient-to-br from-black/60 to-black/40">
                 <div
-                  className="flex transition-transform duration-300 ease-out h-full"
-                  style={{
-                    transform: `translateX(calc(-${currentImageIndex * 100}% + ${translateX}px))`,
-                  }}
+                  className="relative aspect-video lg:aspect-auto lg:h-[600px] overflow-hidden cursor-grab active:cursor-grabbing"
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
                 >
-                  {project.images.map((image, index) => (
-                    <div
-                      key={index}
-                      className="min-w-full h-full flex items-center justify-center p-8 lg:p-12"
-                    >
+                  <div
+                    className="flex transition-transform duration-300 ease-out h-full"
+                    style={{
+                      transform: `translateX(calc(-${currentImageIndex * 100}% + ${translateX}px))`,
+                    }}
+                  >
+                    {project.images.map((image, index) => (
                       <div
-                        className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-                        style={{
-                          background: `linear-gradient(135deg, ${project.color}15 0%, transparent 60%)`,
-                        }}
-                      >
-                        {/* Placeholder for image */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div
-                            className="w-32 h-32 rounded-full opacity-20 blur-3xl"
-                            style={{ backgroundColor: project.color }}
-                          />
-                          <span
-                            className="font-[family-name:var(--font-cabinet)] text-8xl font-bold opacity-10"
-                            style={{ color: project.color }}
-                          >
-                            {index + 1}
-                          </span>
-                        </div>
-                        {/* Grid overlay */}
-                        <div
-                          className="absolute inset-0 opacity-20"
-                          style={{
-                            backgroundImage: `
-                              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-                            `,
-                            backgroundSize: "40px 40px",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Navigation Arrows */}
-                {project.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        prevImage();
-                      }}
-                      className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-xl bg-black/60 backdrop-blur-sm border border-white/10 text-white/70 hover:text-white hover:bg-black/80 hover:border-white/20 transition-all duration-200 shadow-lg"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        nextImage();
-                      }}
-                      className="absolute right-6 top-1/2 -translate-y-1/2 p-3 rounded-xl bg-black/60 backdrop-blur-sm border border-white/10 text-white/70 hover:text-white hover:bg-black/80 hover:border-white/20 transition-all duration-200 shadow-lg"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </>
-                )}
-
-                {/* Dots Indicator */}
-                {project.images.length > 1 && (
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 backdrop-blur-sm px-3 py-2 rounded-full border border-white/10">
-                    {project.images.map((_, index) => (
-                      <button
                         key={index}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentImageIndex(index);
-                        }}
-                        className={cn(
-                          "w-2 h-2 rounded-full transition-all duration-200",
-                          index === currentImageIndex
-                            ? "w-6"
-                            : "bg-white/30 hover:bg-white/50"
-                        )}
-                        style={{
-                          backgroundColor:
-                            index === currentImageIndex ? project.color : undefined,
-                        }}
-                      />
+                        className="min-w-full h-full flex items-center justify-center p-8 lg:p-12"
+                      >
+                        <div
+                          className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+                          style={{
+                            background: `linear-gradient(135deg, ${project.color}15 0%, transparent 60%)`,
+                          }}
+                        >
+                          {/* Placeholder for image */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div
+                              className="w-32 h-32 rounded-full opacity-20 blur-3xl"
+                              style={{ backgroundColor: project.color }}
+                            />
+                            <span
+                              className="font-[family-name:var(--font-cabinet)] text-8xl font-bold opacity-10"
+                              style={{ color: project.color }}
+                            >
+                              {index + 1}
+                            </span>
+                          </div>
+                          {/* Grid overlay */}
+                          <div
+                            className="absolute inset-0 opacity-20"
+                            style={{
+                              backgroundImage: `
+                                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+                              `,
+                              backgroundSize: "40px 40px",
+                            }}
+                          />
+                        </div>
+                      </div>
                     ))}
                   </div>
-                )}
 
-                {/* Image Counter */}
-                <div className="absolute top-6 right-6 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-lg border border-white/10 text-white/70 text-sm font-medium">
-                  {currentImageIndex + 1} / {project.images.length}
+                  {/* Navigation Arrows */}
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          prevImage();
+                        }}
+                        className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-xl bg-black/60 backdrop-blur-sm border border-white/10 text-white/70 hover:text-white hover:bg-black/80 hover:border-white/20 transition-all duration-200 shadow-lg"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          nextImage();
+                        }}
+                        className="absolute right-6 top-1/2 -translate-y-1/2 p-3 rounded-xl bg-black/60 backdrop-blur-sm border border-white/10 text-white/70 hover:text-white hover:bg-black/80 hover:border-white/20 transition-all duration-200 shadow-lg"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </>
+                  )}
+
+                  {/* Dots Indicator */}
+                  {project.images.length > 1 && (
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 backdrop-blur-sm px-3 py-2 rounded-full border border-white/10">
+                      {project.images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex(index);
+                          }}
+                          className={cn(
+                            "w-2 h-2 rounded-full transition-all duration-200",
+                            index === currentImageIndex
+                              ? "w-6"
+                              : "bg-white/30 hover:bg-white/50"
+                          )}
+                          style={{
+                            backgroundColor:
+                              index === currentImageIndex ? project.color : undefined,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Image Counter */}
+                  <div className="absolute top-6 right-6 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-lg border border-white/10 text-white/70 text-sm font-medium">
+                    {currentImageIndex + 1} / {project.images.length}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Visual Header for non-image projects */}
+            {!project.hasImages && (
+              <div className="relative w-full h-64 lg:h-80 bg-gradient-to-br from-black/60 to-black/40 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Animated background */}
+                  <div
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      background: `radial-gradient(circle at 30% 50%, ${project.color}40 0%, transparent 50%),
+                                   radial-gradient(circle at 70% 50%, ${project.color}20 0%, transparent 50%)`,
+                    }}
+                  />
+                  
+                  {/* Grid pattern */}
+                  <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+                      `,
+                      backgroundSize: "40px 40px",
+                    }}
+                  />
+
+                  {/* Icon */}
+                  <div className="relative z-10 flex flex-col items-center gap-4">
+                    <div 
+                      className="p-6 rounded-2xl border-2"
+                      style={{ 
+                        borderColor: `${project.color}40`,
+                        backgroundColor: `${project.color}10`
+                      }}
+                    >
+                      <Shield 
+                        className="w-20 h-20" 
+                        style={{ color: project.color }}
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <div 
+                        className="text-sm font-semibold tracking-wider uppercase opacity-60"
+                        style={{ color: project.color }}
+                      >
+                        {project.category}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Decorative elements */}
+                  <div 
+                    className="absolute top-10 left-10 w-32 h-32 rounded-full blur-3xl opacity-20"
+                    style={{ backgroundColor: project.color }}
+                  />
+                  <div 
+                    className="absolute bottom-10 right-10 w-40 h-40 rounded-full blur-3xl opacity-20"
+                    style={{ backgroundColor: project.color }}
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Project Details */}
-            <div className="lg:w-2/5 p-6 lg:p-8 space-y-8">
+            <div className={cn(
+              "p-6 lg:p-8 space-y-8",
+              project.hasImages ? "lg:w-2/5" : "w-full"
+            )}>
               {/* Overview Tab */}
               {activeTab === "overview" && (
                 <div className="space-y-8">
@@ -415,7 +491,10 @@ export function ProjectModal({
                           Impacto
                         </h3>
                       </div>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className={cn(
+                        "grid gap-3",
+                        project.hasImages ? "grid-cols-2" : "grid-cols-2 lg:grid-cols-4"
+                      )}>
                         {project.impact.map((item, index) => (
                           <div
                             key={index}
@@ -640,7 +719,10 @@ export function ProjectModal({
                   </div>
 
                   {/* Project Info */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className={cn(
+                    "grid gap-4",
+                    project.hasImages ? "grid-cols-2" : "grid-cols-2 lg:grid-cols-4"
+                  )}>
                     <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10">
                       <div className="text-white/50 text-xs mb-1">Categoria</div>
                       <div className="text-white font-medium">{project.category}</div>

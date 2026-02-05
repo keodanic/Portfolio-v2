@@ -8,10 +8,14 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 import { GeometricPatterns } from "@/components/background/geometric-patterns";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { ProjectModal } from "@/components/modals/project-modal"; // Importar o modal corrigido
+import { ProjectModal } from "@/components/modals/project-modal";
 import {
   ArrowUpRight,
   Lock,
+  Shield,
+  Code2,
+  Database,
+  Globe,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +32,7 @@ interface Project {
   tags: string[];
   features: string[];
   images: string[];
+  hasImages: boolean; // Added field
   github: string | null;
   isPrivate: boolean;
   color: string;
@@ -51,11 +56,28 @@ interface Project {
 }
 
 const _raw = (projectsData as any)?.default ?? projectsData;
-const projects: Project[] = _raw
-  ? Array.isArray(_raw)
-    ? (_raw as Project[])
-    : ([_raw] as Project[])
+const projects: Project[] = Array.isArray(_raw) 
+  ? _raw 
+  : Array.isArray(_raw?.projects)
+  ? _raw.projects
   : [];
+
+// Helper function to get icon based on category
+const getCategoryIcon = (category?: string) => {
+  if (!category) return Code2;
+  
+  const lowerCategory = category.toLowerCase();
+  if (lowerCategory.includes("security") || lowerCategory.includes("cyber")) {
+    return Shield;
+  }
+  if (lowerCategory.includes("web") || lowerCategory.includes("mobile")) {
+    return Globe;
+  }
+  if (lowerCategory.includes("data") || lowerCategory.includes("backend")) {
+    return Database;
+  }
+  return Code2;
+};
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -148,115 +170,178 @@ export default function ProjectsPage() {
                 Portfólio
               </span>
               <h1 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] max-w-3xl mb-6">
-                Todos os Projetos
+                Featured Projects
               </h1>
               <p className="text-white/60 text-lg max-w-2xl">
-                Uma coleção dos meus trabalhos mais recentes, abrangendo desde
-                aplicativos mobile até plataformas web complexas.
+                A collection of my latest work, ranging from mobile applications to complex web platforms and cybersecurity solutions.
               </p>
             </div>
 
             {/* Projects Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <div
-                  key={project.id}
-                  ref={(el) => {
-                    projectRefs.current[index] = el;
-                  }}
-                >
-                  <GlassCard
-                    variant="default"
-                    className="group cursor-pointer h-full"
-                    hover
-                    onClick={() => openProject(project)}
+              {projects.map((project, index) => {
+                const CategoryIcon = getCategoryIcon(project.category);
+                
+                return (
+                  <div
+                    key={project.id}
+                    ref={(el) => {
+                      projectRefs.current[index] = el;
+                    }}
                   >
-                    <div className="p-6 flex flex-col h-full">
-                      {/* Image Preview */}
-                      <div
-                        className="relative aspect-[4/3] rounded-lg overflow-hidden mb-6 border border-white/10"
-                        style={{
-                          background: `linear-gradient(135deg, ${project.color}10 0%, transparent 50%)`,
-                        }}
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div
-                            className="w-20 h-20 rounded-full opacity-20 blur-2xl"
-                            style={{ backgroundColor: project.color }}
-                          />
-                          <span
-                            className="font-[family-name:var(--font-cabinet)] text-6xl font-bold opacity-10"
-                            style={{ color: project.color }}
-                          >
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-                        </div>
-                        {/* Grid overlay */}
+                    <GlassCard
+                      variant="default"
+                      className="group cursor-pointer h-full"
+                      hover
+                      onClick={() => openProject(project)}
+                    >
+                      <div className="p-6 flex flex-col h-full">
+                        {/* Image/Icon Preview */}
                         <div
-                          className="absolute inset-0 opacity-30"
+                          className="relative aspect-[4/3] rounded-lg overflow-hidden mb-6 border border-white/10"
                           style={{
-                            backgroundImage: `
-                              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-                            `,
-                            backgroundSize: "30px 30px",
+                            background: `linear-gradient(135deg, ${project.color}10 0%, transparent 50%)`,
                           }}
-                        />
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-[#0066ff]/0 group-hover:bg-[#0066ff]/10 transition-colors duration-300 flex items-center justify-center">
-                          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium flex items-center gap-2">
-                            Ver Detalhes
-                            <ArrowUpRight className="w-4 h-4" />
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 flex flex-col">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span
-                            className="px-2 py-0.5 text-xs rounded border"
-                            style={{
-                              backgroundColor: `${project.color}15`,
-                              borderColor: `${project.color}30`,
-                              color: project.color,
-                            }}
-                          >
-                            {project.category}
-                          </span>
-                          <span className="text-white/40 text-xs">
-                            {project.year}
-                          </span>
-                          {project.isPrivate && (
-                            <Lock className="w-3 h-3 text-amber-400" />
+                        >
+                          {project.hasImages ? (
+                            // Traditional numbered preview for image projects
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div
+                                  className="w-20 h-20 rounded-full opacity-20 blur-2xl"
+                                  style={{ backgroundColor: project.color }}
+                                />
+                                <span
+                                  className="font-[family-name:var(--font-cabinet)] text-6xl font-bold opacity-10"
+                                  style={{ color: project.color }}
+                                >
+                                  {String(index + 1).padStart(2, "0")}
+                                </span>
+                              </div>
+                            </>
+                          ) : (
+                            // Icon-based preview for non-image projects (cybersecurity, etc)
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Background glow */}
+                                <div
+                                  className="absolute w-32 h-32 rounded-full opacity-20 blur-3xl"
+                                  style={{ backgroundColor: project.color }}
+                                />
+                                {/* Icon */}
+                                <div
+                                  className="relative z-10 p-6 rounded-xl border-2"
+                                  style={{
+                                    borderColor: `${project.color}40`,
+                                    backgroundColor: `${project.color}10`,
+                                  }}
+                                >
+                                  <CategoryIcon
+                                    className="w-12 h-12"
+                                    style={{ color: project.color }}
+                                    strokeWidth={1.5}
+                                  />
+                                </div>
+                              </div>
+                            </>
                           )}
+                          
+                          {/* Grid overlay */}
+                          <div
+                            className="absolute inset-0 opacity-30"
+                            style={{
+                              backgroundImage: `
+                                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+                              `,
+                              backgroundSize: "30px 30px",
+                            }}
+                          />
+                          
+                          {/* Hover overlay */}
+                          <div className="absolute inset-0 bg-[#0066ff]/0 group-hover:bg-[#0066ff]/10 transition-colors duration-300 flex items-center justify-center">
+                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium flex items-center gap-2">
+                              Ver Detalhes
+                              <ArrowUpRight className="w-4 h-4" />
+                            </span>
+                          </div>
                         </div>
 
-                        <h3 className="font-[family-name:var(--font-cabinet)] text-xl font-bold text-white tracking-[-0.02em] group-hover:text-[#0066ff] transition-colors duration-300 mb-2">
-                          {project.name}
-                        </h3>
-
-                        <p className="text-white/60 text-sm leading-relaxed mb-4 flex-1">
-                          {project.shortDescription}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.slice(0, 3).map((tag) => (
+                        {/* Content */}
+                        <div className="flex-1 flex flex-col">
+                          <div className="flex items-center gap-3 mb-3">
                             <span
-                              key={tag}
-                              className="px-2 py-1 text-xs text-white/50 bg-white/5 rounded border border-white/10 capitalize"
+                              className="px-2 py-0.5 text-xs rounded border"
+                              style={{
+                                backgroundColor: `${project.color}15`,
+                                borderColor: `${project.color}30`,
+                                color: project.color,
+                              }}
                             >
-                              {tag}
+                              {project.category}
                             </span>
-                          ))}
+                            <span className="text-white/40 text-xs">
+                              {project.year}
+                            </span>
+                            {project.isPrivate && (
+                              <Lock className="w-3 h-3 text-amber-400" />
+                            )}
+                          </div>
+
+                          <h3 className="font-[family-name:var(--font-cabinet)] text-xl font-bold text-white tracking-[-0.02em] group-hover:text-[#0066ff] transition-colors duration-300 mb-2">
+                            {project.name}
+                          </h3>
+
+                          <p className="text-white/60 text-sm leading-relaxed mb-4 flex-1">
+                            {project.shortDescription}
+                          </p>
+
+                          {/* Tags */}
+                          <div className="flex flex-wrap gap-2">
+                            {project.tags && project.tags.length > 0 ? (
+                              <>
+                                {project.tags.slice(0, 3).map((tag) => (
+                                  <span
+                                    key={tag}
+                                    className="px-2 py-1 text-xs text-white/50 bg-white/5 rounded border border-white/10 capitalize"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                                {project.tags.length > 3 && (
+                                  <span className="px-2 py-1 text-xs text-white/40 bg-white/5 rounded border border-white/10">
+                                    +{project.tags.length - 3}
+                                  </span>
+                                )}
+                              </>
+                            ) : (
+                              <span className="px-2 py-1 text-xs text-white/40 bg-white/5 rounded border border-white/10">
+                                Sem tags
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </GlassCard>
-                </div>
-              ))}
+                    </GlassCard>
+                  </div>
+                );
+              })}
             </div>
+
+            {/* Empty state if no projects */}
+            {projects.length === 0 && (
+              <div className="text-center py-20">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 mb-4">
+                  <Code2 className="w-8 h-8 text-white/40" />
+                </div>
+                <h3 className="text-white/60 text-lg font-medium mb-2">
+                  Nenhum projeto encontrado
+                </h3>
+                <p className="text-white/40 text-sm">
+                  Novos projetos serão adicionados em breve.
+                </p>
+              </div>
+            )}
           </div>
         </section>
       </main>
