@@ -174,10 +174,7 @@ export function Hero() {
             {/* Left Column - Typography */}
             <div className="space-y-8">
               {/* Eyebrow */}
-              <div className="flex items-center gap-2 text-white/50 text-sm tracking-wide uppercase">
-                <CodeXml className="w-4 h-4" />
-                <span>Available for Projects</span>
-              </div>
+    
 
               {/* Main Headline */}
               <h1
