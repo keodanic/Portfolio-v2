@@ -5,9 +5,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { GlassCard } from "@/components/ui/glass-card";
-import { ArrowDown, CodeXml } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { WebSecurityIcon, ReconIcon, BugBountyIcon, CodeReviewIcon } from "@/components/icons/custom-icons";
 import { CVModal } from "@/components/modals/cv-modal";
 import { ContactModal } from "@/components/modals/contact-modal";
+import { useTranslations } from "next-intl";
 
 const Beams = lazy(() => import("@/components/background/beams"));
 
@@ -16,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function Hero() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const t = useTranslations("Hero");
   
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -194,13 +197,12 @@ export function Hero() {
                 ref={subtitleRef}
                 className="text-lg sm:text-xl text-white/60 max-w-md leading-relaxed font-bold"
               >
-                Software Engineer focused on robust Backend architectures and application security. 
+                {t("subtitle1")}
               </p>
               <p
-                ref={subtitleRef}
                 className="text-lg sm:text-xl text-white/60 max-w-md leading-relaxed"
               >
-                Building scalable, high-performance solutions for web and mobile.
+                {t("subtitle2")}
               </p>
 
               {/* CTA Buttons */}
@@ -210,14 +212,14 @@ export function Hero() {
                   size="lg"
                   onClick={() => setIsCVModalOpen(true)}
                 >
-                  Download CV
+                  {t("ctaDownloadCV")}
                 </MagneticButton>
                 <MagneticButton 
                   variant="outline" 
                   size="lg"
                   onClick={() => setIsContactModalOpen(true)}
                 >
-                  Talk to Me
+                  {t("ctaTalkToMe")}
                 </MagneticButton>
               </div>
 
@@ -225,91 +227,94 @@ export function Hero() {
               <div className="flex gap-12 pt-8 border-t border-white/10">
                 <div>
                   <div className="text-3xl font-[family-name:var(--font-cabinet)] font-bold text-white">
-                    2+
+                    {t("stats.yearsExperience.value")}
                   </div>
-                  <div className="text-sm text-white/50">Years Experience</div>
+                  <div className="text-sm text-white/50">{t("stats.yearsExperience.label")}</div>
                 </div>
                 <div>
                   <div className="text-3xl font-[family-name:var(--font-cabinet)] font-bold text-white">
-                    10+
+                    {t("stats.projectsDelivered.value")}
                   </div>
-                  <div className="text-sm text-white/50">Projects Delivered</div>
+                  <div className="text-sm text-white/50">{t("stats.projectsDelivered.label")}</div>
                 </div>
                 <div>
                   <div className="text-3xl font-[family-name:var(--font-cabinet)] font-bold text-white">
-                    3
+                    {t("stats.companies.value")}
                   </div>
-                  <div className="text-sm text-white/50">Companies</div>
+                  <div className="text-sm text-white/50">{t("stats.companies.label")}</div>
                 </div>
               </div>
             </div>
 
             {/* Right Column - Floating Glass Cards (0.5x scroll speed) */}
-            <div ref={cardsRef} className="relative h-[500px] lg:h-[600px] hidden lg:block">
-              {/* Card 1 - Backend */}
+            <div ref={cardsRef} className="relative h-[600px] lg:h-[700px] hidden lg:block">
+              {/* Card 1 - Web Security */}
               <GlassCard
-                className="floating-card absolute top-0 right-0 w-72 p-6"
+                className="floating-card absolute top-0 right-4 w-72 p-6"
                 variant="default"
               >
                 <div className="flex items-start gap-4">
+                  <WebSecurityIcon size={24} color="#FF6B6B" className="flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      Backend
+                      {t("cards.webSecurity.title")}
                     </h3>
                     <p className="text-sm text-white/50">
-                      Scalable APIs, NestJS, and Database Architecture.
+                      {t("cards.webSecurity.description")}
                     </p>
                   </div>
                 </div>
               </GlassCard>
 
-              {/* Card 2 - Frontend */}
+              {/* Card 2 - Reconnaissance */}
               <GlassCard
-                className="floating-card absolute top-32 left-0 w-64 p-6"
+                className="floating-card absolute top-28 left-0 w-64 p-6"
                 variant="default"
               >
                 <div className="flex items-start gap-4">
+                  <ReconIcon size={24} color="#4ECDC4" className="flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      Security-First
+                      {t("cards.reconnaissance.title")}
                     </h3>
                     <p className="text-sm text-white/50">
-                      Secure Coding, Docker, and OWASP Practices.
+                      {t("cards.reconnaissance.description")}
                     </p>
                   </div>
                 </div>
               </GlassCard>
 
-              {/* Card 3 - Mobile */}
+              {/* Card 3 - Bug Bounty */}
               <GlassCard
-                className="floating-card absolute top-64 right-8 w-80 p-6"
+                className="floating-card absolute top-56 right-8 w-80 p-6"
                 variant="default"
               >
                 <div className="flex items-start gap-4">
-                  
+                  <BugBountyIcon size={24} color="#FFE66D" className="flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      Mobile
+                      {t("cards.bugBounty.title")}
                     </h3>
                     <p className="text-sm text-white/50">
-                      Cross-platform apps with React Native
+                      {t("cards.bugBounty.description")}
                     </p>
                   </div>
                 </div>
               </GlassCard>
 
-              {/* Card 4 - Full Stack */}
+              {/* Card 4 - Code Review */}
               <GlassCard
                 className="floating-card absolute top-96 left-12 w-72 p-6"
                 variant="default"
               >
                 <div className="flex items-start gap-4">
+                  <CodeReviewIcon size={24} color="#A78BFA" className="flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      Frontend
+                      {t("cards.codeReview.title")}
                     </h3>
                     <p className="text-sm text-white/50">
-                      Modern UIs with React, Next.js, and Tailwind CSS.
+                      {t("cards.codeReview.description")}
                     </p>
                   </div>
                 </div>
@@ -321,7 +326,7 @@ export function Hero() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <span className="text-xs tracking-widest uppercase">{t("scrollIndicator")}</span>
           <ArrowDown className="w-4 h-4 animate-bounce" />
         </div>
       </section>

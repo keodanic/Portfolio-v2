@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Mail, MapPin, Linkedin, ArrowUpRight, Send, Instagram, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,6 +39,7 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const t = useTranslations("Contact");
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -101,27 +103,26 @@ export function Contact() {
           {/* Left Column - Info */}
           <div ref={contentRef}>
             <span className="text-[#0066ff] text-sm tracking-widest uppercase mb-4 block">
-              Get in Touch
+              {t("sectionTag")}
             </span>
             <h2 className="font-[family-name:var(--font-cabinet)] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] mb-6">
-              Let's build something exceptional
+              {t("title")}
             </h2>
             <p className="text-lg text-white/60 mb-12 max-w-lg">
-              Have a complex project or a security challenge in mind? I'd love to hear about it. 
-              Let’s discuss how we can engineer a robust solution together.
+              {t("description")}
             </p>
 
             <div className="space-y-6 mb-12">
               <a
-                href="mailto:victordanielsnt@gmail.com"
+                href={`mailto:${t("info.email.value")}`}
                 className="flex items-center gap-4 text-white/70 hover:text-[#0066ff] transition-colors group"
               >
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#0066ff]/10 transition-colors">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-white/50">Email</div>
-                  <div className="text-white">victordanielsnt@gmail.com</div>
+                  <div className="text-sm text-white/50">{t("info.email.label")}</div>
+                  <div className="text-white">{t("info.email.value")}</div>
                 </div>
               </a>
 
@@ -130,14 +131,14 @@ export function Contact() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-white/50">Location</div>
-                  <div className="text-white">Teresina, Piauí, Brazil</div>
+                  <div className="text-sm text-white/50">{t("info.location.label")}</div>
+                  <div className="text-white">{t("info.location.value")}</div>
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="text-sm text-white/50 mb-4">Follow me</div>
+              <div className="text-sm text-white/50 mb-4">{t("social.title")}</div>
               <div className="flex gap-3">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
@@ -167,17 +168,17 @@ export function Contact() {
                     <Send className="w-8 h-8 text-[#0066ff]" />
                   </div>
                   <h3 className="font-[family-name:var(--font-cabinet)] text-2xl font-bold text-white mb-2">
-                    Message Sent!
+                    {t("form.submit.success.title")}
                   </h3>
                   <p className="text-white/60">
-                    Thank you for reaching out. I'll get back to you shortly.
+                    {t("form.submit.success.description")}
                   </p>
                 </div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm text-white/70 mb-2">
-                      Name
+                      {t("form.name.label")}
                     </label>
                     <input
                       type="text"
@@ -186,13 +187,13 @@ export function Contact() {
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-[#0066ff]/50 focus:ring-1 focus:ring-[#0066ff]/50 transition-colors"
-                      placeholder="Your name"
+                      placeholder={t("form.name.placeholder")}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="email" className="block text-sm text-white/70 mb-2">
-                      Email Address
+                      {t("form.email.label")}
                     </label>
                     <input
                       type="email"
@@ -201,13 +202,13 @@ export function Contact() {
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-[#0066ff]/50 focus:ring-1 focus:ring-[#0066ff]/50 transition-colors"
-                      placeholder="your@email.com"
+                      placeholder={t("form.email.placeholder")}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm text-white/70 mb-2">
-                      Message
+                      {t("form.message.label")}
                     </label>
                     <textarea
                       id="message"
@@ -216,7 +217,7 @@ export function Contact() {
                       required
                       rows={5}
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-[#0066ff]/50 focus:ring-1 focus:ring-[#0066ff]/50 transition-colors resize-none"
-                      placeholder="Tell me about your project or security needs..."
+                      placeholder={t("form.message.placeholder")}
                     />
                   </div>
 
@@ -233,11 +234,11 @@ export function Contact() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
-                        Sending...
+                        {t("form.submit.sending")}
                       </span>
                     ) : (
                       <span className="flex items-center justify-center gap-2">
-                        Send Message
+                        {t("form.submit.default")}
                         <ArrowUpRight className="w-5 h-5" />
                       </span>
                     )}

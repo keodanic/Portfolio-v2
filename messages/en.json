@@ -1,0 +1,305 @@
+{
+  "Metadata": {
+    "title": "Victor Daniel | Bug Bounty Hunter & Security Researcher",
+    "description": "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications. Continuously learning offensive security through real-world targets and structured certifications."
+  },
+  "Navigation": {
+    "labs": "Labs",
+    "certifications": "Certifications",
+    "about": "About",
+    "contact": "Contact",
+    "ctaButton": "Let's Talk"
+  },
+  "Hero": {
+    "subtitle1": "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications.",
+    "subtitle2": "Continuously learning offensive security through real-world targets and structured certifications.",
+    "ctaDownloadCV": "Download CV",
+    "ctaTalkToMe": "Talk to Me",
+    "stats": {
+      "yearsExperience": {
+        "value": "2+",
+        "label": "Years Experience"
+      },
+      "projectsDelivered": {
+        "value": "10+",
+        "label": "Projects Delivered"
+      },
+      "companies": {
+        "value": "3",
+        "label": "Companies"
+      }
+    },
+    "cards": {
+      "webSecurity": {
+        "title": "Web Security",
+        "description": "XSS, SQLi, CSRF, IDOR, and Business Logic flaws."
+      },
+      "reconnaissance": {
+        "title": "Reconnaissance",
+        "description": "Subdomain enumeration, port scanning, and OSINT."
+      },
+      "bugBounty": {
+        "title": "Bug Bounty",
+        "description": "Active on HackerOne, Bugcrowd, and private programs."
+      },
+      "codeReview": {
+        "title": "Code Review",
+        "description": "Reading code to find vulnerabilities others miss."
+      }
+    },
+    "scrollIndicator": "Scroll"
+  },
+  "SecurityLabs": {
+    "sectionTag": "Continuous Practice",
+    "title": "Security Labs & Research",
+    "description": "Hands-on learning is essential in cybersecurity. Here's where I sharpen my skills through deliberate practice on industry-standard platforms and document my findings.",
+    "tabs": {
+      "labs": "Learning Platforms",
+      "writeups": "Write-ups"
+    },
+    "platforms": {
+      "portswigger": {
+        "name": "PortSwigger Academy",
+        "description": "Web security labs covering OWASP Top 10 and advanced vulnerabilities."
+      },
+      "htb": {
+        "name": "Hack The Box",
+        "description": "Active machines and challenges for penetration testing practice."
+      },
+      "tryhackme": {
+        "name": "TryHackMe",
+        "description": "Guided learning paths from beginner to advanced security concepts."
+      },
+      "hacker101": {
+        "name": "Hacker101 CTF",
+        "description": "CTF challenges designed specifically for bug bounty hunters."
+      }
+    },
+    "progressLabels": {
+      "progress": "Progress",
+      "completed": "completed",
+      "gettingStarted": "Getting started",
+      "percentComplete": "% complete"
+    },
+    "ctaButton": "Follow My Journey",
+    "writeups": {
+      "emptyState": {
+        "title": "No Write-ups Yet",
+        "description": "I'm currently focused on building my skills through labs and bug bounty hunting. Write-ups of interesting findings will be published here soon.",
+        "status": "Currently hunting on HackerOne"
+      }
+    }
+  },
+  "Certifications": {
+    "sectionTag": "Continuous Learning",
+    "title": "Certifications & Credentials",
+    "description": "Building expertise through structured learning and hands-on practice. Each certification represents hundreds of hours in labs and real-world scenarios.",
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "planned": "Planned"
+    },
+    "certificationsList": {
+      "ejpt": {
+        "name": "eJPT",
+        "issuer": "INE Security",
+        "description": "Junior Penetration Tester certification covering network and web application penetration testing fundamentals.",
+        "skills": ["Network Scanning", "Vulnerability Assessment", "Web Pentesting", "Exploitation Basics"]
+      },
+      "ecppt": {
+        "name": "eCPPTv3",
+        "issuer": "INE Security",
+        "description": "Certified Professional Penetration Tester - advanced pentesting methodology and real-world scenarios.",
+        "skills": ["Advanced Exploitation", "Pivoting", "Post-Exploitation", "Report Writing"]
+      },
+      "oscp": {
+        "name": "OSCP",
+        "issuer": "Offensive Security",
+        "description": "The gold standard for penetration testers. Hands-on 24-hour exam proving real-world skills.",
+        "skills": ["Active Directory", "Buffer Overflow", "Privilege Escalation", "Methodology"]
+      },
+      "bscp": {
+        "name": "BSCP",
+        "issuer": "PortSwigger",
+        "description": "Burp Suite Certified Practitioner - web application security testing at enterprise level.",
+        "skills": ["Advanced Web Attacks", "Burp Suite Mastery", "Business Logic", "Auth Bypass"]
+      }
+    },
+    "dateLabels": {
+      "earned": "Earned",
+      "target": "Target"
+    },
+    "verifyLink": "Verify",
+    "bugBountyJourney": {
+      "title": "Bug Bounty Journey",
+      "subtitle": "Active on multiple platforms",
+      "stats": {
+        "reports": "Reports",
+        "accepted": "Accepted",
+        "programs": "Programs"
+      },
+      "description": "Building reputation across HackerOne, Bugcrowd, and Intigriti"
+    },
+    "activePlatforms": {
+      "title": "Active Platforms",
+      "gettingStarted": "Getting started",
+      "reports": "reports"
+    },
+    "currentlyStudying": {
+      "title": "Currently Studying",
+      "items": [
+        "PortSwigger Web Security Academy",
+        "Hacker101 CTF Challenges",
+        "Real-world vulnerability writeups"
+      ]
+    }
+  },
+  "About": {
+    "sectionTag": "About Me",
+    "title": "Bug Bounty Hunter",
+    "bio": {
+      "paragraph1": "Systems for Internet graduate from IFMA transitioning from software development to offensive security. My background in building web applications gives me a unique edge in understanding how systems fail and where vulnerabilities hide.",
+      "paragraph2": "Currently focused on bug bounty hunting and web application penetration testing. I combine my developer mindset with security research to find bugs that automated scanners miss.",
+      "paragraph3": "Pursuing industry-recognized certifications while actively hunting on bug bounty platforms. Passionate about continuous learning and sharing knowledge with the security community."
+    },
+    "skills": {
+      "webAttacks": {
+        "category": "Web Attacks",
+        "items": ["XSS", "SQL Injection", "CSRF", "IDOR", "SSRF", "LFI/RFI"]
+      },
+      "recon": {
+        "category": "Recon & Enum",
+        "items": ["Nmap", "Burp Suite", "Subdomain Enum", "OSINT", "Content Discovery"]
+      },
+      "tools": {
+        "category": "Tools",
+        "items": ["Burp Suite Pro", "Nuclei", "FFUF", "SQLMap", "Amass", "GitHub"]
+      }
+    },
+    "experience": {
+      "title": "Professional Experience",
+      "items": [
+        {
+          "title": "Bug Bounty Hunter",
+          "description": "Independent Security Researcher. Hunting vulnerabilities on HackerOne, Bugcrowd, and Intigriti. Focusing on web application security, authentication bypasses, and business logic flaws.",
+          "period": "2025 - Present"
+        },
+        {
+          "title": "Simplifit",
+          "description": "Lead Full-Stack Developer. Architecting scalable backends with NestJS and PostgreSQL, while leading the development of high-performance mobile applications using React Native.",
+          "period": "September 2025 - Present"
+        },
+        {
+          "title": "FAPEMA - IFMA",
+          "description": "Research Fellow. Developed a real-time CO2 monitoring system using Maker technology and Node.js, bridging the gap between hardware sensors and data visualization.",
+          "period": "November 2024 - July 2025"
+        }
+      ]
+    },
+    "education": {
+      "label": "Academic Foundation",
+      "course": "Systems for Internet",
+      "institution": "IFMA | Federal Institute of Maranhão",
+      "period": "2023 — 2025"
+    },
+    "stats": {
+      "yearsEngineering": {
+        "value": "2+",
+        "label": "Years of Engineering"
+      },
+      "systemsDeployed": {
+        "value": "10+",
+        "label": "Systems Deployed"
+      },
+      "partnerships": {
+        "value": "3",
+        "label": "Strategic Partnerships"
+      },
+      "seniority": {
+        "value": "Mid",
+        "label": "Level Seniority"
+      }
+    }
+  },
+  "Contact": {
+    "sectionTag": "Get in Touch",
+    "title": "Let's build something exceptional",
+    "description": "Have a complex project or a security challenge in mind? I'd love to hear about it. Let's discuss how we can engineer a robust solution together.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "victordanielsnt@gmail.com"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Teresina, Piauí, Brazil"
+      }
+    },
+    "social": {
+      "title": "Follow me"
+    },
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "your@email.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell me about your project or security needs..."
+      },
+      "submit": {
+        "default": "Send Message",
+        "sending": "Sending...",
+        "success": {
+          "title": "Message Sent!",
+          "description": "Thank you for reaching out. I'll get back to you shortly."
+        }
+      }
+    }
+  },
+  "Footer": {
+    "role": "Security-First Engineer",
+    "copyright": "© {year} Victor Daniel. Built for scalability & security.",
+    "backToTop": "Back to Top",
+    "availability": "Available for new challenges",
+    "location": "Based in Teresina, BR"
+  },
+  "CVModal": {
+    "title": "View & Download CV",
+    "subtitle": "Choose your language",
+    "languages": {
+      "pt": {
+        "name": "Português",
+        "description": "Brazilian Portuguese"
+      },
+      "en": {
+        "name": "English",
+        "description": "International"
+      }
+    },
+    "footer": "PDF format • Updated {date}"
+  },
+  "ContactModal": {
+    "title": "Let's Talk",
+    "subtitle": "Choose your preferred platform",
+    "platforms": {
+      "whatsapp": {
+        "name": "WhatsApp",
+        "description": "Message me directly"
+      },
+      "linkedin": {
+        "name": "LinkedIn",
+        "description": "Professional network"
+      },
+      "gmail": {
+        "name": "Gmail",
+        "description": "Send me an email"
+      }
+    },
+    "footer": "I typically respond within 24 hours"
+  }
+}

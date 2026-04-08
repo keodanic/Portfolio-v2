@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { X, ExternalLink, FileText } from "lucide-react";
 import { gsap } from "gsap";
+import { useTranslations, useLocale } from "next-intl";
 
 interface CVModalProps {
   isOpen: boolean;
@@ -12,6 +13,8 @@ interface CVModalProps {
 export function CVModal({ isOpen, onClose }: CVModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("CVModal");
+  const currentLocale = useLocale();
 
   useEffect(() => {
     if (isOpen) {
@@ -124,12 +127,12 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
             {/* Title */}
             <h2 className="font-[family-name:var(--font-cabinet)] text-3xl font-bold text-white text-center mb-3 tracking-[-0.02em]">
-              View & Download CV
+              {t("title")}
             </h2>
 
             {/* Subtitle */}
             <p className="text-white/60 text-center mb-8">
-              Choose your language
+              {t("subtitle")}
             </p>
 
             {/* Language Buttons */}
@@ -146,8 +149,8 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                       🇧🇷
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-white">Português</div>
-                      <div className="text-xs text-white/50">Brazilian Portuguese</div>
+                      <div className="font-semibold text-white">{t("languages.pt.name")}</div>
+                      <div className="text-xs text-white/50">{t("languages.pt.description")}</div>
                     </div>
                   </div>
                   <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-[#0066ff] transition-colors" />
@@ -166,8 +169,8 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                       🇺🇸
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-white">English</div>
-                      <div className="text-xs text-white/50">International</div>
+                      <div className="font-semibold text-white">{t("languages.en.name")}</div>
+                      <div className="text-xs text-white/50">{t("languages.en.description")}</div>
                     </div>
                   </div>
                   <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-purple-500 transition-colors" />
@@ -177,7 +180,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
             {/* Footer Note */}
             <p className="text-center text-xs text-white/30 mt-6">
-              PDF format • Updated {new Date().toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+              {t("footer", { date: new Date().toLocaleDateString(currentLocale === "pt" ? "pt-BR" : "en-US", { month: "short", year: "numeric" }) })}
             </p>
           </div>
         </div>

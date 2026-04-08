@@ -1,0 +1,305 @@
+{
+  "Metadata": {
+    "title": "Victor Daniel | Bug Bounty Hunter & Security Researcher",
+    "description": "Bug Bounty Hunter focado em encontrar vulnerabilidades e proteger aplicações web. Aprendendo continuousamente segurança ofensiva através de targets reais e certificações estruturadas."
+  },
+  "Navigation": {
+    "labs": "Labs",
+    "certifications": "Certificações",
+    "about": "Sobre",
+    "contact": "Contato",
+    "ctaButton": "Vamos conversar"
+  },
+  "Hero": {
+    "subtitle1": "Bug Bounty Hunter focado em encontrar vulnerabilidades e proteger aplicações web.",
+    "subtitle2": "Aprendendo continuousamente segurança ofensiva através de targets reais e certificações estruturadas.",
+    "ctaDownloadCV": "Baixar CV",
+    "ctaTalkToMe": "Fale comigo",
+    "stats": {
+      "yearsExperience": {
+        "value": "2+",
+        "label": "Anos de Experiência"
+      },
+      "projectsDelivered": {
+        "value": "10+",
+        "label": "Projetos Entregues"
+      },
+      "companies": {
+        "value": "3",
+        "label": "Empresas"
+      }
+    },
+    "cards": {
+      "webSecurity": {
+        "title": "Web Security",
+        "description": "XSS, SQLi, CSRF, IDOR, e falhas de Business Logic."
+      },
+      "reconnaissance": {
+        "title": "Reconnaissance",
+        "description": "Enumeração de subdomínios, port scanning, e OSINT."
+      },
+      "bugBounty": {
+        "title": "Bug Bounty",
+        "description": "Ativo no HackerOne, Bugcrowd, e programas privados."
+      },
+      "codeReview": {
+        "title": "Code Review",
+        "description": "Lendo código para encontrar vulnerabilidades que outros perdem."
+      }
+    },
+    "scrollIndicator": "Rolar"
+  },
+  "SecurityLabs": {
+    "sectionTag": "Prática Contínua",
+    "title": "Labs de Segurança & Pesquisa",
+    "description": "Aprendizado prático é essencial em cibersegurança. É aqui que eu aprimoro minhas habilidades através de prática deliberada em plataformas padrão da indústria e documento minhas descobertas.",
+    "tabs": {
+      "labs": "Plataformas de Aprendizado",
+      "writeups": "Write-ups"
+    },
+    "platforms": {
+      "portswigger": {
+        "name": "PortSwigger Academy",
+        "description": "Labs de segurança web cobrindo OWASP Top 10 e vulnerabilidades avançadas."
+      },
+      "htb": {
+        "name": "Hack The Box",
+        "description": "Máquinas ativas e desafios para prática de penetration testing."
+      },
+      "tryhackme": {
+        "name": "TryHackMe",
+        "description": "Trilhas de aprendizado guiadas do iniciante ao avançado em conceitos de segurança."
+      },
+      "hacker101": {
+        "name": "Hacker101 CTF",
+        "description": "Desafios CTF projetados especificamente para bug bounty hunters."
+      }
+    },
+    "progressLabels": {
+      "progress": "Progresso",
+      "completed": "completado",
+      "gettingStarted": "Começando",
+      "percentComplete": "% completo"
+    },
+    "ctaButton": "Acompanhe minha jornada",
+    "writeups": {
+      "emptyState": {
+        "title": "Nenhum Write-up ainda",
+        "description": "Atualmente estou focado em desenvolver minhas habilidades através de labs e bug bounty hunting. Write-ups de descobertas interessantes serão publicados aqui em breve.",
+        "status": "Ativamente caçando no HackerOne"
+      }
+    }
+  },
+  "Certifications": {
+    "sectionTag": "Aprendizado Contínuo",
+    "title": "Certificações & Credenciais",
+    "description": "Construindo expertise através de aprendizado estruturado e prática hands-on. Cada certificação representa centenas de horas em labs e cenários reais.",
+    "status": {
+      "completed": "Concluído",
+      "inProgress": "Em Progresso",
+      "planned": "Planejado"
+    },
+    "certificationsList": {
+      "ejpt": {
+        "name": "eJPT",
+        "issuer": "INE Security",
+        "description": "Certificação Junior Penetration Tester cobrindo fundamentos de network e web application penetration testing.",
+        "skills": ["Network Scanning", "Vulnerability Assessment", "Web Pentesting", "Exploitation Basics"]
+      },
+      "ecppt": {
+        "name": "eCPPTv3",
+        "issuer": "INE Security",
+        "description": "Certified Professional Penetration Tester - metodologia avançada de pentesting e cenários reais.",
+        "skills": ["Advanced Exploitation", "Pivoting", "Post-Exploitation", "Report Writing"]
+      },
+      "oscp": {
+        "name": "OSCP",
+        "issuer": "Offensive Security",
+        "description": "O padrão ouro para penetration testers. Prova hands-on de 24 horas comprovando skills do mundo real.",
+        "skills": ["Active Directory", "Buffer Overflow", "Privilege Escalation", "Methodology"]
+      },
+      "bscp": {
+        "name": "BSCP",
+        "issuer": "PortSwigger",
+        "description": "Burp Suite Certified Practitioner - teste de segurança de aplicações web em nível enterprise.",
+        "skills": ["Advanced Web Attacks", "Burp Suite Mastery", "Business Logic", "Auth Bypass"]
+      }
+    },
+    "dateLabels": {
+      "earned": "Conquistado",
+      "target": "Meta"
+    },
+    "verifyLink": "Verificar",
+    "bugBountyJourney": {
+      "title": "Jornada Bug Bounty",
+      "subtitle": "Ativo em múltiplas plataformas",
+      "stats": {
+        "reports": "Reports",
+        "accepted": "Aceitos",
+        "programs": "Programas"
+      },
+      "description": "Construindo reputação no HackerOne, Bugcrowd, e Intigriti"
+    },
+    "activePlatforms": {
+      "title": "Plataformas Ativas",
+      "gettingStarted": "Começando",
+      "reports": "reports"
+    },
+    "currentlyStudying": {
+      "title": "Estudando Atualmente",
+      "items": [
+        "PortSwigger Web Security Academy",
+        "Hacker101 CTF Challenges",
+        "Writeups de vulnerabilidades reais"
+      ]
+    }
+  },
+  "About": {
+    "sectionTag": "Sobre Mim",
+    "title": "Bug Bounty Hunter",
+    "bio": {
+      "paragraph1": "Formado em Sistemas para Internet pelo IFMA fazendo transição de desenvolvimento de software para segurança ofensiva. Meu background em construir aplicações web me dá uma vantagem única em entender como sistemas falham e onde vulnerabilidades se escondem.",
+      "paragraph2": "Atualmente focado em bug bounty hunting e penetration testing de aplicações web. Eu combino minha mentalidade de desenvolvedor com pesquisa de segurança para encontrar bugs que scanners automatizados perdem.",
+      "paragraph3": "Buscando certificações reconhecidas pela indústria enquanto ativamente caço em plataformas de bug bounty. Apaixonado por aprendizado contínuo e compartilhamento de conhecimento com a comunidade de segurança."
+    },
+    "skills": {
+      "webAttacks": {
+        "category": "Web Attacks",
+        "items": ["XSS", "SQL Injection", "CSRF", "IDOR", "SSRF", "LFI/RFI"]
+      },
+      "recon": {
+        "category": "Recon & Enum",
+        "items": ["Nmap", "Burp Suite", "Subdomain Enum", "OSINT", "Content Discovery"]
+      },
+      "tools": {
+        "category": "Ferramentas",
+        "items": ["Burp Suite Pro", "Nuclei", "FFUF", "SQLMap", "Amass", "GitHub"]
+      }
+    },
+    "experience": {
+      "title": "Experiência Profissional",
+      "items": [
+        {
+          "title": "Bug Bounty Hunter",
+          "description": "Pesquisador Independente de Segurança. Caçando vulnerabilidades no HackerOne, Bugcrowd, e Intigriti. Focando em segurança de aplicações web, bypasses de autenticação, e falhas de business logic.",
+          "period": "2025 - Presente"
+        },
+        {
+          "title": "Simplifit",
+          "description": "Lead Full-Stack Developer. Arquitetando backends escaláveis com NestJS e PostgreSQL, enquanto lidero o desenvolvimento de aplicações mobile de alta performance usando React Native.",
+          "period": "Setembro 2025 - Presente"
+        },
+        {
+          "title": "FAPEMA - IFMA",
+          "description": "Bolsista de Pesquisa. Desenvolvi um sistema de monitoramento de CO2 em tempo real usando tecnologia Maker e Node.js, conectando sensores de hardware à visualização de dados.",
+          "period": "Novembro 2024 - Julho 2025"
+        }
+      ]
+    },
+    "education": {
+      "label": "Base Acadêmica",
+      "course": "Sistemas para Internet",
+      "institution": "IFMA | Instituto Federal do Maranhão",
+      "period": "2023 — 2025"
+    },
+    "stats": {
+      "yearsEngineering": {
+        "value": "2+",
+        "label": "Anos de Engenharia"
+      },
+      "systemsDeployed": {
+        "value": "10+",
+        "label": "Sistemas Deployados"
+      },
+      "partnerships": {
+        "value": "3",
+        "label": "Parcerias Estratégicas"
+      },
+      "seniority": {
+        "value": "Mid",
+        "label": "Nível de Senioridade"
+      }
+    }
+  },
+  "Contact": {
+    "sectionTag": "Entre em Contato",
+    "title": "Vamos construir algo excepcional",
+    "description": "Tem um projeto complexo ou um desafio de segurança em mente? Adoraria ouvir sobre isso. Vamos discutir como podemos construir uma solução robusta juntos.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "victordanielsnt@gmail.com"
+      },
+      "location": {
+        "label": "Localização",
+        "value": "Teresina, Piauí, Brasil"
+      }
+    },
+    "social": {
+      "title": "Siga-me"
+    },
+    "form": {
+      "name": {
+        "label": "Nome",
+        "placeholder": "Seu nome"
+      },
+      "email": {
+        "label": "Endereço de Email",
+        "placeholder": "seu@email.com"
+      },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Conte-me sobre seu projeto ou necessidades de segurança..."
+      },
+      "submit": {
+        "default": "Enviar Mensagem",
+        "sending": "Enviando...",
+        "success": {
+          "title": "Mensagem Enviada!",
+          "description": "Obrigado por entrar em contato. Responderei em breve."
+        }
+      }
+    }
+  },
+  "Footer": {
+    "role": "Engenheiro Security-First",
+    "copyright": "© {year} Victor Daniel. Construído para escalabilidade & segurança.",
+    "backToTop": "Voltar ao Topo",
+    "availability": "Disponível para novos desafios",
+    "location": "Baseado em Teresina, BR"
+  },
+  "CVModal": {
+    "title": "Visualizar & Baixar CV",
+    "subtitle": "Escolha seu idioma",
+    "languages": {
+      "pt": {
+        "name": "Português",
+        "description": "Português Brasileiro"
+      },
+      "en": {
+        "name": "English",
+        "description": "Internacional"
+      }
+    },
+    "footer": "Formato PDF • Atualizado em {date}"
+  },
+  "ContactModal": {
+    "title": "Vamos conversar",
+    "subtitle": "Escolha sua plataforma preferida",
+    "platforms": {
+      "whatsapp": {
+        "name": "WhatsApp",
+        "description": "Me envie uma mensagem"
+      },
+      "linkedin": {
+        "name": "LinkedIn",
+        "description": "Rede profissional"
+      },
+      "gmail": {
+        "name": "Gmail",
+        "description": "Me envie um email"
+      }
+    },
+    "footer": "Normalmente respondo em até 24 horas"
+  }
+}

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { X, MessageCircle, Linkedin, Mail, ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { gsap } from "gsap";
+import { useTranslations } from "next-intl";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -13,6 +13,7 @@ interface ContactModalProps {
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("ContactModal");
 
   useEffect(() => {
     if (isOpen) {
@@ -116,12 +117,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
             {/* Title */}
             <h2 className="font-[family-name:var(--font-cabinet)] text-3xl font-bold text-white text-center mb-3 tracking-[-0.02em]">
-              Let's Talk
+              {t("title")}
             </h2>
 
             {/* Subtitle */}
             <p className="text-white/60 text-center mb-8">
-              Choose your preferred platform
+              {t("subtitle")}
             </p>
 
             {/* Contact Buttons */}
@@ -138,8 +139,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       <MessageCircle className="w-5 h-5 text-[#25D366]" />
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-white">WhatsApp</div>
-                      <div className="text-xs text-white/50">Message me directly</div>
+                      <div className="font-semibold text-white">{t("platforms.whatsapp.name")}</div>
+                      <div className="text-xs text-white/50">{t("platforms.whatsapp.description")}</div>
                     </div>
                   </div>
                   <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-[#25D366] transition-colors" />
@@ -158,8 +159,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       <Linkedin className="w-5 h-5 text-[#0A66C2]" />
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-white">LinkedIn</div>
-                      <div className="text-xs text-white/50">Professional network</div>
+                      <div className="font-semibold text-white">{t("platforms.linkedin.name")}</div>
+                      <div className="text-xs text-white/50">{t("platforms.linkedin.description")}</div>
                     </div>
                   </div>
                   <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-[#0A66C2] transition-colors" />
@@ -178,8 +179,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       <Mail className="w-5 h-5 text-[#EA4335]" />
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-white">Gmail</div>
-                      <div className="text-xs text-white/50">Send me an email</div>
+                      <div className="font-semibold text-white">{t("platforms.gmail.name")}</div>
+                      <div className="text-xs text-white/50">{t("platforms.gmail.description")}</div>
                     </div>
                   </div>
                   <ExternalLink className="w-5 h-5 text-white/50 group-hover:text-[#EA4335] transition-colors" />
@@ -189,7 +190,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
             {/* Footer Note */}
             <p className="text-center text-xs text-white/30 mt-6">
-              I typically respond within 24 hours
+              {t("footer")}
             </p>
           </div>
         </div>

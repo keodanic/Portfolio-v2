@@ -3,8 +3,11 @@
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ArrowUp } from "lucide-react";
 import LogoVictor from "./logo";
+import { useTranslations } from "next-intl";
 
 export function Footer() {
+  const t = useTranslations("Footer");
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -22,11 +25,11 @@ export function Footer() {
               <LogoVictor className="h-8 w-auto text-white opacity-80" />
               <div className="h-4 w-px bg-white/10 hidden sm:block" />
               <p className="text-white/40 text-xs tracking-widest uppercase font-medium">
-                Security-First Engineer
+                {t("role")}
               </p>
             </div>
             <span className="text-white/20 text-xs font-mono">
-              © {new Date().getFullYear()} Victor Daniel. Built for scalability & security.
+              {t("copyright", { year: new Date().getFullYear() })}
             </span>
           </div>
 
@@ -38,7 +41,7 @@ export function Footer() {
               onClick={scrollToTop}
               className="group text-white/50 hover:text-white transition-colors"
             >
-              Back to Top
+              {t("backToTop")}
               <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
             </MagneticButton>
           </div>
@@ -48,10 +51,10 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2 text-[10px] text-white/20 uppercase tracking-[0.2em]">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            Available for new challenges
+            {t("availability")}
           </div>
           <div className="text-[10px] text-white/20 uppercase tracking-[0.2em]">
-            Based in Teresina, BR — {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
+            {t("location")} — {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
           </div>
         </div>
       </div>

@@ -5,18 +5,14 @@ import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Menu, X } from "lucide-react";
 import LogoVictor from "./logo";
-
-const navLinks = [
-  { label: "Work", href: "/#work" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/#about" },
-  { label: "Process", href: "/#process" },
-  { label: "Contact", href: "/#contact" },
-];
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const t = useTranslations("Navigation");
+  const locale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +22,18 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { label: t("labs"), href: "/#labs" },
+    { label: t("certifications"), href: "/#certifications" },
+    { label: t("about"), href: "/#about" },
+    { label: t("contact"), href: "/#contact" },
+  ];
+
+  const toggleLocale = () => {
+    const newLocale = locale === "pt" ? "en" : "pt";
+    window.location.href = `/${newLocale}${window.location.pathname.replace(/^\/(pt|en)/, "")}${window.location.hash}`;
+  };
 
   return (
     <>
@@ -47,7 +55,9 @@ export function Navigation() {
             )}
           >
             {/* Logo */}
-            <LogoVictor className="h-10 w-auto text-white" />
+            <Link href="/">
+              <LogoVictor className="h-10 w-auto text-white" />
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
@@ -63,10 +73,17 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:block">
+            {/* CTA Button & Locale Toggle */}
+            <div className="hidden md:flex items-center gap-4">
+              <button
+                onClick={toggleLocale}
+                className="text-sm text-white/50 hover:text-white transition-colors uppercase tracking-wider"
+                aria-label="Toggle language"
+              >
+                {locale}
+              </button>
               <MagneticButton variant="electric" size="sm">
-                Let's Talk
+                {t("ctaButton")}
               </MagneticButton>
             </div>
 
@@ -103,6 +120,14 @@ export function Navigation() {
 
         {/* Menu Content */}
         <div className="relative h-full flex flex-col items-center justify-center gap-8">
+          {/* Locale Toggle Mobile */}
+          <button
+            onClick={toggleLocale}
+            className="absolute top-24 text-sm text-white/50 hover:text-white transition-colors uppercase tracking-wider"
+          >
+            {locale === "en" ? "English (EN)" : "Português (PT)"} → {locale === "en" ? "Português" : "English"}
+          </button>
+
           {navLinks.map((link, index) => (
             <a
               key={link.label}
@@ -124,7 +149,7 @@ export function Navigation() {
             className="mt-8"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Let's Talk
+            {t("ctaButton")}
           </MagneticButton>
         </div>
       </div>

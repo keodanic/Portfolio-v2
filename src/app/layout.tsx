@@ -22,36 +22,33 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Victor Daniel | Dev Full Stack",
-    template: "%s | Victor Daniel",
+  other: {
+    google: "notranslate",
   },
-  description:
-    "Full-Stack Developer crafting human-centered digital experiences with intentional design and sophisticated interactions.",
+  title: "Victor Daniel | Bug Bounty Hunter & Security Researcher",
+  description: "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications.",
   keywords: [
-    "Programador",
-    "Desenvolvedor Web",
-    "Desenvolvedor Full Stack",
-    "Digital Experience",
-    "Developer",
-    "Software Engineer",
+    "Bug Bounty Hunter",
+    "Security Researcher",
+    "Penetration Tester",
+    "Web Security",
+    "Cybersecurity",
+    "Ethical Hacker",
   ],
   authors: [{ name: "Victor Daniel" }],
-  creator: "Victor Silva",
-  metadataBase: new URL("https://victordaniel.developer"),
+  creator: "Victor Daniel",
+  metadataBase: new URL("https://victordaniel.dev"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Victor Daniel | Dev Full Stack",
-    title: "Victor Daniel | Dev Full Stack",
-    description:
-      "Full-Stack Developer crafting human-centered digital experiences with intentional design and sophisticated interactions.",
+    siteName: "Victor Daniel | Bug Bounty Hunter & Security Researcher",
+    title: "Victor Daniel | Bug Bounty Hunter & Security Researcher",
+    description: "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Victor Daniel | Dev Full Stack",
-    description:
-      "Full-Stack Developer crafting human-centered digital experiences with intentional design and sophisticated interactions.",
+    title: "Victor Daniel | Bug Bounty Hunter & Security Researcher",
+    description: "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications.",
   },
   robots: {
     index: true,
@@ -71,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html suppressHydrationWarning className="dark" translate="no">
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
