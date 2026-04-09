@@ -43,7 +43,7 @@ export function SecurityLabs() {
       descriptionKey: "portswigger",
       icon: "websecurity",
       url: "https://portswigger.net/web-security",
-      color: "#FF6633",
+      color: "#0066ff",
       skillsKey: "portswigger"
     },
     {
@@ -52,7 +52,7 @@ export function SecurityLabs() {
       descriptionKey: "htb",
       icon: "terminal",
       url: "https://app.hackthebox.com",
-      color: "#9FEF00",
+      color: "#0066ff",
       skillsKey: "htb"
     },
     {
@@ -61,7 +61,7 @@ export function SecurityLabs() {
       descriptionKey: "tryhackme",
       icon: "target",
       url: "https://tryhackme.com",
-      color: "#00B4D8",
+      color: "#0066ff",
       skillsKey: "tryhackme"
     },
     {
@@ -70,7 +70,7 @@ export function SecurityLabs() {
       descriptionKey: "hacker101",
       icon: "trophy",
       url: "https://ctf.hacker101.com",
-      color: "#4949E8",
+      color: "#0066ff",
       skillsKey: "hacker101"
     }
   ];
@@ -219,12 +219,13 @@ export function SecurityLabs() {
                     <div className="grid lg:grid-cols-3 gap-8 items-center">
                       {/* Left - Info */}
                       <div className="lg:col-span-2">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="flex-shrink-0 mt-1">
-                            {renderIcon(platform.icon, platform.color, 28)}
+                        <div className="flex items-start gap-5">
+                          <div className="flex-shrink-0">
+                            {renderIcon(platform.icon, "#0066ff", 40)}
+                            <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
                           </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-3 mb-1">
+                          <div className="flex-1 pt-1">
+                            <div className="flex items-center gap-3 mb-2">
                               <h3 className="font-[family-name:var(--font-cabinet)] text-lg font-bold text-white group-hover:text-[#0066ff] transition-colors">
                                 {t(`platforms.${platform.nameKey}.name`)}
                               </h3>

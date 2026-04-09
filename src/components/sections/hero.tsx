@@ -144,7 +144,7 @@ export function Hero() {
     <>
       <section
         ref={sectionRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 lg:pt-20"
       >
         {/* Animated Beams Background */}
         <div className="absolute inset-0 z-0">
@@ -250,16 +250,19 @@ export function Hero() {
             <div ref={cardsRef} className="relative h-[600px] lg:h-[700px] hidden lg:block">
               {/* Card 1 - Web Security */}
               <GlassCard
-                className="floating-card absolute top-0 right-4 w-72 p-6"
+                className="floating-card absolute top-0 right-4 w-80 p-5"
                 variant="default"
               >
-                <div className="flex items-start gap-4">
-                  <WebSecurityIcon size={24} color="#FF6B6B" className="flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-5">
+                  <div className="flex-shrink-0">
+                    <WebSecurityIcon size={40} color="#0066ff" />
+                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
+                  </div>
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
                       {t("cards.webSecurity.title")}
                     </h3>
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-white/50 leading-relaxed">
                       {t("cards.webSecurity.description")}
                     </p>
                   </div>
@@ -268,16 +271,19 @@ export function Hero() {
 
               {/* Card 2 - Reconnaissance */}
               <GlassCard
-                className="floating-card absolute top-28 left-0 w-64 p-6"
+                className="floating-card absolute top-28 left-0 w-80 p-5"
                 variant="default"
               >
-                <div className="flex items-start gap-4">
-                  <ReconIcon size={24} color="#4ECDC4" className="flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-5">
+                  <div className="flex-shrink-0">
+                    <ReconIcon size={40} color="#0066ff" />
+                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
+                  </div>
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
                       {t("cards.reconnaissance.title")}
                     </h3>
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-white/50 leading-relaxed">
                       {t("cards.reconnaissance.description")}
                     </p>
                   </div>
@@ -286,16 +292,19 @@ export function Hero() {
 
               {/* Card 3 - Bug Bounty */}
               <GlassCard
-                className="floating-card absolute top-56 right-8 w-80 p-6"
+                className="floating-card absolute top-56 right-8 w-80 p-5"
                 variant="default"
               >
-                <div className="flex items-start gap-4">
-                  <BugBountyIcon size={24} color="#FFE66D" className="flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-5">
+                  <div className="flex-shrink-0">
+                    <BugBountyIcon size={40} color="#0066ff" />
+                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
+                  </div>
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
                       {t("cards.bugBounty.title")}
                     </h3>
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-white/50 leading-relaxed">
                       {t("cards.bugBounty.description")}
                     </p>
                   </div>
@@ -304,16 +313,19 @@ export function Hero() {
 
               {/* Card 4 - Code Review */}
               <GlassCard
-                className="floating-card absolute top-96 left-12 w-72 p-6"
+                className="floating-card absolute top-96 left-12 w-80 p-5"
                 variant="default"
               >
-                <div className="flex items-start gap-4">
-                  <CodeReviewIcon size={24} color="#A78BFA" className="flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-5">
+                  <div className="flex-shrink-0">
+                    <CodeReviewIcon size={40} color="#0066ff" />
+                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
+                  </div>
                   <div>
                     <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
                       {t("cards.codeReview.title")}
                     </h3>
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-white/50 leading-relaxed">
                       {t("cards.codeReview.description")}
                     </p>
                   </div>

@@ -45,7 +45,7 @@ export function Certifications() {
       credentialId: "",
       url: "",
       descriptionKey: "ejpt",
-      color: "#10B981"
+      color: "#0066ff"
     },
     {
       id: "ecppt",
@@ -54,7 +54,7 @@ export function Certifications() {
       status: "in-progress",
       expectedDate: "2025",
       descriptionKey: "ecppt",
-      color: "#F59E0B"
+      color: "#0066ff"
     },
     {
       id: "oscp",
@@ -63,7 +63,7 @@ export function Certifications() {
       status: "planned",
       expectedDate: "2026",
       descriptionKey: "oscp",
-      color: "#EF4444"
+      color: "#0066ff"
     },
     {
       id: "bscp",
@@ -72,7 +72,7 @@ export function Certifications() {
       status: "planned",
       expectedDate: "2025",
       descriptionKey: "bscp",
-      color: "#FF6633"
+      color: "#0066ff"
     }
   ];
 
@@ -213,21 +213,22 @@ export function Certifications() {
                   onMouseEnter={() => setHoveredCert(cert.id)}
                   onMouseLeave={() => setHoveredCert(null)}
                 >
-                  <div className="p-5">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 mt-0.5">
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-start gap-5">
+                        <div className="flex-shrink-0">
                           <CertificationIcon 
-                            size={24}
-                            color={cert.color}
+                            size={36}
+                            color="#0066ff"
                             className="transition-colors duration-300"
                           />
+                          <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
                         </div>
-                        <div>
+                        <div className="pt-1">
                           <h3 className="font-[family-name:var(--font-cabinet)] text-lg font-bold text-white group-hover:text-[#0066ff] transition-colors">
                             {t(`certificationsList.${cert.nameKey}.name`)}
                           </h3>
-                          <p className="text-xs text-white/50">{t(`certificationsList.${cert.issuerKey}.issuer`)}</p>
+                          <p className="text-sm text-white/50">{t(`certificationsList.${cert.issuerKey}.issuer`)}</p>
                         </div>
                       </div>
                       
