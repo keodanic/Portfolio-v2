@@ -37,32 +37,34 @@ export function Certifications() {
 
   const certifications: CertificationData[] = [
     {
-      id: "ejpt",
-      nameKey: "ejpt",
-      issuerKey: "ejpt",
+      id: "ifma",
+      nameKey: "ifma",
+      issuerKey: "ifma",
+      status: "completed",
+      date: "2025",
+      credentialId: "",
+      url: "http://lattes.cnpq.br/4578577844914472",
+      descriptionKey: "ifma",
+      color: "#0066ff"
+    },
+    {
+      id: "solyd",
+      nameKey: "solyd",
+      issuerKey: "solyd",
       status: "completed",
       date: "2025",
       credentialId: "",
       url: "",
-      descriptionKey: "ejpt",
+      descriptionKey: "solyd",
       color: "#0066ff"
     },
     {
-      id: "ecppt",
-      nameKey: "ecppt",
-      issuerKey: "ecppt",
+      id: "sycp",
+      nameKey: "sycp",
+      issuerKey: "sycp",
       status: "in-progress",
-      expectedDate: "2025",
-      descriptionKey: "ecppt",
-      color: "#0066ff"
-    },
-    {
-      id: "oscp",
-      nameKey: "oscp",
-      issuerKey: "oscp",
-      status: "planned",
       expectedDate: "2026",
-      descriptionKey: "oscp",
+      descriptionKey: "sycp",
       color: "#0066ff"
     },
     {
@@ -70,7 +72,7 @@ export function Certifications() {
       nameKey: "bscp",
       issuerKey: "bscp",
       status: "planned",
-      expectedDate: "2025",
+      expectedDate: "2026",
       descriptionKey: "bscp",
       color: "#0066ff"
     }
@@ -78,13 +80,13 @@ export function Certifications() {
 
   const bugBountyStats = {
     platforms: [
-      { name: "HackerOne", handle: "", rank: "", reports: 0 },
-      { name: "Bugcrowd", handle: "", rank: "", reports: 0 },
-      { name: "Intigriti", handle: "", rank: "", reports: 0 }
+      { name: "HackerOne (keodanic)", handle: "keodanic", rank: "", reports: 12 },
+      { name: "PortSwigger Web Security Academy", handle: "", rank: "", reports: 45 },
+      { name: "TryHackMe & Hacker101 CTF", handle: "", rank: "", reports: 28 }
     ],
-    totalReports: 0,
-    acceptedReports: 0,
-    programs: 0
+    totalReports: "85+",
+    acceptedReports: "10+",
+    programs: "15+"
   };
 
   useEffect(() => {
@@ -289,7 +291,7 @@ export function Certifications() {
             </div>
           </div>
 
-          {/* Right Column - Bug Bounty Stats */}
+          {/* Right Column - Bug Bounty & AppSec Stats */}
           <div className="lg:pt-32">
             <div ref={statsRef}>
               {/* BB Stats Card */}
@@ -350,8 +352,8 @@ export function Certifications() {
                       <span className="text-white/30 font-mono text-sm">0{index + 1}</span>
                       <span className="text-white font-medium">{platform.name}</span>
                     </div>
-                    <span className="text-sm text-white/40">
-                      {platform.reports > 0 ? `${platform.reports} ${t("activePlatforms.reports")}` : t("activePlatforms.gettingStarted")}
+                    <span className="text-sm text-[#10B981] font-mono">
+                      {platform.reports > 0 ? `${platform.reports}+ ${t("activePlatforms.reports")}` : t("activePlatforms.gettingStarted")}
                     </span>
                   </div>
                 ))}

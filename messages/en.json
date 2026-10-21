@@ -1,230 +1,236 @@
 {
   "Metadata": {
-    "title": "Victor Daniel | Bug Bounty Hunter & Security Researcher",
-    "description": "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications. Continuously learning offensive security through real-world targets and structured certifications."
+    "title": "Victor Daniel | Backend & Full-Stack Engineer • Application Security (AppSec & Pentest)",
+    "description": "Backend & Full-Stack Software Engineer (Node.js, NestJS, TypeScript, Python) and Offensive Security Researcher (AppSec, Web Pentesting & Bug Bounty)."
   },
   "Navigation": {
-    "labs": "Labs",
-    "certifications": "Certifications",
+    "work": "Projects",
+    "labs": "Security Labs",
+    "certifications": "Education & Certs",
     "about": "About",
     "contact": "Contact",
     "ctaButton": "Let's Talk"
   },
   "Hero": {
-    "subtitle1": "Bug Bounty Hunter focused on finding vulnerabilities and securing web applications.",
-    "subtitle2": "Continuously learning offensive security through real-world targets and structured certifications.",
-    "ctaDownloadCV": "Download CV",
+    "subtitle1": "Backend / Full-Stack Software Engineer (Node.js, NestJS, TypeScript & Python) and Offensive Security Researcher (AppSec & Web Pentesting).",
+    "subtitle2": "Architecting scalable REST APIs, cloud/serverless pipelines, and auditing web applications against critical OWASP Top 10 and business logic vulnerabilities.",
+    "ctaDownloadCV": "Download Resume",
     "ctaTalkToMe": "Talk to Me",
     "stats": {
       "yearsExperience": {
         "value": "2+",
-        "label": "Years Experience"
+        "label": "Years Engineering"
       },
       "projectsDelivered": {
-        "value": "10+",
-        "label": "Projects Delivered"
+        "value": "12+",
+        "label": "Systems & APIs"
       },
       "companies": {
-        "value": "3",
-        "label": "Companies"
+        "value": "4",
+        "label": "Organizations"
       }
     },
     "cards": {
       "webSecurity": {
-        "title": "Web Security",
-        "description": "XSS, SQLi, CSRF, IDOR, and Business Logic flaws."
+        "title": "Backend & APIs",
+        "description": "Node.js, NestJS, TypeScript, Python (FastAPI), Prisma ORM, PostgreSQL, and Docker."
       },
       "reconnaissance": {
-        "title": "Reconnaissance",
-        "description": "Subdomain enumeration, port scanning, and OSINT."
+        "title": "AppSec & Hardening",
+        "description": "OWASP Top 10 mitigation, JWT/OAuth2, RBAC, RLS, Rate Limiting, and DevSecOps."
       },
       "bugBounty": {
-        "title": "Bug Bounty",
-        "description": "Active on HackerOne, Bugcrowd, and private programs."
+        "title": "Offensive Security",
+        "description": "Web Pentesting (SQLi, XSS, IDOR, SSRF, Business Logic) and Python exploit automation."
       },
       "codeReview": {
-        "title": "Code Review",
-        "description": "Reading code to find vulnerabilities others miss."
+        "title": "Full-Stack & Mobile",
+        "description": "Next.js, React, React Native (Expo), WebSockets, and AWS/LLM integrations."
       }
     },
     "scrollIndicator": "Scroll"
   },
   "SecurityLabs": {
-    "sectionTag": "Continuous Practice",
-    "title": "Security Labs & Research",
-    "description": "Hands-on learning is essential in cybersecurity. Here's where I sharpen my skills through deliberate practice on industry-standard platforms and document my findings.",
+    "sectionTag": "Offensive Security & AppSec",
+    "title": "Security Labs, Exploits & Write-ups",
+    "description": "The best way to secure production systems is understanding exactly how to break them. Here is my continuous hands-on practice in Web Penetration Testing, Python exploit automation, and vulnerability research.",
     "tabs": {
-      "labs": "Learning Platforms",
-      "writeups": "Write-ups"
+      "labs": "Platforms & Practice",
+      "writeups": "Write-ups & Exploits"
     },
     "platforms": {
       "portswigger": {
-        "name": "PortSwigger Academy",
-        "description": "Web security labs covering OWASP Top 10 and advanced vulnerabilities."
+        "name": "PortSwigger Web Security Academy",
+        "description": "Hands-on exploitation of OWASP Top 10, business logic flaws, CSRF, SQLi, XSS, SSRF, and authentication bypasses using custom Python scripts."
       },
       "htb": {
-        "name": "Hack The Box",
-        "description": "Active machines and challenges for penetration testing practice."
+        "name": "HackerOne & Bug Bounty Recon",
+        "description": "Vulnerability research on real-world targets, subdomain enumeration, REST API security testing, and access control auditing (BOLA/IDOR)."
       },
       "tryhackme": {
         "name": "TryHackMe",
-        "description": "Guided learning paths from beginner to advanced security concepts."
+        "description": "Practical Red Team labs, Linux network enumeration, privilege escalation, and offensive security fundamentals."
       },
       "hacker101": {
         "name": "Hacker101 CTF",
-        "description": "CTF challenges designed specifically for bug bounty hunters."
+        "description": "HackerOne CTF challenges focused on web application exploitation, session tampering, and broken authorization."
       }
     },
     "progressLabels": {
-      "progress": "Progress",
-      "completed": "completed",
-      "gettingStarted": "Getting started",
-      "percentComplete": "% complete"
+      "progress": "Active Practice",
+      "completed": "labs solved",
+      "gettingStarted": "In progress",
+      "percentComplete": "% of current milestone"
     },
-    "ctaButton": "Follow My Journey",
+    "ctaButton": "View Exploits Repository on GitHub",
     "writeups": {
       "emptyState": {
-        "title": "No Write-ups Yet",
-        "description": "I'm currently focused on building my skills through labs and bug bounty hunting. Write-ups of interesting findings will be published here soon.",
-        "status": "Currently hunting on HackerOne"
+        "title": "Write-ups Published on GitHub",
+        "description": "Check out my automated Python exploit scripts and detailed technical write-ups.",
+        "status": "Active on HackerOne (keodanic)"
       }
     }
   },
   "Certifications": {
-    "sectionTag": "Continuous Learning",
-    "title": "Certifications & Credentials",
-    "description": "Building expertise through structured learning and hands-on practice. Each certification represents hundreds of hours in labs and real-world scenarios.",
+    "sectionTag": "Academic Foundation & Security",
+    "title": "Education, Training & Certifications",
+    "description": "Strong Software Engineering degree from the Federal Institute of Maranhão (IFMA) combined with practical training in Web Penetration Testing and Application Security.",
     "status": {
       "completed": "Completed",
-      "inProgress": "In Progress",
+      "inProgress": "In Preparation",
       "planned": "Planned"
     },
     "certificationsList": {
-      "ejpt": {
-        "name": "eJPT",
-        "issuer": "INE Security",
-        "description": "Junior Penetration Tester certification covering network and web application penetration testing fundamentals.",
-        "skills": ["Network Scanning", "Vulnerability Assessment", "Web Pentesting", "Exploitation Basics"]
+      "ifma": {
+        "name": "B.Tech in Internet Systems (Sistemas para Internet)",
+        "issuer": "IFMA — Federal Institute of Maranhão",
+        "description": "Graduated (2023–2025). Awarded 3rd Place at the IFMA Ideathon (Smart Cities), FAPEMA Research Fellow (IoT/Node.js), and English Teaching Assistant.",
+        "skills": ["Software Engineering", "OOP", "API Architecture", "Databases"]
       },
-      "ecppt": {
-        "name": "eCPPTv3",
-        "issuer": "INE Security",
-        "description": "Certified Professional Penetration Tester - advanced pentesting methodology and real-world scenarios.",
-        "skills": ["Advanced Exploitation", "Pivoting", "Post-Exploitation", "Report Writing"]
+      "solyd": {
+        "name": "Do Bug ao Bounty (Web Pentesting & Bug Bounty)",
+        "issuer": "Solyd Offensive Security",
+        "description": "Intensive training in offensive web security, advanced reconnaissance (OSINT/Recon), OWASP Top 10 exploitation, and Bug Bounty methodology.",
+        "skills": ["Web Pentesting", "Reconnaissance", "OWASP Top 10", "Bug Bounty"]
       },
-      "oscp": {
-        "name": "OSCP",
-        "issuer": "Offensive Security",
-        "description": "The gold standard for penetration testers. Hands-on 24-hour exam proving real-world skills.",
-        "skills": ["Active Directory", "Buffer Overflow", "Privilege Escalation", "Methodology"]
+      "sycp": {
+        "name": "SYCP — Solyd Certified Pentester",
+        "issuer": "Solyd Offensive Security",
+        "description": "Actively preparing for the hands-on Penetration Tester certification exam, covering network exploitation, web applications, and technical reporting.",
+        "skills": ["Network Pentest", "Web Exploitation", "Privilege Escalation", "Reporting"]
       },
       "bscp": {
-        "name": "BSCP",
+        "name": "BSCP — Burp Suite Certified Practitioner",
         "issuer": "PortSwigger",
-        "description": "Burp Suite Certified Practitioner - web application security testing at enterprise level.",
-        "skills": ["Advanced Web Attacks", "Burp Suite Mastery", "Business Logic", "Auth Bypass"]
+        "description": "Target certification focused on advanced web application security testing and deep mastery of Burp Suite Pro and PortSwigger Web Security Academy.",
+        "skills": ["Advanced Web Attacks", "Burp Suite", "Business Logic", "Auth Bypass"]
       }
     },
     "dateLabels": {
-      "earned": "Earned",
+      "earned": "Completed",
       "target": "Target"
     },
-    "verifyLink": "Verify",
+    "verifyLink": "Verify Academic Lattes CV",
     "bugBountyJourney": {
-      "title": "Bug Bounty Journey",
-      "subtitle": "Active on multiple platforms",
+      "title": "Offensive Practice & AppSec",
+      "subtitle": "Labs, CTFs & Vulnerability Research",
       "stats": {
-        "reports": "Reports",
-        "accepted": "Accepted",
-        "programs": "Programs"
+        "reports": "Labs & CTFs",
+        "accepted": "OWASP Top 10",
+        "programs": "Scripts & PoCs"
       },
-      "description": "Building reputation across HackerOne, Bugcrowd, and Intigriti"
+      "description": "Bridging production software engineering in NestJS/TypeScript with offensive web security testing"
     },
     "activePlatforms": {
-      "title": "Active Platforms",
-      "gettingStarted": "Getting started",
-      "reports": "reports"
+      "title": "Practice & Research Tracks",
+      "gettingStarted": "Active",
+      "reports": "labs/challenges"
     },
     "currentlyStudying": {
-      "title": "Currently Studying",
+      "title": "Current Technical Focus",
       "items": [
-        "PortSwigger Web Security Academy",
-        "Hacker101 CTF Challenges",
-        "Real-world vulnerability writeups"
+        "Active preparation for the SYCP (Solyd Certified Pentester) practical exam",
+        "Automated exploit development and security scripting in Python 3",
+        "Secure RESTful API architecture with NestJS, TypeScript, and Prisma ORM"
       ]
     }
   },
   "About": {
     "sectionTag": "About Me",
-    "title": "Bug Bounty Hunter",
+    "title": "Software Engineer & AppSec",
     "bio": {
-      "paragraph1": "Systems for Internet graduate from IFMA transitioning from software development to offensive security. My background in building web applications gives me a unique edge in understanding how systems fail and where vulnerabilities hide.",
-      "paragraph2": "Currently focused on bug bounty hunting and web application penetration testing. I combine my developer mindset with security research to find bugs that automated scanners miss.",
-      "paragraph3": "Pursuing industry-recognized certifications while actively hunting on bug bounty platforms. Passionate about continuous learning and sharing knowledge with the security community."
+      "paragraph1": "I hold a degree in Internet Systems from the Federal Institute of Maranhão (IFMA) and work as a Backend / Full-Stack Developer and Offensive Security Researcher. I build production systems using Node.js, NestJS, TypeScript, Python (FastAPI), PostgreSQL, React Native, and Next.js.",
+      "paragraph2": "My core competitive advantage lies at the intersection of Software Engineering and Cybersecurity (AppSec/Pentesting): because I deeply understand how REST APIs, relational databases, serverless queues (AWS), and authentication flows (JWT/OAuth2/RLS) are engineered, I can uncover complex business logic flaws that automated scanners miss — and remediate them directly in the codebase.",
+      "paragraph3": "With professional experience across Simplifit Academias, Developer Community, Timon Municipal Government (ATI), and FAPEMA-funded IoT research, I am ready to contribute to teams building scalable backends or securing critical applications."
     },
     "skills": {
       "webAttacks": {
-        "category": "Web Attacks",
-        "items": ["XSS", "SQL Injection", "CSRF", "IDOR", "SSRF", "LFI/RFI"]
+        "category": "Engineering",
+        "items": ["Node.js", "NestJS", "TypeScript", "Python (FastAPI)", "PostgreSQL / Prisma", "React Native & Next.js", "Docker & AWS"]
       },
       "recon": {
-        "category": "Recon & Enum",
-        "items": ["Nmap", "Burp Suite", "Subdomain Enum", "OSINT", "Content Discovery"]
+        "category": "AppSec & Web",
+        "items": ["OWASP Top 10", "SQLi / XSS / CSRF", "IDOR / BOLA", "SSRF", "JWT & OAuth2 Hardening", "Business Logic Flaws"]
       },
       "tools": {
-        "category": "Tools",
-        "items": ["Burp Suite Pro", "Nuclei", "FFUF", "SQLMap", "Amass", "GitHub"]
+        "category": "Sec & DevOps",
+        "items": ["Burp Suite", "Nmap", "Nuclei", "FFUF", "SQLMap", "Wireshark", "Linux & GitHub Actions"]
       }
     },
     "experience": {
       "title": "Professional Experience",
       "items": [
         {
-          "title": "Bug Bounty Hunter",
-          "description": "Independent Security Researcher. Hunting vulnerabilities on HackerOne, Bugcrowd, and Intigriti. Focusing on web application security, authentication bypasses, and business logic flaws.",
-          "period": "2025 - Present"
+          "title": "Simplifit Academias — Full-Stack / Mobile Developer",
+          "description": "Architected and built RESTful APIs with Node.js, NestJS, TypeScript, Prisma ORM, and PostgreSQL/MySQL. Led the React Native mobile app, integrated OpenAI LLMs on AWS Serverless (Lambda, SQS, S3), and enforced OWASP security controls (JWT, RBAC, Rate Limiting).",
+          "period": "September 2025 – February 2026"
         },
         {
-          "title": "Simplifit",
-          "description": "Lead Full-Stack Developer. Architecting scalable backends with NestJS and PostgreSQL, while leading the development of high-performance mobile applications using React Native.",
-          "period": "September 2025 - Present"
+          "title": "Developer Community — Full-Stack Developer",
+          "description": "Developed backend services for a SaaS platform (ConstructEasy) using Node.js, NestJS, TypeScript, and PostgreSQL. Implemented Supabase Row Level Security (RLS), containerized environments with Docker + Nginx reverse proxy, Linux hardening, and GitHub Actions CI/CD.",
+          "period": "November 2024 – September 2025"
         },
         {
-          "title": "FAPEMA - IFMA",
-          "description": "Research Fellow. Developed a real-time CO2 monitoring system using Maker technology and Node.js, bridging the gap between hardware sensors and data visualization.",
-          "period": "November 2024 - July 2025"
+          "title": "Timon Municipal Government (ATI) — Software Developer Intern",
+          "description": "Contributed to the deployment and REST API integration of the Electronic Information System (SEI) and institutional portals using Next.js, Node.js, PostgreSQL, and Docker, applying CSP headers, HTTPS, and server hardening.",
+          "period": "June 2025 – August 2025"
+        },
+        {
+          "title": "FAPEMA / IFMA — Research Fellow (IoT & Backend) & Security Researcher",
+          "description": "Engineered a real-time environmental monitoring system using ESP32 microcontrollers, MQTT, NestJS + Prisma backend, and Next.js dashboard, alongside continuous Offensive Security & Bug Bounty research on HackerOne.",
+          "period": "November 2024 – Present"
         }
       ]
     },
     "education": {
-      "label": "Academic Foundation",
-      "course": "Systems for Internet",
-      "institution": "IFMA | Federal Institute of Maranhão",
-      "period": "2023 — 2025"
+      "label": "Academic Education",
+      "course": "B.Tech in Internet Systems (Sistemas para Internet)",
+      "institution": "IFMA | Federal Institute of Maranhão (3rd Place Ideathon)",
+      "period": "2023 — November 2025 (Graduated)"
     },
     "stats": {
       "yearsEngineering": {
         "value": "2+",
-        "label": "Years of Engineering"
+        "label": "Years Engineering"
       },
       "systemsDeployed": {
-        "value": "10+",
-        "label": "Systems Deployed"
+        "value": "12+",
+        "label": "Systems & APIs"
       },
       "partnerships": {
-        "value": "3",
-        "label": "Strategic Partnerships"
+        "value": "4",
+        "label": "Organizations"
       },
       "seniority": {
-        "value": "Mid",
-        "label": "Level Seniority"
+        "value": "Dev+Sec",
+        "label": "Hybrid Profile"
       }
     }
   },
   "Contact": {
     "sectionTag": "Get in Touch",
-    "title": "Let's build something exceptional",
-    "description": "Have a complex project or a security challenge in mind? I'd love to hear about it. Let's discuss how we can engineer a robust solution together.",
+    "title": "Let's build and secure high-impact systems",
+    "description": "Looking for a Backend/Full-Stack Engineer with a Security-First mindset or an AppSec/Pentesting professional who deeply understands application code? Let's talk.",
     "info": {
       "email": {
         "label": "Email",
@@ -232,11 +238,11 @@
       },
       "location": {
         "label": "Location",
-        "value": "Teresina, Piauí, Brazil"
+        "value": "Teresina, Brazil — Available 100% Remote Worldwide"
       }
     },
     "social": {
-      "title": "Follow me"
+      "title": "Connect with me"
     },
     "form": {
       "name": {
@@ -249,55 +255,55 @@
       },
       "message": {
         "label": "Message",
-        "placeholder": "Tell me about your project or security needs..."
+        "placeholder": "Tell me about the role, project, or security challenge..."
       },
       "submit": {
         "default": "Send Message",
         "sending": "Sending...",
         "success": {
           "title": "Message Sent!",
-          "description": "Thank you for reaching out. I'll get back to you shortly."
+          "description": "Thank you for reaching out! I will get back to you shortly."
         }
       }
     }
   },
   "Footer": {
-    "role": "Security-First Engineer",
-    "copyright": "© {year} Victor Daniel. Built for scalability & security.",
+    "role": "Backend / Full-Stack Engineer & AppSec Researcher",
+    "copyright": "© {year} Victor Daniel Santos Cardoso. Software Engineering & Offensive Security.",
     "backToTop": "Back to Top",
-    "availability": "Available for new challenges",
-    "location": "Based in Teresina, BR"
+    "availability": "Available for Remote & Hybrid opportunities",
+    "location": "Based in Teresina, PI — Brazil"
   },
   "CVModal": {
-    "title": "View & Download CV",
-    "subtitle": "Choose your language",
+    "title": "View & Download Resume",
+    "subtitle": "Choose your preferred language",
     "languages": {
       "pt": {
-        "name": "Português",
-        "description": "Brazilian Portuguese"
+        "name": "Português (PT-BR)",
+        "description": "Brazilian Portuguese CV"
       },
       "en": {
-        "name": "English",
-        "description": "International"
+        "name": "English (EN-US)",
+        "description": "International US Resume"
       }
     },
     "footer": "PDF format • Updated {date}"
   },
   "ContactModal": {
     "title": "Let's Talk",
-    "subtitle": "Choose your preferred platform",
+    "subtitle": "Choose your preferred channel",
     "platforms": {
       "whatsapp": {
         "name": "WhatsApp",
-        "description": "Message me directly"
+        "description": "+55 (86) 9 8150-9299"
       },
       "linkedin": {
         "name": "LinkedIn",
-        "description": "Professional network"
+        "description": "in/victordaniel-dev"
       },
       "gmail": {
-        "name": "Gmail",
-        "description": "Send me an email"
+        "name": "Email",
+        "description": "victordanielsnt@gmail.com"
       }
     },
     "footer": "I typically respond within 24 hours"

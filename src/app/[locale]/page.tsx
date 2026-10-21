@@ -4,6 +4,7 @@ import { GeometricPatterns } from "@/components/background/geometric-patterns";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/sections/hero";
+import { FeaturedWork } from "@/components/sections/featured-work";
 import { SecurityLabs } from "@/components/sections/security-labs";
 import { About } from "@/components/sections/about";
 import { Certifications } from "@/components/sections/certifications";
@@ -21,6 +22,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="relative z-10">
         <Hero />
+        <FeaturedWork />
         <SecurityLabs />
         <About />
         <Certifications />

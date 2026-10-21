@@ -16,9 +16,9 @@ export function About() {
   const t = useTranslations("About");
 
   const skills = [
-    { categoryKey: "webAttacks", items: ["XSS", "SQL Injection", "CSRF", "IDOR", "SSRF", "LFI/RFI"] },
-    { categoryKey: "recon", items: ["Nmap", "Burp Suite", "Subdomain Enum", "OSINT", "Content Discovery"] },
-    { categoryKey: "tools", items: ["Burp Suite Pro", "Nuclei", "FFUF", "SQLMap", "Amass", "GitHub"] },
+    { categoryKey: "webAttacks", items: ["Node.js", "NestJS", "TypeScript", "Python (FastAPI)", "PostgreSQL / Prisma", "React Native & Next.js", "Docker & AWS"] },
+    { categoryKey: "recon", items: ["OWASP Top 10", "SQLi / XSS / CSRF", "IDOR / BOLA", "SSRF", "JWT & OAuth2 Hardening", "Business Logic Flaws"] },
+    { categoryKey: "tools", items: ["Burp Suite", "Nmap", "Nuclei", "FFUF", "SQLMap", "Wireshark", "Linux & GitHub Actions"] },
   ];
 
   useEffect(() => {
@@ -120,14 +120,14 @@ export function About() {
                   className="skill-card p-5"
                 >
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-white font-medium min-w-[100px]">
+                    <span className="text-white font-medium min-w-[120px]">
                       {t(`skills.${skillGroup.categoryKey}.category`)}
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {skillGroup.items.map((item) => (
                         <span
                           key={item}
-                          className="text-sm text-white/50 px-3 py-1 bg-white/5 rounded-full"
+                          className="text-sm text-white/60 px-3 py-1 bg-white/5 rounded-full border border-white/10"
                         >
                           {item}
                         </span>
@@ -145,7 +145,7 @@ export function About() {
               {t("experience.title")}
             </h3>
             <div className="space-y-8">
-              {[0, 1, 2].map((index) => (
+              {[0, 1, 2, 3].map((index) => (
                 <div key={index} className="philosophy-item group">
                   <div className="flex gap-6">
                     <div className="flex-shrink-0">
@@ -173,7 +173,6 @@ export function About() {
 
             {/* Education & Stats */}
             <GlassCard variant="highlight" className="mt-12 p-8 relative overflow-hidden group">
-              {/* Background Glow sutil para dar profundidade */}
               <div className="absolute -right-8 -top-8 w-32 h-32 bg-[#0066ff]/10 rounded-full blur-3xl group-hover:bg-[#0066ff]/20 transition-colors" />
 
               <div className="mb-8 pb-6 border-b border-white/10">

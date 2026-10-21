@@ -10,7 +10,8 @@ import {
   Brain,
   Lock,
   FileText,
-  Bookmark
+  Code2,
+  ShieldAlert
 } from "lucide-react";
 import { WebSecurityIcon, TerminalIcon, TargetIcon, TrophyIcon } from "@/components/icons/custom-icons";
 import { MagneticButton } from "@/components/ui/magnetic-button";
@@ -35,7 +36,6 @@ export function SecurityLabs() {
   const [activeTab, setActiveTab] = useState<"labs" | "writeups">("labs");
   const t = useTranslations("SecurityLabs");
 
-  // Platform data with translations
   const platforms: PlatformData[] = [
     {
       id: "portswigger",
@@ -45,15 +45,6 @@ export function SecurityLabs() {
       url: "https://portswigger.net/web-security",
       color: "#0066ff",
       skillsKey: "portswigger"
-    },
-    {
-      id: "htb",
-      nameKey: "htb",
-      descriptionKey: "htb",
-      icon: "terminal",
-      url: "https://app.hackthebox.com",
-      color: "#0066ff",
-      skillsKey: "htb"
     },
     {
       id: "tryhackme",
@@ -72,10 +63,18 @@ export function SecurityLabs() {
       url: "https://ctf.hacker101.com",
       color: "#0066ff",
       skillsKey: "hacker101"
+    },
+    {
+      id: "htb",
+      nameKey: "htb",
+      descriptionKey: "htb",
+      icon: "terminal",
+      url: "https://hackerone.com/keodanic",
+      color: "#0066ff",
+      skillsKey: "htb"
     }
   ];
 
-  // Helper function to render icon by name
   const renderIcon = (iconName: string, color: string, size: number = 24) => {
     switch (iconName) {
       case "websecurity":
@@ -91,21 +90,40 @@ export function SecurityLabs() {
     }
   };
 
-  // Skills data
   const skillsData: Record<string, string[]> = {
-    portswigger: ["XSS", "SQLi", "CSRF", "SSRF", "IDOR", "XXE"],
-    htb: ["Enumeration", "Exploitation", "Privilege Escalation", "Active Directory"],
-    tryhackme: ["Networking", "Linux", "Web Fundamentals", "Pentesting"],
-    hacker101: ["Web Hacking", "Mobile", "Crypto", "Recon"]
+    portswigger: ["SQLi", "XSS", "CSRF", "SSRF", "IDOR / BOLA", "Business Logic Flaws", "JWT Bypass"],
+    tryhackme: ["Linux Hardening", "Network Recon", "OWASP Top 10", "Privilege Escalation"],
+    hacker101: ["Broken Access Control", "IDOR", "Stored XSS", "Session Tampering"],
+    htb: ["Web Recon", "Subdomain Enum", "Nuclei / FFUF", "API Security Testing"]
   };
 
-  // Progress data (would come from API/state in real app)
   const progressData: Record<string, { progress: number; completed: number; total: number }> = {
-    portswigger: { progress: 0, completed: 0, total: 300 },
-    htb: { progress: 0, completed: 0, total: 100 },
-    tryhackme: { progress: 0, completed: 0, total: 50 },
-    hacker101: { progress: 0, completed: 0, total: 50 }
+    portswigger: { progress: 45, completed: 45, total: 100 },
+    tryhackme: { progress: 60, completed: 30, total: 50 },
+    hacker101: { progress: 40, completed: 10, total: 25 },
+    htb: { progress: 50, completed: 15, total: 30 }
   };
+
+  const writeupsList = [
+    {
+      id: "portswigger-infinite-money",
+      title: "Exploiting Business Logic Flaws: Automated Gift Card & Coupon Loop (Python PoC)",
+      platform: "PortSwigger Web Security Academy",
+      severity: "High (CVSS 8.1) — Business Logic Bypass",
+      tags: ["Python", "CSRF Extraction", "Session Automation", "Business Logic"],
+      summary: "Automação completa em Python (Requests + Regex) explorando falha na validação cíclica de cupons de desconto e gift cards, com extração automática de tokens anti-CSRF e recomendações de mitigação transacional em NestJS/Prisma.",
+      url: "https://github.com/keodanic/web-sec-labs-and-exploits"
+    },
+    {
+      id: "hacker101-postbook",
+      title: "Hacker101 CTF — Postbook: Account Takeover, IDOR & Parameter Tampering (7 Flags)",
+      platform: "Hacker101 CTF (HackerOne)",
+      severity: "Critical (CVSS 9.1) — Broken Access Control (BOLA/IDOR)",
+      tags: ["IDOR / BOLA", "Cookie Tampering", "MD5 Hash", "Mass Assignment"],
+      summary: "Write-up completo detalhando a exploração de Broken Object Level Authorization (IDOR) em posts privados, falsificação de autoria via manipulação de parâmetros ocultos e sequestro de sessão por cookie previsível em MD5.",
+      url: "https://github.com/keodanic/web-sec-labs-and-exploits"
+    }
+  ];
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -197,7 +215,7 @@ export function SecurityLabs() {
             }`}
           >
             <FileText className="w-4 h-4" />
-            {t("tabs.writeups")}
+            {t("tabs.writeups")} (2)
           </button>
         </div>
 
@@ -262,7 +280,7 @@ export function SecurityLabs() {
                         <div className="flex items-center justify-between text-sm">
                           <span className="text-white/40">{t("progressLabels.progress")}</span>
                           <span className="text-white font-medium">
-                            {progress.completed}/{progress.total}
+                            {progress.completed}+ Labs
                           </span>
                         </div>
 
@@ -279,16 +297,14 @@ export function SecurityLabs() {
 
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <Brain className="w-4 h-4 text-white/30" />
-                            <span className="text-sm text-white/50">
-                              {progress.progress === 0 ? t("progressLabels.gettingStarted") : `${progress.progress}${t("progressLabels.percentComplete")}`}
+                            <Brain className="w-4 h-4 text-[#0066ff]" />
+                            <span className="text-sm text-white/60">
+                              {progress.progress}{t("progressLabels.percentComplete")}
                             </span>
                           </div>
-                          {progress.progress > 0 && (
-                            <span className="text-xs text-white/40">
-                              {progress.completed} {t("progressLabels.completed")}
-                            </span>
-                          )}
+                          <span className="text-xs text-[#10B981]">
+                            {progress.completed}+ {t("progressLabels.completed")}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -302,7 +318,7 @@ export function SecurityLabs() {
               <MagneticButton
                 variant="outline"
                 size="lg"
-                onClick={() => window.open("https://app.hackthebox.com/profile/", "_blank")}
+                onClick={() => window.open("https://github.com/keodanic/web-sec-labs-and-exploits", "_blank")}
               >
                 <Lock className="w-4 h-4 mr-2" />
                 {t("ctaButton")}
@@ -313,23 +329,46 @@ export function SecurityLabs() {
 
         {/* Write-ups Tab */}
         {activeTab === "writeups" && (
-          <div>
-            {/* Empty State */}
-            <GlassCard variant="subtle" className="p-12 text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 mb-6">
-                <FileText className="w-8 h-8 text-white/30" />
-              </div>
-              <h3 className="font-[family-name:var(--font-cabinet)] text-xl font-bold text-white mb-3">
-                {t("writeups.emptyState.title")}
-              </h3>
-              <p className="text-white/50 max-w-md mx-auto mb-6">
-                {t("writeups.emptyState.description")}
-              </p>
-              <div className="flex items-center justify-center gap-2 text-sm text-white/40">
-                <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                {t("writeups.emptyState.status")}
-              </div>
-            </GlassCard>
+          <div className="space-y-6">
+            {writeupsList.map((item) => (
+              <GlassCard
+                key={item.id}
+                variant="default"
+                className="p-8 group cursor-pointer"
+                hover
+                onClick={() => window.open(item.url, "_blank")}
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-3">
+                    <ShieldAlert className="w-5 h-5 text-[#10B981]" />
+                    <span className="text-sm font-mono text-[#0066ff]">{item.platform}</span>
+                  </div>
+                  <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-fit">
+                    {item.severity}
+                  </span>
+                </div>
+                <h3 className="font-[family-name:var(--font-cabinet)] text-2xl font-bold text-white group-hover:text-[#0066ff] transition-colors mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-white/60 leading-relaxed mb-6">
+                  {item.summary}
+                </p>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="text-xs text-white/60 px-3 py-1 bg-white/5 rounded-full border border-white/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm text-[#0066ff] font-medium">
+                    <Code2 className="w-4 h-4" />
+                    GitHub Repository & PoC
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </GlassCard>
+            ))}
           </div>
         )}
       </div>

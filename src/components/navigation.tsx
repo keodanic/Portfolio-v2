@@ -24,6 +24,7 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
+    { label: t("work"), href: "/#work" },
     { label: t("labs"), href: "/#labs" },
     { label: t("certifications"), href: "/#certifications" },
     { label: t("about"), href: "/#about" },
@@ -82,7 +83,13 @@ export function Navigation() {
               >
                 {locale}
               </button>
-              <MagneticButton variant="electric" size="sm">
+              <MagneticButton
+                variant="electric"
+                size="sm"
+                onClick={() => {
+                  window.location.href = "/#contact";
+                }}
+              >
                 {t("ctaButton")}
               </MagneticButton>
             </div>
@@ -147,7 +154,10 @@ export function Navigation() {
             variant="electric"
             size="lg"
             className="mt-8"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.location.href = "/#contact";
+            }}
           >
             {t("ctaButton")}
           </MagneticButton>
