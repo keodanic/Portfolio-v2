@@ -13,7 +13,7 @@ interface MagneticButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function MagneticButton({
   children,
   className,
-  magneticStrength = 0.3,
+  magneticStrength = 0.2,
   variant = "default",
   size = "md",
   ...props
@@ -44,41 +44,41 @@ export function MagneticButton({
   const variants = {
     default: [
       "bg-white text-black",
-      "hover:bg-[#0066ff] hover:text-white",
+      "hover:bg-zinc-200",
       "border border-transparent",
     ],
     outline: [
-      "bg-transparent text-white",
-      "border border-white/20",
-      "hover:border-[#0066ff] hover:text-[#0066ff]",
+      "bg-zinc-950/80 text-zinc-200",
+      "border border-zinc-800/80",
+      "hover:border-zinc-600 hover:bg-zinc-900 hover:text-white",
     ],
     ghost: [
-      "bg-transparent text-white",
+      "bg-transparent text-zinc-300",
       "border border-transparent",
-      "hover:bg-white/5 hover:text-white",
+      "hover:bg-zinc-900 hover:text-white",
     ],
     electric: [
       "bg-[#0066ff] text-white",
       "border border-[#0066ff]",
       "hover:bg-[#0052cc] hover:border-[#0052cc]",
-      "shadow-[0_0_20px_rgba(0,102,255,0.3)]",
     ],
   };
 
   const sizes = {
     sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    md: "px-5 py-2.5 text-sm",
+    lg: "px-6 py-3 text-base",
   };
 
   return (
     <button
       ref={buttonRef}
       className={cn(
-        "relative inline-flex items-center justify-center",
+        "relative inline-flex items-center justify-center cursor-pointer",
         "font-medium tracking-tight",
         "rounded-full",
-        "transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        "transition-[transform,background-color,border-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]",
+        "active:scale-[0.97]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066ff] focus-visible:ring-offset-2 focus-visible:ring-offset-black",
         "disabled:pointer-events-none disabled:opacity-50",
         variants[variant],
@@ -88,14 +88,14 @@ export function MagneticButton({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
+        transform: position.x || position.y ? `translate(${position.x}px, ${position.y}px)` : undefined,
       }}
       {...props}
     >
       <span
-        className="relative z-10 flex items-center gap-2 transition-transform duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="relative z-10 flex items-center gap-2 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]"
         style={{
-          transform: `translate(${position.x * 0.2}px, ${position.y * 0.2}px)`,
+          transform: position.x || position.y ? `translate(${position.x * 0.15}px, ${position.y * 0.15}px)` : undefined,
         }}
       >
         {children}

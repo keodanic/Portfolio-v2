@@ -5,8 +5,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { GlassCard } from "@/components/ui/glass-card";
-import { ArrowDown } from "lucide-react";
-import { WebSecurityIcon, ReconIcon, BugBountyIcon, CodeReviewIcon } from "@/components/icons/custom-icons";
+import { ArrowDown, Shield, Terminal } from "lucide-react";
+import {
+  WebSecurityIcon,
+  ReconIcon,
+  BugBountyIcon,
+  CodeReviewIcon,
+} from "@/components/icons/custom-icons";
 import { CVModal } from "@/components/modals/cv-modal";
 import { ContactModal } from "@/components/modals/contact-modal";
 import { useTranslations } from "next-intl";
@@ -19,203 +24,142 @@ export function Hero() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const t = useTranslations("Hero");
-  
+
   const sectionRef = useRef<HTMLElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-    
-      if (headlineRef.current) {
-        const chars = headlineRef.current.querySelectorAll(".char");
+      if (contentRef.current) {
         gsap.fromTo(
-          chars,
-          {
-            opacity: 0,
-            y: 100,
-            rotateX: -90,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            rotateX: 0,
-            duration: 1.2,
-            ease: "expo.out",
-            stagger: 0.02,
-            delay: 0.3,
-          }
-        );
-      }
-
-      if (subtitleRef.current) {
-        gsap.fromTo(
-          subtitleRef.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "expo.out",
-            delay: 0.8,
-          }
-        );
-      }
-
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current.children,
+          contentRef.current.children,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            ease: "expo.out",
-            stagger: 0.1,
-            delay: 1,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.08,
+            delay: 0.1,
           }
         );
       }
 
       if (cardsRef.current) {
-        const cards = cardsRef.current.querySelectorAll(".floating-card");
-
+        const cards = cardsRef.current.querySelectorAll(".bento-card");
         gsap.fromTo(
           cards,
-          { opacity: 0, scale: 0.8, y: 50 },
+          { opacity: 0, y: 24, scale: 0.98 },
           {
             opacity: 1,
-            scale: 1,
             y: 0,
-            duration: 1,
-            ease: "expo.out",
-            stagger: 0.15,
-            delay: 0.5,
+            scale: 1,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.08,
+            delay: 0.25,
           }
         );
-
-        cards.forEach((card, index) => {
-          const speed = 0.3 + index * 0.1;
-          gsap.to(card, {
-            y: () => -100 * speed,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top top",
-              end: "bottom top",
-              scrub: true,
-            },
-          });
-        });
       }
-
-      gsap.to(".hero-content", {
-        y: -50,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const splitText = (text: string) => {
-    return text.split("").map((char, index) => (
-      <span
-        key={index}
-        className="char inline-block"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {char === " " ? "\u00A0" : char}
-      </span>
-    ));
-  };
+  const pillars = [
+    {
+      key: "webSecurity",
+      tag: "BACKEND & SAAS",
+      icon: WebSecurityIcon,
+    },
+    {
+      key: "reconnaissance",
+      tag: "OFFENSIVE APPSEC",
+      icon: ReconIcon,
+    },
+    {
+      key: "bugBounty",
+      tag: "DEVSECOPS & CLOUD",
+      icon: BugBountyIcon,
+    },
+    {
+      key: "codeReview",
+      tag: "ZERO-TRUST API",
+      icon: CodeReviewIcon,
+    },
+  ] as const;
 
   return (
     <>
       <section
         ref={sectionRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 lg:pt-20"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:py-24"
       >
         {/* Animated Beams Background */}
         <div className="absolute inset-0 z-0">
           <Suspense
             fallback={
               <div className="absolute inset-0 bg-black">
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
               </div>
             }
           >
             <Beams
               beamWidth={3}
               beamHeight={30}
-              beamNumber={16}
+              beamNumber={14}
               lightColor="#ffffff"
-              speed={1.5}
-              noiseIntensity={1.5}
+              speed={1.2}
+              noiseIntensity={1.4}
               scale={0.15}
               rotation={15}
             />
           </Suspense>
-          {/* Gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90" />
         </div>
 
-        {/* Content Layer - 1.0x scroll speed */}
-        <div className="hero-content relative z-10 max-w-6xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Column - Typography */}
-            <div className="space-y-8">
-              {/* Eyebrow */}
-            
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+            {/* Left Column (7 cols) - High-Contrast Typography */}
+            <div ref={contentRef} className="lg:col-span-7 space-y-6">
+              {/* Eyebrow Status Pill */}
+              <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs font-mono text-zinc-300">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Software Engineer & AppSec Researcher</span>
+              </div>
+
               {/* Main Headline */}
-              <h1
-                ref={headlineRef}
-                className="font-[family-name:var(--font-cabinet)] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.03em] leading-[0.9]"
-                style={{ perspective: "1000px" }}
-              >
-                <span className="block text-white">
-                  {splitText("Victor")}
-                </span>
-                <span className="block text-white/40">
-                  {splitText("Daniel")}
-                </span>
+              <h1 className="font-[family-name:var(--font-cabinet)] text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-bold tracking-[-0.03em] leading-[0.94]">
+                <span className="block text-white">Victor</span>
+                <span className="block text-zinc-500">Daniel</span>
               </h1>
 
-              {/* Subtitle */}
-              <p
-                ref={subtitleRef}
-                className="text-lg sm:text-xl text-white/60 max-w-md leading-relaxed font-bold"
-              >
-                {t("subtitle1")}
-              </p>
-              <p
-                className="text-lg sm:text-xl text-white/60 max-w-md leading-relaxed"
-              >
-                {t("subtitle2")}
-              </p>
+              {/* Concise Subtitle */}
+              <div className="space-y-2.5 max-w-xl">
+                <p className="text-base sm:text-lg text-zinc-200 font-semibold leading-snug">
+                  {t("subtitle1")}
+                </p>
+                <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+                  {t("subtitle2")}
+                </p>
+              </div>
 
               {/* CTA Buttons */}
-              <div ref={ctaRef} className="flex flex-wrap gap-4 pt-4">
-                <MagneticButton 
-                  variant="electric" 
+              <div className="flex flex-wrap gap-3.5 pt-2">
+                <MagneticButton
+                  variant="electric"
                   size="lg"
                   onClick={() => setIsCVModalOpen(true)}
                 >
                   {t("ctaDownloadCV")}
                 </MagneticButton>
-                <MagneticButton 
-                  variant="outline" 
+                <MagneticButton
+                  variant="outline"
                   size="lg"
                   onClick={() => setIsContactModalOpen(true)}
                 >
@@ -223,134 +167,96 @@ export function Hero() {
                 </MagneticButton>
               </div>
 
-              {/* Stats */}
-              <div className="flex gap-12 pt-8 border-t border-white/10">
+              {/* Clean Scannable Metrics Strip */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-zinc-800/80 max-w-lg">
                 <div>
-                  <div className="text-3xl font-[family-name:var(--font-cabinet)] font-bold text-white">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-tight">
                     {t("stats.yearsExperience.value")}
                   </div>
-                  <div className="text-sm text-white/50">{t("stats.yearsExperience.label")}</div>
+                  <div className="text-xs text-zinc-400 mt-0.5">
+                    {t("stats.yearsExperience.label")}
+                  </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-[family-name:var(--font-cabinet)] font-bold text-white">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-tight">
                     {t("stats.projectsDelivered.value")}
                   </div>
-                  <div className="text-sm text-white/50">{t("stats.projectsDelivered.label")}</div>
+                  <div className="text-xs text-zinc-400 mt-0.5">
+                    {t("stats.projectsDelivered.label")}
+                  </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-[family-name:var(--font-cabinet)] font-bold text-white">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-tight">
                     {t("stats.companies.value")}
                   </div>
-                  <div className="text-sm text-white/50">{t("stats.companies.label")}</div>
+                  <div className="text-xs text-zinc-400 mt-0.5">
+                    {t("stats.companies.label")}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Floating Glass Cards (0.5x scroll speed) */}
-            <div ref={cardsRef} className="relative h-[600px] lg:h-[700px] hidden lg:block">
-              {/* Card 1 - Web Security */}
-              <GlassCard
-                className="floating-card absolute top-0 right-4 w-80 p-5"
-                variant="default"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="flex-shrink-0">
-                    <WebSecurityIcon size={40} color="#0066ff" />
-                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
+            {/* Right Column (5 cols) - Structured Architecture Bento Grid */}
+            <div ref={cardsRef} className="lg:col-span-5 hidden lg:block">
+              <div className="p-3 rounded-2xl border border-zinc-800/80 bg-zinc-950/70 backdrop-blur-xl shadow-2xl space-y-3">
+                {/* Top Window Header */}
+                <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-zinc-900/70 border border-zinc-800/80 font-mono text-[11px] text-zinc-400">
+                  <div className="flex items-center gap-2">
+                    <Terminal className="w-3.5 h-3.5 text-[#0066ff]" />
+                    <span>architecture-sec-profile.ts</span>
                   </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      {t("cards.webSecurity.title")}
-                    </h3>
-                    <p className="text-sm text-white/50 leading-relaxed">
-                      {t("cards.webSecurity.description")}
-                    </p>
-                  </div>
+                  <span className="text-emerald-400 flex items-center gap-1">
+                    <Shield className="w-3 h-3" /> Secure-by-Design
+                  </span>
                 </div>
-              </GlassCard>
 
-              {/* Card 2 - Reconnaissance */}
-              <GlassCard
-                className="floating-card absolute top-28 left-0 w-80 p-5"
-                variant="default"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="flex-shrink-0">
-                    <ReconIcon size={40} color="#0066ff" />
-                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
-                  </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      {t("cards.reconnaissance.title")}
-                    </h3>
-                    <p className="text-sm text-white/50 leading-relaxed">
-                      {t("cards.reconnaissance.description")}
-                    </p>
-                  </div>
+                {/* 2x2 Bento Pillars */}
+                <div className="grid grid-cols-2 gap-3">
+                  {pillars.map((pillar) => {
+                    const IconComponent = pillar.icon;
+                    return (
+                      <GlassCard
+                        key={pillar.key}
+                        variant="default"
+                        className="bento-card p-4 border-zinc-800/80 bg-zinc-900/40 hover:border-zinc-700 transition-colors"
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="w-9 h-9 rounded-lg bg-[#0066ff]/10 border border-[#0066ff]/25 flex items-center justify-center">
+                            <IconComponent size={18} color="#0066ff" />
+                          </div>
+                          <span className="font-mono text-[10px] text-zinc-500">
+                            {pillar.tag}
+                          </span>
+                        </div>
+                        <h3 className="font-[family-name:var(--font-cabinet)] text-sm font-bold text-white mb-1">
+                          {t(`cards.${pillar.key}.title`)}
+                        </h3>
+                        <p className="text-xs text-zinc-400 leading-relaxed">
+                          {t(`cards.${pillar.key}.description`)}
+                        </p>
+                      </GlassCard>
+                    );
+                  })}
                 </div>
-              </GlassCard>
-
-              {/* Card 3 - Bug Bounty */}
-              <GlassCard
-                className="floating-card absolute top-56 right-8 w-80 p-5"
-                variant="default"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="flex-shrink-0">
-                    <BugBountyIcon size={40} color="#0066ff" />
-                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
-                  </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      {t("cards.bugBounty.title")}
-                    </h3>
-                    <p className="text-sm text-white/50 leading-relaxed">
-                      {t("cards.bugBounty.description")}
-                    </p>
-                  </div>
-                </div>
-              </GlassCard>
-
-              {/* Card 4 - Code Review */}
-              <GlassCard
-                className="floating-card absolute top-96 left-12 w-80 p-5"
-                variant="default"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="flex-shrink-0">
-                    <CodeReviewIcon size={40} color="#0066ff" />
-                    <div className="w-12 h-px bg-gradient-to-r from-[#0066ff] to-transparent mt-3" />
-                  </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cabinet)] font-semibold text-white mb-1">
-                      {t("cards.codeReview.title")}
-                    </h3>
-                    <p className="text-sm text-white/50 leading-relaxed">
-                      {t("cards.codeReview.description")}
-                    </p>
-                  </div>
-                </div>
-              </GlassCard>
-      
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
-          <span className="text-xs tracking-widest uppercase">{t("scrollIndicator")}</span>
-          <ArrowDown className="w-4 h-4 animate-bounce" />
+        {/* Scroll Indicator — hidden on small mobile to prevent overlap */}
+        <div className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-zinc-500">
+          <span className="font-mono text-[10px] tracking-widest uppercase">
+            {t("scrollIndicator")}
+          </span>
+          <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
         </div>
       </section>
 
       {/* Modals */}
-      <CVModal 
-        isOpen={isCVModalOpen} 
-        onClose={() => setIsCVModalOpen(false)} 
-      />
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
+      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
       />
     </>
   );
