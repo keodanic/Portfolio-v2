@@ -1,23 +1,88 @@
 [
   {
+    "id": "kronoshot-saas",
+    "name": "KronoShot — Sports Photo Marketplace (AI & OCR)",
+    "shortDescription": "Marketplace SaaS em monorepo (Next.js 15 + NestJS 11 + BullMQ/Redis + S3) com busca por Reconhecimento Facial RAM-only (LGPD), OCR de dorsal e Split Pix.",
+    "shortDescriptionEn": "Monorepo SaaS marketplace (Next.js 15 + NestJS 11 + BullMQ/Redis + S3) featuring RAM-only Facial Recognition (LGPD), bib OCR, and automated Pix split.",
+    "fullDescription": "Plataforma comercial full-stack construída em arquitetura Monólito Modular (pnpm workspaces: Next.js 15 App Router + NestJS 11 + Prisma 6 + PostgreSQL 16 + BullMQ/Redis 7 + S3/R2 + Sharp). Atletas localizam fotos em segundos via selfie (processada em RAM sem retenção biométrica) ou número de peito (OCR), pagam via Pix com split automático (Mercado Pago) e baixam originais em alta resolução via Presigned URLs ou streaming ZIP.",
+    "fullDescriptionEn": "Commercial full-stack platform built as a Modular Monolith (pnpm workspaces: Next.js 15 App Router + NestJS 11 + Prisma 6 + PostgreSQL 16 + BullMQ/Redis 7 + S3/R2 + Sharp). Athletes find photos in seconds via selfie (processed in RAM with zero biometric retention) or bib number (OCR), pay via Pix with automated split, and download high-res originals via Presigned URLs or ZIP streaming.",
+    "category": "SaaS & Backend Architecture",
+    "year": "2026",
+    "color": "#CCFF00",
+    "isPrivate": true,
+    "privateBadge": "Repositório Privado / Case Comercial",
+    "privateBadgeEn": "Private Repository / Commercial Case",
+    "hasImages": true,
+    "previewType": "image",
+    "tags": ["nestjs-11", "nextjs-15", "bullmq-redis", "aws-rekognition", "s3-presigned"],
+    "metrics": ["RAM-Only Face AI", "BullMQ Workers", "S3 Dual-Bucket"],
+    "images": [
+      "/projects/kronoshot-home.png",
+      "/projects/kronoshot-fotografo.png"
+    ],
+    "github": null,
+    "liveUrl": null,
+    "role": "Lead Full-Stack & AppSec Engineer — arquitetura do monorepo, workers assíncronos BullMQ, pipeline Sharp/Rekognition, proteção anti-IDOR e split financeiro em centavos.",
+    "duration": "2026",
+    "teamSize": "Case Comercial",
+    "impact": [
+      { "metric": "Biometria LGPD", "value": "RAM-Only" },
+      { "metric": "Processamento", "value": "BullMQ + Sharp" },
+      { "metric": "Storage", "value": "Dual S3 Bucket" }
+    ],
+    "features": [
+      "Monorepo pnpm com NestJS 11 (API REST + Worker BullMQ dedicado) e Next.js 15 App Router",
+      "Reconhecimento facial via selfie processado 100% em memória RAM (aderente à LGPD) e OCR de peito",
+      "Pipeline assíncrono com Sharp gerando thumbs e previews com marca d'água SVG antipirataria",
+      "Isolamento em 2 buckets S3/R2 (público para previews e privado para originais com Presigned URLs)",
+      "Prevenção estrita contra BOLA/IDOR, validação Zod/class-validator e valores monetários em centavos (integer)"
+    ],
+    "challenges": [
+      "Garantir que os arquivos originais em alta resolução jamais fiquem expostos antes da confirmação do webhook Pix",
+      "Processar lotes massivos de fotos em background com BullMQ e Redis sem bloquear o event loop da API",
+      "Implementar cálculo determinístico de desconto progressivo e split de comissões em basis points"
+    ],
+    "techStack": {
+      "frontend": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 4", "TanStack Query"],
+      "backend": ["NestJS 11", "BullMQ", "Sharp", "AWS Rekognition", "Mercado Pago SDK"],
+      "database": ["PostgreSQL 16", "Prisma ORM 6", "Redis 7"],
+      "devops": ["Docker Compose", "Cloudflare R2 / S3", "Pino Logger", "Vitest E2E"]
+    },
+    "technologies": [
+      "NestJS",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "BullMQ",
+      "Redis",
+      "AWS S3",
+      "Sharp"
+    ]
+  },
+  {
     "id": "simplifit-dumpy",
-    "name": "SimpliFit & Dumpy Ecosystem",
-    "shortDescription": "Ecossistema Full-Stack & Mobile para gestão de academias, treinos assistidos por IA e rede social fitness com +8k usuários ativos.",
-    "fullDescription": "Arquitetura e engenharia completa da plataforma SimpliFit e do aplicativo social Dumpy. Inclui APIs RESTful escaláveis em NestJS com autenticação JWT/OAuth2, controle de acesso granular (RBAC), integração com LLMs (OpenAI) em arquitetura serverless AWS (Lambda, SQS, S3), chat em tempo real via WebSockets e aplicativos mobile em React Native (Expo).",
-    "category": "Backend & Mobile",
+    "name": "SimpliFit, Dumpy & PersonalApp Ecosystem",
+    "shortDescription": "Ecossistema fitness em produção (+8k usuários, 12 academias) unindo APIs NestJS (CASL/RBAC), IA Serverless AWS (Lambda/SQS), app React Native e painel web.",
+    "shortDescriptionEn": "Production fitness ecosystem (8k+ active users, 12 gyms) uniting NestJS APIs (CASL/RBAC), AWS Serverless AI (Lambda/SQS), React Native app, and web dashboard.",
+    "fullDescription": "Arquitetura e engenharia completa do ecossistema da rede SimpliFit Academias: inclui a API central e de treinos (NestJS + Prisma + PostgreSQL + CASL ABAC + Audit Logs), o aplicativo social e de treinos assistidos por IA (Dumpy / IA Workout com OpenAI na AWS Lambda, SQS e S3) e a plataforma PersonalApp (app mobile Expo + painel administrativo Next.js com chat em tempo real via Socket.IO/Pusher).",
+    "fullDescriptionEn": "End-to-end engineering for the SimpliFit gym chain ecosystem: core & workout REST APIs (NestJS + Prisma + PostgreSQL + CASL ABAC + Audit Logs), the AI workout & social platform (Dumpy / IA Workout powered by OpenAI on AWS Lambda, SQS, and S3), and PersonalApp (Expo mobile app + Next.js admin dashboard with real-time Socket.IO/Pusher chat).",
+    "category": "Full-Stack, Mobile & Cloud",
     "year": "2025–2026",
     "color": "#EF4444",
-    "isPrivate": false,
+    "isPrivate": true,
+    "privateBadge": "Repositório Privado / Case Comercial",
+    "privateBadgeEn": "Private Repository / Commercial Case",
     "hasImages": true,
-    "tags": ["nestjs", "react-native", "aws", "appsec"],
+    "previewType": "image",
+    "tags": ["nestjs", "react-native", "aws-serverless", "casl-rbac", "socket-io"],
+    "metrics": ["8k+ MAU", "12 Academias", "20k+ msgs/dia"],
     "images": [
-      "/projects/Dumpy/home.png",
-      "/projects/Dumpy/profile.png",
-      "/projects/Dumpy/chat.png"
+      "/projects/ia-workout.png"
     ],
     "github": "https://github.com/keodanic/simplifit-challenge",
-    "liveUrl": null,
-    "role": "Lead Full-Stack & Mobile Developer — responsável pela arquitetura da API NestJS, segurança de aplicação (OWASP), integração AWS/OpenAI e desenvolvimento mobile React Native.",
+    "liveUrl": "https://ia-workout.vercel.app",
+    "role": "Full-Stack & Mobile Engineer — arquitetura de APIs NestJS, segurança OWASP (JWT, CASL ABAC, Rate Limiting), filas serverless AWS + OpenAI e apps React Native / Next.js.",
     "duration": "6 meses",
     "teamSize": "3 desenvolvedores",
     "impact": [
@@ -26,237 +91,256 @@
       { "metric": "Mensagens trocadas/dia", "value": "20k+" }
     ],
     "features": [
-      "APIs RESTful modulares em NestJS + TypeScript + Prisma ORM",
-      "Hardening OWASP Top 10: JWT/OAuth2, RBAC, Rate Limiting e validação estrita de DTOs",
-      "Integração de Inteligência Artificial (OpenAI API) via AWS Lambda, SQS e S3",
-      "Feed social, perfis e chat em tempo real via Socket.IO",
-      "Aplicativo mobile multiplataforma (iOS/Android) em React Native / Expo",
-      "Pipelines automatizados de CI/CD com Docker e GitHub Actions"
+      "APIs RESTful modulares em NestJS + TypeScript + Prisma ORM com controle de acesso CASL (ABAC/RBAC)",
+      "Geração de treinos personalizados com IA (OpenAI) processada via AWS Lambda, filas SQS e S3",
+      "Aplicativos móveis multiplataforma (iOS/Android) em React Native (Expo) e painéis web em Next.js",
+      "Feed social fitness, ranking semanal e chat em tempo real entre alunos, personais e nutricionistas",
+      "Trilha de auditoria (Audit Logs) automática para operações críticas de escrita no banco"
     ],
     "challenges": [
-      "Prevenir vulnerabilidades BOLA/IDOR e Mass Assignment em rotas críticas de alunos e treinos",
-      "Escalar comunicação em tempo real e filas assíncronas na AWS com baixa latência",
-      "Sincronizar estado offline/online no aplicativo React Native"
+      "Prevenir vulnerabilidades BOLA/IDOR e Mass Assignment em rotas multi-tenant de alunos, dietas e treinos",
+      "Orquestrar chamadas à OpenAI em background via AWS SQS + Lambda evitando timeouts HTTP",
+      "Sincronizar estado em tempo real entre o aplicativo React Native e o painel administrativo web"
     ],
     "techStack": {
       "frontend": ["React Native", "Expo", "Next.js", "TypeScript", "Tailwind CSS"],
-      "backend": ["Node.js", "NestJS", "Prisma ORM", "Socket.IO", "OpenAI API"],
-      "database": ["PostgreSQL", "MySQL", "Redis"],
+      "backend": ["Node.js", "NestJS", "Prisma ORM", "CASL", "Socket.IO", "OpenAI API"],
+      "database": ["PostgreSQL", "MySQL", "Redis", "Supabase"],
       "devops": ["Docker", "AWS Lambda", "AWS SQS", "AWS S3", "GitHub Actions"]
     },
     "technologies": [
       "NestJS",
-      "Node.js",
-      "TypeScript",
       "React Native",
+      "Next.js",
+      "TypeScript",
       "PostgreSQL",
       "Prisma",
-      "AWS",
-      "Docker",
+      "AWS Lambda/SQS",
       "Socket.IO",
-      "JWT / RBAC"
+      "Docker"
     ]
   },
   {
     "id": "web-sec-labs-exploits",
     "name": "Web Security Exploits & AppSec Playbooks",
-    "shortDescription": "Repositório de automação ofensiva em Python (exploração de falhas de lógica de negócios, CSRF, IDOR, SQLi) e guias de remediação Backend.",
-    "fullDescription": "Coleção de scripts de exploração automatizada em Python e write-ups técnicos focados no OWASP Top 10 e em cenários reais de Bug Bounty (PortSwigger Web Security Academy, Hacker101 CTF e TryHackMe). Cada laboratório inclui a prova de conceito (PoC) automatizada do ataque e a respectiva contramedida arquitetural em código Node.js/NestJS.",
-    "category": "Cybersecurity & AppSec",
+    "shortDescription": "Suite de exploração automatizada em Python (Business Logic, BOLA/IDOR, CSRF, SQLi) combinada com playbooks de remediação arquitetural em NestJS e Prisma.",
+    "shortDescriptionEn": "Automated Python exploitation suite (Business Logic, BOLA/IDOR, CSRF, SQLi) paired with architectural remediation playbooks in NestJS and Prisma.",
+    "fullDescription": "Repositório público de pesquisa em Segurança Ofensiva e Application Security. Reúne provas de conceito (PoCs) automatizadas em Python 3 para vulnerabilidades críticas do OWASP Top 10 e cenários reais de CTF/Bug Bounty (PortSwigger Web Security Academy, Hacker101 e TryHackMe), acompanhadas da respectiva correção em nível de código (Guards, DTOs e queries parametrizadas em NestJS/Prisma).",
+    "fullDescriptionEn": "Public Offensive Security and AppSec research repository. Features automated Python 3 Proof-of-Concept (PoC) scripts targeting critical OWASP Top 10 and business logic vulnerabilities (PortSwigger, Hacker101, TryHackMe), paired with production-grade code remediation in NestJS and Prisma.",
+    "category": "Offensive Security & AppSec",
     "year": "2025–2026",
     "color": "#10B981",
     "isPrivate": false,
     "hasImages": false,
-    "tags": ["pentesting", "appsec", "python", "owasp-top-10"],
+    "previewType": "terminal",
+    "tags": ["python-pocs", "owasp-top-10", "bola-idor", "csrf-bypass", "nestjs-hardening"],
+    "metrics": ["85+ Labs & CTFs", "Python 3 PoCs", "Exploit + Patch"],
     "images": [],
     "github": "https://github.com/keodanic/web-sec-labs-and-exploits",
     "liveUrl": null,
-    "role": "Offensive Security Researcher & AppSec Engineer — desenvolvimento de scripts de exploração em Python, análise de vulnerabilidades web e documentação de correções em nível de código.",
+    "role": "Offensive Security Researcher & AppSec Engineer — desenvolvimento de exploits automatizados em Python, write-ups técnicos e padrões de código seguro.",
     "duration": "Contínuo",
     "teamSize": "Solo",
     "impact": [
       { "metric": "Foco Principal", "value": "OWASP Top 10" },
       { "metric": "Automação de PoCs", "value": "Python 3" },
-      { "metric": " Abordagem", "value": "Offense + Defense" }
+      { "metric": "Metodologia", "value": "Red + Blue Team" }
     ],
     "features": [
-      "Scripts em Python (Requests/Regex) para exploração automatizada de Business Logic Flaws",
-      "Extração dinâmica de tokens anti-CSRF e manipulação de sessões autenticadas",
-      "Análise e exploração de Broken Access Control (IDOR / BOLA) e Stored/Reflected XSS",
-      "Guias práticos de remediação segura (Secure Coding) para APIs em Node.js e NestJS",
-      "Metodologia estruturada de Web Recon, enumeração de subdomínios e fuzzing com FFUF/Nuclei"
+      "Exploração automatizada de falhas de lógica de negócios com extração regex de tokens anti-CSRF",
+      "PoCs de Account Takeover, Broken Object Level Authorization (BOLA/IDOR) e Mass Assignment",
+      "Playbooks de remediação mostrando o código vulnerável vs. código blindado em NestJS + Prisma",
+      "Pipelines de reconhecimento web, enumeração de subdomínios e fuzzing com Nuclei, FFUF e Nmap"
     ],
     "challenges": [
-      "Encadear múltiplas requisições mantendo estado de sessão e renovação automática de tokens CSRF",
-      "Identificar falhas de lógica de negócios e race conditions que scanners DAST não detectam",
-      "Traduzir vulnerabilidades ofensivas em Guards, Pipes e políticas de segurança no Backend"
+      "Encadear dezenas de requisições HTTP mantendo estado de sessão e renovação dinâmica de CSRF",
+      "Identificar vetores de corrida (Race Conditions) e falhas lógicas invisíveis a scanners DAST",
+      "Traduzir cada vetor ofensivo em testes de regressão e políticas de autorização no backend"
     ],
     "techStack": {
-      "backend": ["Python 3", "Node.js", "NestJS", "Bash"],
-      "database": ["PostgreSQL", "SQLite"],
-      "devops": ["Burp Suite", "Nmap", "FFUF", "Nuclei", "SQLMap", "Linux"]
+      "backend": ["Python 3", "Node.js", "NestJS", "TypeScript", "Bash"],
+      "database": ["PostgreSQL", "Prisma ORM"],
+      "devops": ["Burp Suite", "Nuclei", "FFUF", "Nmap", "SQLMap", "Linux"]
     },
     "technologies": [
       "Python",
       "Burp Suite",
       "OWASP Top 10",
-      "Nmap",
-      "FFUF",
       "Nuclei",
+      "FFUF",
+      "Nmap",
       "SQLMap",
       "NestJS",
-      "TypeScript",
-      "Linux"
+      "Prisma"
     ]
   },
   {
     "id": "monitoring-co2-iot",
-    "name": "MonitoringCO2 — IoT Environmental System",
-    "shortDescription": "Sistema IoT em tempo real (Bolsa de Pesquisa FAPEMA/IFMA) integrando microcontroladores ESP32, protocolo MQTT, API NestJS e dashboard Next.js.",
-    "fullDescription": "Projeto de pesquisa financiado pela FAPEMA no IFMA para monitoramento contínuo da qualidade do ar (CO2, temperatura e umidade) em ambientes escolares. Combina nós sensores embarcados em ESP32 transmitindo telemetria via MQTT/HTTP para um backend robusto em NestJS + Prisma + PostgreSQL, exibindo alertas e séries históricas em um dashboard Next.js e app mobile.",
-    "category": "Backend & IoT",
+    "name": "MonitoringCO2 — Real-Time IoT Telemetry",
+    "shortDescription": "Sistema de telemetria ambiental (Bolsa FAPEMA/IFMA) integrando firmware C++ em ESP32 (sensor ENS160), API NestJS + Prisma e dashboard analítico Next.js.",
+    "shortDescriptionEn": "Environmental telemetry system (FAPEMA/IFMA Research Grant) integrating ESP32 C++ firmware (ENS160 sensor), NestJS + Prisma API, and Next.js dashboard.",
+    "fullDescription": "Projeto de pesquisa aplicada financiado pela FAPEMA no IFMA Campus Timon para monitoramento contínuo da qualidade do ar (CO2 em PPM, TVOC, temperatura e umidade) em ambientes acadêmicos. Combina nós sensores embarcados em microcontroladores ESP32 transmitindo leituras para um backend em NestJS + Prisma + PostgreSQL, com visualização em tempo real e exportação de laudos em PDF no dashboard Next.js.",
+    "fullDescriptionEn": "Applied research project funded by FAPEMA at IFMA Campus Timon for continuous indoor air quality monitoring (CO2 PPM, TVOC, temperature, and humidity). Combines ESP32 sensor nodes transmitting telemetry to a NestJS + Prisma + PostgreSQL backend, with real-time visualization and PDF report generation in a Next.js dashboard.",
+    "category": "IoT & Backend Engineering",
     "year": "2024–2025",
     "color": "#0066FF",
     "isPrivate": false,
-    "hasImages": false,
-    "tags": ["iot", "nestjs", "esp32", "nextjs"],
-    "images": [],
+    "hasImages": true,
+    "previewType": "image",
+    "tags": ["nestjs", "esp32-iot", "nextjs", "postgresql", "fapema"],
+    "metrics": ["ESP32 + ENS160", "Real-Time PPM", "Bolsa FAPEMA"],
+    "images": [
+      "/projects/MonitoringCO2/home.png",
+      "/projects/MonitoringCO2/history.png"
+    ],
     "github": "https://github.com/keodanic/monitoringCO2-api",
     "liveUrl": null,
-    "role": "Pesquisador Bolsista & Arquiteto Full-Stack/IoT — responsável pelo firmware ESP32, pipeline MQTT/REST em NestJS e interfaces web/mobile.",
-    "duration": "9 meses",
+    "role": "Pesquisador Bolsista FAPEMA & Desenvolvedor Full-Stack/IoT — firmware C++ no ESP32, API RESTful em NestJS e dashboard Next.js.",
+    "duration": "9 meses (Nov 2024 – Jul 2025)",
     "teamSize": "Pesquisa FAPEMA / IFMA",
     "impact": [
       { "metric": "Telemetria", "value": "Real-Time" },
-      { "metric": "Hardware", "value": "ESP32 + MQ-135" },
-      { "metric": "Financiamento", "value": "FAPEMA" }
+      { "metric": "Hardware", "value": "ESP32 + ENS160" },
+      { "metric": "Fomento", "value": "FAPEMA / IFMA" }
     ],
     "features": [
-      "Coleta embarcada com microcontrolador ESP32 e sensores ambientais em C++/Arduino",
-      "Transmissão assíncrona via protocolo MQTT e ingestão via API RESTful em NestJS",
-      "Persistência e agregação de séries temporais com Prisma ORM e PostgreSQL containerizado",
-      "Dashboard analítico em Next.js e aplicativo mobile em React Native para acompanhamento",
-      "Validação de payload e proteção das rotas de ingestão de telemetria"
+      "Coleta embarcada em C++ no microcontrolador ESP32 acoplado ao sensor digital de gases ENS160",
+      "Ingestão e validação de séries temporais via API RESTful em NestJS + Prisma ORM + PostgreSQL",
+      "Dashboard web em Next.js com classificação automática de qualidade do ar e gráficos semanais",
+      "Módulo de histórico por ambiente (Biblioteca, Refeitório, Salas) com exportação de relatórios em PDF"
     ],
     "challenges": [
-      "Garantir integridade e baixa perda de pacotes na comunicação entre o ESP32 e o servidor",
-      "Estruturar o banco relacional para consultas rápidas de histórico por sala e período",
-      "Isolar o ambiente de execução com Docker Compose para fácil implantação acadêmica"
+      "Calibrar leituras do sensor ENS160 e tratar reconexão automática de rede no firmware ESP32",
+      "Otimizar consultas agregadas de séries temporais no PostgreSQL para renderização rápida",
+      "Padronizar deploy com Docker para operação contínua no laboratório CapivaraLab (IFMA)"
     ],
     "techStack": {
-      "frontend": ["Next.js", "React", "React Native", "TypeScript", "Tailwind CSS"],
-      "backend": ["Node.js", "NestJS", "Prisma ORM", "MQTT", "C++ (ESP32)"],
+      "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "backend": ["NestJS", "Node.js", "Prisma ORM", "C++ (ESP32 / Arduino)"],
       "database": ["PostgreSQL"],
-      "devops": ["Docker", "Docker Compose", "Linux"]
+      "devops": ["Docker", "Linux"]
     },
     "technologies": [
       "NestJS",
-      "Node.js",
+      "Next.js",
       "TypeScript",
-      "ESP32",
-      "MQTT",
+      "ESP32 (C++)",
       "PostgreSQL",
       "Prisma",
-      "Next.js",
-      "React Native",
       "Docker"
     ]
   },
   {
     "id": "freelant-platform",
-    "name": "Freelant — Marketplace de Autônomos",
-    "shortDescription": "Plataforma Full-Stack (TCC IFMA) conectando profissionais autônomos e clientes com backend em NestJS, Prisma, PostgreSQL e frontend em Next.js.",
-    "fullDescription": "Desenvolvida como Trabalho de Conclusão de Curso no IFMA para solucionar a dificuldade de captação de clientes por trabalhadores autônomos (problema validado com 83,3% dos profissionais entrevistados). Conta com uma API RESTful segura em NestJS + Prisma ORM, autenticação JWT, upload de portfólio, avaliações, busca geolocalizada por categorias e interface moderna em Next.js.",
-    "category": "Web & Backend",
+    "name": "Freelant — Service Marketplace & Real-Time Chat",
+    "shortDescription": "Marketplace mobile e web (TCC IFMA) conectando autônomos e clientes com API NestJS, Prisma, PostgreSQL, chat instantâneo via Socket.IO e app React Native.",
+    "shortDescriptionEn": "Mobile and web marketplace (B.Tech Capstone) connecting freelancers and clients with a NestJS API, Prisma, PostgreSQL, Socket.IO live chat, and React Native app.",
+    "fullDescription": "Desenvolvido como Trabalho de Conclusão de Curso no IFMA (validado com 83,3% dos profissionais autônomos entrevistados). Arquitetura completa composta por backend modular em NestJS + Prisma ORM + PostgreSQL + WebSockets (Socket.IO) e aplicativo multiplataforma em React Native (Expo Router + NativeWind), permitindo busca por categoria, propostas, chat em tempo real e avaliações verificadas.",
+    "fullDescriptionEn": "Built as my B.Tech Capstone project at IFMA (validated with 83.3% of surveyed independent professionals). Full architecture comprising a modular NestJS + Prisma ORM + PostgreSQL + WebSockets (Socket.IO) backend and a cross-platform React Native app (Expo Router + NativeWind) with category search, proposals, real-time chat, and verified reviews.",
+    "category": "Full-Stack & Mobile",
     "year": "2025",
-    "color": "#8B5CF6",
+    "color": "#38BDF8",
     "isPrivate": false,
-    "hasImages": false,
-    "tags": ["nestjs", "nextjs", "postgresql", "typescript"],
-    "images": [],
+    "hasImages": true,
+    "previewType": "image",
+    "tags": ["nestjs", "react-native", "socket-io", "postgresql", "prisma"],
+    "metrics": ["Socket.IO Chat", "NestJS + Prisma", "TCC IFMA"],
+    "images": [
+      "/projects/Freelant/freelantHomeFreela.png",
+      "/projects/Freelant/homeUser.png",
+      "/projects/Freelant/chat.png"
+    ],
     "github": "https://github.com/keodanic/freelant-back",
     "liveUrl": null,
-    "role": "Autor & Desenvolvedor Full-Stack Principal — responsável pelo levantamento de requisitos, modelagem relacional, API NestJS e aplicação web Next.js.",
+    "role": "Autor & Engenheiro Full-Stack/Mobile — arquitetura da API NestJS, WebSockets, modelagem PostgreSQL e app React Native.",
     "duration": "8 meses",
-    "teamSize": "Solo (TCC)",
+    "teamSize": "Solo (TCC IFMA)",
     "impact": [
-      { "metric": "Dor de mercado validada", "value": "83.3%" },
-      { "metric": "Arquitetura", "value": "REST + Modular" },
-      { "metric": "Nota Acadêmica", "value": "Aprovado com Louvor" }
+      { "metric": "Validação de Mercado", "value": "83.3%" },
+      { "metric": "Comunicação", "value": "Socket.IO" },
+      { "metric": "Avaliação Acadêmica", "value": "Nota Máxima" }
     ],
     "features": [
-      "Autenticação e autorização de prestadores e clientes via JWT e Guards no NestJS",
-      "Modelagem de banco de dados relacional em PostgreSQL gerenciada via Prisma Migrations",
-      "Sistema de publicação de serviços, propostas, contratação e avaliação mútua",
-      "Interface web responsiva construída com Next.js, TypeScript e Tailwind CSS",
-      "Documentação interativa de endpoints com Swagger / OpenAPI"
+      "API RESTful em NestJS com autenticação JWT, Guards de autorização por perfil e documentação Swagger",
+      "Mensageria instantânea bidirecional entre clientes e prestadores utilizando Socket.IO",
+      "Aplicativo React Native com Expo Router, NativeWind e fluxos dedicados para Cliente e Freelancer",
+      "Ciclo completo de ordem de serviço: solicitação, aceite/recusa, conclusão e avaliação mútua"
     ],
     "challenges": [
-      "Modelar regras de negócio entre perfis distintos (Cliente vs. Prestador Autônomo)",
-      "Garantir validação rigorosa de dados de entrada com class-validator e class-transformer",
-      "Otimizar buscas e filtros por categoria de serviço e localização"
+      "Sincronizar eventos WebSocket de novas mensagens e status de pedidos em tempo real no mobile",
+      "Garantir isolamento de permissões entre perfis de Cliente e Prestador nas rotas da API",
+      "Modelar relacionamentos e índices no PostgreSQL para filtragem rápida por especialidade"
     ],
     "techStack": {
-      "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      "backend": ["Node.js", "NestJS", "Prisma ORM", "JWT", "Swagger"],
+      "frontend": ["React Native", "Expo Router", "NativeWind", "TypeScript"],
+      "backend": ["NestJS", "Node.js", "Prisma ORM", "Socket.IO", "JWT"],
       "database": ["PostgreSQL"],
-      "devops": ["Docker", "Git"]
+      "devops": ["Docker", "Swagger / OpenAPI"]
     },
     "technologies": [
       "NestJS",
-      "Next.js",
+      "React Native",
+      "Socket.IO",
       "TypeScript",
       "PostgreSQL",
       "Prisma",
-      "JWT",
-      "Tailwind CSS",
-      "Docker"
+      "JWT"
     ]
   },
   {
-    "id": "simulabet-mobile",
-    "name": "SimulaBET — Real-Time Odds Mobile App",
-    "shortDescription": "Aplicativo móvel em React Native (Expo) integrado ao Supabase (PostgreSQL + Edge Functions) consumindo odds esportivas reais em tempo real.",
-    "fullDescription": "Plataforma mobile recreativa de simulação de apostas esportivas que consome cotações (odds) reais de partidas de futebol via API externa, utilizando créditos fictícios sem risco financeiro. Utiliza Supabase como BaaS com políticas de Row Level Security (RLS) no PostgreSQL e Edge Functions serverless para liquidação segura de bilhetes.",
-    "category": "Mobile & Serverless",
-    "year": "2025",
-    "color": "#F59E0B",
-    "isPrivate": false,
-    "hasImages": false,
-    "tags": ["react-native", "supabase", "edge-functions", "typescript"],
-    "images": [],
-    "github": "https://github.com/keodanic/simulaBet",
-    "liveUrl": null,
-    "role": "Desenvolvedor Mobile & Backend Serverless",
+    "id": "fundacao-multirao-report",
+    "name": "Fundação Report & Surebet Arbitrage Engine",
+    "shortDescription": "Sistemas de gestão e motores de cálculo: plataforma de relatórios médicos em lote (PDF/Excel) para mutirões de saúde e calculadora de arbitragem financeira.",
+    "shortDescriptionEn": "Management systems & calculation engines: batch medical reporting platform (PDF/Excel) for public health campaigns and a financial arbitrage calculator.",
+    "fullDescription": "Conjunto de soluções entregues em produção: (1) Fundação Report — sistema web Full-Stack (Next.js + NestJS) desenvolvido para gerenciar mutirões médicos no Piauí/Maranhão, com controle de atendimento por especialidade (catarata, exames) e exportação automatizada de relatórios consolidados em PDF e Excel; e (2) SurebetCalc — motor matemático em Next.js + TypeScript para cálculo instantâneo de arbitragem e proteção (hedge) de cotações.",
+    "fullDescriptionEn": "Production web solutions: (1) Fundação Report — a Full-Stack web system (Next.js + NestJS) built to manage public healthcare campaigns, tracking patient procedures by specialty and exporting consolidated PDF/Excel reports; and (2) SurebetCalc — a Next.js + TypeScript mathematical engine for real-time arbitrage and hedge stake distribution.",
+    "category": "Web Systems & FinTech Tools",
+    "year": "2025–2026",
+    "color": "#A855F7",
+    "isPrivate": true,
+    "privateBadge": "Repositório Privado / Case Comercial",
+    "privateBadgeEn": "Private Repository / Commercial Case",
+    "hasImages": true,
+    "previewType": "image",
+    "tags": ["nextjs", "nestjs", "pdf-excel-export", "typescript"],
+    "metrics": ["Laudos PDF/Excel", "Next.js + NestJS", "Live App"],
+    "images": [
+      "/projects/sure-calculation.png",
+      "/projects/Fundacao-Report/multiraoHome.png",
+      "/projects/Fundacao-Report/multiraoRelatorio.png"
+    ],
+    "github": null,
+    "liveUrl": "https://sure-calculation.vercel.app",
+    "role": "Full-Stack Developer — desenvolvimento das interfaces em Next.js, geração de documentos PDF/Excel e integração com API NestJS.",
     "duration": "4 meses",
-    "teamSize": "Projeto Acadêmico",
+    "teamSize": "2 desenvolvedores",
     "impact": [
-      { "metric": "Integração de Odds", "value": "Real-Time API" },
-      { "metric": "Segurança de Dados", "value": "Supabase RLS" },
-      { "metric": "Liquidação", "value": "Edge Functions" }
+      { "metric": "Exportação em Lote", "value": "PDF & Excel" },
+      { "metric": "Cálculo de Hedge", "value": "Real-Time" },
+      { "metric": "Status", "value": "Em Produção" }
     ],
     "features": [
-      "Consumo em tempo real de partidas e odds de mercado via The Odds API",
-      "Autenticação segura e gerenciamento de carteira virtual com proteção contra manipulação no client-side",
-      "Automação serverless com Supabase Edge Functions (Deno/TypeScript) para validação de resultados",
-      "Políticas de Row Level Security (RLS) no PostgreSQL garantindo isolamento de saldos e apostas"
+      "Cadastro e filtragem rápida de mutirões médicos por estado, cidade, período, médico e especialidade",
+      "Geração automatizada de relatórios oficiais em PDF e planilhas Excel para prestação de contas",
+      "Motor de cálculo dinâmico de arbitragem (SurebetCalc) com distribuição proporcional de stakes e cenários"
     ],
     "challenges": [
-      "Impedir que o usuário manipule o valor das odds ou o saldo diretamente pelo aplicativo mobile",
-      "Sincronizar estados de apostas pendentes e liquidadas de forma assíncrona"
+      "Formatar tabelas extensas de pacientes atendidos em documentos PDF paginados sem perda de layout",
+      "Otimizar o fluxo de digitação rápida (atalhos de teclado) durante o atendimento nos mutirões"
     ],
     "techStack": {
-      "frontend": ["React Native", "Expo", "TypeScript"],
-      "backend": ["Supabase Edge Functions", "REST APIs"],
-      "database": ["PostgreSQL (Supabase RLS)"]
+      "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "backend": ["NestJS", "Node.js", "REST API"],
+      "database": ["PostgreSQL"],
+      "devops": ["Vercel", "Docker"]
     },
     "technologies": [
-      "React Native",
-      "Expo",
+      "Next.js",
+      "NestJS",
       "TypeScript",
-      "Supabase",
+      "Tailwind CSS",
       "PostgreSQL",
-      "Edge Functions"
+      "PDF/Excel Generation"
     ]
   }
 ]
