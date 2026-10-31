@@ -28,7 +28,7 @@
   --electric-blue-subtle: rgba(0, 102, 255, 0.1);
 
   /* Semantic Color Mapping */
-  --background: var(--black);
+  --background: #050507;
   --foreground: var(--white);
   --primary: var(--white);
   --primary-foreground: var(--black);

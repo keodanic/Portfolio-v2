@@ -59,7 +59,9 @@
     "viewAll": "View All Projects",
     "privateBadge": "Private Repository / Commercial Case",
     "publicBadge": "Open Source / GitHub",
-    "liveDemo": "Live Demo"
+    "liveDemo": "Live Demo",
+    "caseBadge": "Commercial Case",
+    "openSourceBadge": "Open Source"
   },
   "SecurityLabs": {
     "sectionTag": "Offensive Security & AppSec",
@@ -131,25 +133,44 @@
         "name": "B.Tech in Internet Systems (Sistemas para Internet)",
         "issuer": "IFMA — Federal Institute of Maranhão",
         "description": "Graduated (2023–2025). 3rd Place at the IFMA Ideathon (Smart Cities), FAPEMA Research Fellow (IoT/NestJS), and English Teaching Assistant.",
-        "skills": ["Software Engineering", "API Architecture", "Databases"]
+        "skills": [
+          "Software Engineering",
+          "API Architecture",
+          "Databases"
+        ]
       },
       "bugbounty": {
         "name": "Do Bug ao Bounty (Web Pentesting & Bug Bounty)",
         "issuer": "Academia Do Bug ao Bounty — Gabriel Pato",
         "description": "Intensive training in offensive web security, advanced reconnaissance (OSINT/Recon), OWASP Top 10 exploitation, and Bug Bounty methodology.",
-        "skills": ["Web Pentesting", "Reconnaissance", "OWASP Top 10", "Bug Bounty"]
+        "skills": [
+          "Web Pentesting",
+          "Reconnaissance",
+          "OWASP Top 10",
+          "Bug Bounty"
+        ]
       },
       "sycp": {
         "name": "SYCP — Solyd Certified Pentester & Solyd Training",
         "issuer": "Solyd Offensive Security",
         "description": "Professional Pentesting coursework by Solyd and active preparation for the practical SYCP certification exam, covering network and web exploitation.",
-        "skills": ["Network Pentest", "Web Exploitation", "Privilege Escalation", "Reporting"]
+        "skills": [
+          "Network Pentest",
+          "Web Exploitation",
+          "Privilege Escalation",
+          "Reporting"
+        ]
       },
       "bscp": {
         "name": "BSCP — Burp Suite Certified Practitioner",
         "issuer": "PortSwigger",
         "description": "Target certification focused on advanced web application security auditing and deep mastery of Burp Suite Pro and Web Security Academy.",
-        "skills": ["Advanced Web Attacks", "Burp Suite", "Business Logic", "Auth Bypass"]
+        "skills": [
+          "Advanced Web Attacks",
+          "Burp Suite",
+          "Business Logic",
+          "Auth Bypass"
+        ]
       }
     },
     "dateLabels": {
@@ -191,15 +212,39 @@
     "skills": {
       "webAttacks": {
         "category": "Engineering",
-        "items": ["Node.js", "NestJS", "TypeScript", "Python (FastAPI)", "PostgreSQL / Prisma", "React Native & Next.js", "BullMQ / Redis", "Docker & AWS"]
+        "items": [
+          "Node.js",
+          "NestJS",
+          "TypeScript",
+          "Python (FastAPI)",
+          "PostgreSQL / Prisma",
+          "React Native & Next.js",
+          "BullMQ / Redis",
+          "Docker & AWS"
+        ]
       },
       "recon": {
         "category": "AppSec & Web",
-        "items": ["OWASP Top 10", "BOLA / IDOR", "SQLi / XSS / CSRF", "SSRF", "JWT & CASL RBAC", "Business Logic Flaws"]
+        "items": [
+          "OWASP Top 10",
+          "BOLA / IDOR",
+          "SQLi / XSS / CSRF",
+          "SSRF",
+          "JWT & CASL RBAC",
+          "Business Logic Flaws"
+        ]
       },
       "tools": {
         "category": "Sec & DevOps",
-        "items": ["Burp Suite", "Nmap", "Nuclei", "FFUF", "SQLMap", "Wireshark", "Linux & GitHub Actions"]
+        "items": [
+          "Burp Suite",
+          "Nmap",
+          "Nuclei",
+          "FFUF",
+          "SQLMap",
+          "Wireshark",
+          "Linux & GitHub Actions"
+        ]
       }
     },
     "experience": {

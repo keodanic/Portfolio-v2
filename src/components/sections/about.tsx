@@ -3,100 +3,46 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GlassCard } from "@/components/ui/glass-card";
-import { GraduationCap, Briefcase } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const skills = [
+  {
+    categoryKey: "webAttacks",
+    items: ["Node.js", "NestJS", "TypeScript", "Python (FastAPI)", "PostgreSQL", "Prisma", "Next.js", "React Native", "BullMQ", "Redis", "Docker", "AWS"],
+  },
+  {
+    categoryKey: "recon",
+    items: ["OWASP Top 10", "BOLA/IDOR", "SQLi", "XSS", "CSRF", "SSRF", "JWT & OAuth2", "Business Logic"],
+  },
+  {
+    categoryKey: "tools",
+    items: ["Burp Suite", "Nmap", "Nuclei", "FFUF", "SQLMap", "Wireshark", "Linux", "GitHub Actions"],
+  },
+];
+
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("About");
-
-  const skills = [
-    {
-      categoryKey: "webAttacks",
-      items: [
-        "Node.js",
-        "NestJS",
-        "TypeScript",
-        "Python (FastAPI)",
-        "PostgreSQL & Prisma",
-        "Next.js & React Native",
-        "BullMQ / Redis",
-        "Docker & AWS",
-      ],
-    },
-    {
-      categoryKey: "recon",
-      items: [
-        "OWASP Top 10",
-        "BOLA / IDOR",
-        "SQLi / XSS / CSRF",
-        "SSRF",
-        "JWT & OAuth2 Hardening",
-        "Business Logic Flaws",
-      ],
-    },
-    {
-      categoryKey: "tools",
-      items: [
-        "Burp Suite Pro",
-        "Nmap",
-        "Nuclei",
-        "FFUF",
-        "SQLMap",
-        "Wireshark",
-        "Linux & GitHub Actions",
-      ],
-    },
-  ];
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      if (contentRef.current) {
+      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.fromTo(
-          contentRef.current.children,
-          { opacity: 0, y: 24 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            stagger: 0.08,
-            scrollTrigger: {
-              trigger: contentRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-
-      if (timelineRef.current) {
-        const items = timelineRef.current.querySelectorAll(".timeline-item");
-        gsap.fromTo(
-          items,
-          { opacity: 0, y: 20 },
+          el,
+          { opacity: 0, y: 16 },
           {
             opacity: 1,
             y: 0,
             duration: 0.6,
             ease: "power3.out",
-            stagger: 0.08,
-            scrollTrigger: {
-              trigger: timelineRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
           }
         );
-      }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -106,118 +52,75 @@ export function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-24 sm:py-28 px-4 sm:px-6 lg:px-8"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Column (5 cols) - Concise Bio, Education & Stack */}
-          <div ref={contentRef} className="lg:col-span-5 space-y-8">
-            <div>
-              <span className="font-mono text-[#0066ff] text-xs tracking-widest uppercase mb-3 block">
-                {t("sectionTag")}
-              </span>
-              <h2 className="font-[family-name:var(--font-cabinet)] text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-5">
-                {t("title")}
-              </h2>
-              <div className="space-y-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
-                <p>{t("bio.paragraph1")}</p>
-                <p>{t("bio.paragraph2")}</p>
-              </div>
-            </div>
-
-            {/* Education Card */}
-            <GlassCard
-              variant="highlight"
-              className="p-5 sm:p-6 border-zinc-800/90 bg-zinc-950/90"
-            >
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-lg bg-[#0066ff]/10 border border-[#0066ff]/25 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <GraduationCap className="w-5 h-5 text-[#0066ff]" />
-                </div>
-                <div>
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-[#0066ff] block mb-1">
-                    {t("education.label")}
-                  </span>
-                  <h3 className="font-[family-name:var(--font-cabinet)] text-lg font-bold text-white">
-                    {t("education.course")}
-                  </h3>
-                  <p className="text-zinc-400 text-xs sm:text-sm mt-0.5">
-                    {t("education.institution")}
-                  </p>
-                  <span className="inline-block mt-2 px-2.5 py-0.5 rounded text-[11px] font-mono bg-zinc-900 text-zinc-300 border border-zinc-800">
-                    {t("education.period")}
-                  </span>
-                </div>
-              </div>
-            </GlassCard>
-
-            {/* Skills Groups */}
-            <div ref={skillsRef} className="space-y-3">
-              {skills.map((skillGroup) => (
-                <GlassCard
-                  key={skillGroup.categoryKey}
-                  variant="default"
-                  className="p-4 sm:p-5 border-zinc-800/80 bg-zinc-950/80"
-                >
-                  <div className="font-mono text-xs text-zinc-300 uppercase tracking-wider mb-2.5">
-                    {t(`skills.${skillGroup.categoryKey}.category`)}
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {skillGroup.items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-xs font-mono text-zinc-400 px-2.5 py-1 bg-zinc-900 rounded border border-zinc-800/80"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </GlassCard>
-              ))}
-            </div>
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div data-reveal className="lg:col-span-5">
+          <span className="font-mono text-xs text-zinc-500">{t("sectionTag")}</span>
+          <h2 className="mt-3 font-[family-name:var(--font-cabinet)] text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-[-0.03em] leading-[1.05]">
+            {t("title")}
+          </h2>
+          <div className="mt-6 space-y-4 text-base text-zinc-400 leading-relaxed">
+            <p>{t("bio.paragraph1")}</p>
+            <p>{t("bio.paragraph2")}</p>
           </div>
 
-          {/* Right Column (7 cols) - Clean Linear-Style Experience Timeline */}
-          <div ref={timelineRef} className="lg:col-span-7 lg:pt-8">
-            <div className="flex items-center gap-2.5 mb-6">
-              <Briefcase className="w-4 h-4 text-[#0066ff]" />
-              <h3 className="font-[family-name:var(--font-cabinet)] text-xl sm:text-2xl font-bold text-white tracking-[-0.02em]">
-                {t("experience.title")}
-              </h3>
-            </div>
+          <dl className="mt-10 border-t border-zinc-800/80 divide-y divide-zinc-800/80">
+            {skills.map((group) => (
+              <div key={group.categoryKey} className="py-4 grid grid-cols-[7rem_1fr] gap-4">
+                <dt className="font-mono text-xs text-zinc-300">
+                  {t(`skills.${group.categoryKey}.category`)}
+                </dt>
+                <dd className="font-mono text-xs text-zinc-500 leading-relaxed">
+                  {group.items.join(" · ")}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-            <div className="relative pl-6 border-l border-zinc-800/90 space-y-5">
-              {[0, 1, 2, 3].map((index) => (
-                <div key={index} className="timeline-item relative group">
-                  {/* Timeline Node Dot */}
-                  <span
-                    className={`absolute -left-[29px] top-6 w-2.5 h-2.5 rounded-full border-2 transition-colors ${
-                      index === 0
-                        ? "bg-[#0066ff] border-[#0066ff] shadow-[0_0_10px_rgba(0,102,255,0.6)]"
-                        : "bg-zinc-950 border-zinc-600 group-hover:border-[#0066ff]"
-                    }`}
-                  />
-
-                  <GlassCard
-                    variant="default"
-                    className="p-5 sm:p-6 border-zinc-800/80 bg-zinc-950/80 hover:border-zinc-700/80 transition-all"
-                    hover
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
-                      <h4 className="font-[family-name:var(--font-cabinet)] text-lg font-bold text-white group-hover:text-[#0066ff] transition-colors">
-                        {t(`experience.items.${index}.title`)}
+        <div className="lg:col-span-7 space-y-14">
+          <div data-reveal>
+            <h3 className="font-mono text-xs text-zinc-500 pb-4 border-b border-zinc-800/80">
+              {t("experience.title")}
+            </h3>
+            <ol className="divide-y divide-zinc-800/80 border-b border-zinc-800/80">
+              {[0, 1, 2, 3].map((index) => {
+                const [company, role] = t(`experience.items.${index}.title`).split(" — ");
+                return (
+                  <li key={index} className="py-6">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6">
+                      <h4 className="text-base font-semibold text-zinc-100 tracking-tight">
+                        {company}
+                        {role && <span className="font-normal text-zinc-400"> · {role}</span>}
                       </h4>
-                      <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-zinc-900 text-zinc-300 border border-zinc-800 whitespace-nowrap w-fit">
+                      <span className="font-mono text-xs text-zinc-500 whitespace-nowrap">
                         {t(`experience.items.${index}.period`)}
                       </span>
                     </div>
-
-                    <p className="text-zinc-400 text-sm leading-relaxed">
+                    <p className="mt-2 text-sm text-zinc-400 leading-relaxed max-w-2xl">
                       {t(`experience.items.${index}.description`)}
                     </p>
-                  </GlassCard>
-                </div>
-              ))}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          <div data-reveal>
+            <h3 className="font-mono text-xs text-zinc-500 pb-4 border-b border-zinc-800/80">
+              {t("education.label")}
+            </h3>
+            <div className="py-6 border-b border-zinc-800/80 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6">
+              <div>
+                <h4 className="text-base font-semibold text-zinc-100 tracking-tight">
+                  {t("education.course")}
+                </h4>
+                <p className="mt-1 text-sm text-zinc-400">{t("education.institution")}</p>
+              </div>
+              <span className="font-mono text-xs text-zinc-500 whitespace-nowrap">
+                {t("education.period")}
+              </span>
             </div>
           </div>
         </div>

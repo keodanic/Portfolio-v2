@@ -49,9 +49,9 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav
             className={cn(
-              "flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500",
+              "flex items-center justify-between px-5 py-2.5 rounded-lg transition-all duration-500",
               isScrolled
-                ? "bg-black/50 backdrop-blur-[20px] saturate-[180%] border border-white/[0.08]"
+                ? "bg-[#050507]/80 backdrop-blur-md border border-zinc-800/80"
                 : "bg-transparent"
             )}
           >
@@ -69,7 +69,7 @@ export function Navigation() {
                   className="text-sm text-white/70 hover:text-white transition-colors duration-200 relative group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#0066ff] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-zinc-100 transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
             </div>
@@ -96,7 +96,7 @@ export function Navigation() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-white hover:text-[#0066ff] transition-colors"
+              className="md:hidden p-2 text-white hover:text-zinc-400 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -139,7 +139,7 @@ export function Navigation() {
             <a
               key={link.label}
               href={link.href}
-              className="font-[family-name:var(--font-cabinet)] text-4xl font-bold text-white hover:text-[#0066ff] transition-colors"
+              className="font-[family-name:var(--font-cabinet)] text-4xl font-bold text-white hover:text-zinc-400 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
               style={{
                 transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : "0ms",

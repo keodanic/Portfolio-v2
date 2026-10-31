@@ -1,385 +1,254 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GlassCard } from "@/components/ui/glass-card";
-import {
-  ExternalLink,
-  ShieldAlert,
-  ShieldCheck,
-  Terminal,
-  Code2,
-  FileText,
-  Lock,
-} from "lucide-react";
-import {
-  WebSecurityIcon,
-  TerminalIcon,
-  TargetIcon,
-  TrophyIcon,
-} from "@/components/icons/custom-icons";
-import { MagneticButton } from "@/components/ui/magnetic-button";
+import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface PlatformData {
-  id: string;
   key: "portswigger" | "htb" | "tryhackme" | "hacker101";
-  icon: string;
   url: string;
   skills: string[];
 }
 
+const platforms: PlatformData[] = [
+  {
+    key: "portswigger",
+    url: "https://portswigger.net/web-security",
+    skills: ["SQLi", "XSS", "CSRF", "SSRF", "BOLA/IDOR", "Business Logic", "JWT"],
+  },
+  {
+    key: "htb",
+    url: "https://hackerone.com/keodanic",
+    skills: ["Web Recon", "Subdomain Enum", "API Security", "CVE Triage"],
+  },
+  {
+    key: "tryhackme",
+    url: "https://tryhackme.com",
+    skills: ["Linux Hardening", "Network Recon", "OWASP Top 10", "PrivEsc"],
+  },
+  {
+    key: "hacker101",
+    url: "https://ctf.hacker101.com",
+    skills: ["Broken Access Control", "IDOR", "Session Tampering", "Crypto"],
+  },
+];
+
+function CodePane({
+  label,
+  meta,
+  children,
+  className,
+}: {
+  label: string;
+  meta?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("min-w-0", className)}>
+      <div className="flex items-center justify-between gap-4 px-4 sm:px-5 h-10 border-b border-zinc-800/80 font-mono text-[11px] text-zinc-500">
+        <span className="truncate">{label}</span>
+        {meta && <span className="flex-shrink-0">{meta}</span>}
+      </div>
+      <pre className="p-4 sm:p-5 font-mono text-xs leading-relaxed text-zinc-400 overflow-x-auto">
+        <code>{children}</code>
+      </pre>
+    </div>
+  );
+}
+
 export function SecurityLabs() {
   const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const platformsRef = useRef<HTMLDivElement>(null);
   const [redBlueTab, setRedBlueTab] = useState<"exploit" | "patch">("exploit");
   const t = useTranslations("SecurityLabs");
-
-  const platforms: PlatformData[] = [
-    {
-      id: "portswigger",
-      key: "portswigger",
-      icon: "websecurity",
-      url: "https://portswigger.net/web-security",
-      skills: ["SQLi", "XSS", "CSRF", "SSRF", "BOLA / IDOR", "Business Logic", "JWT"],
-    },
-    {
-      id: "htb",
-      key: "htb",
-      icon: "terminal",
-      url: "https://hackerone.com/keodanic",
-      skills: ["Web Recon", "Subdomain Enum", "API Security", "CVE Triage"],
-    },
-    {
-      id: "tryhackme",
-      key: "tryhackme",
-      icon: "target",
-      url: "https://tryhackme.com",
-      skills: ["Linux Hardening", "Network Recon", "OWASP Top 10", "PrivEsc"],
-    },
-    {
-      id: "hacker101",
-      key: "hacker101",
-      icon: "trophy",
-      url: "https://ctf.hacker101.com",
-      skills: ["Broken Access Control", "IDOR", "Session Tampering", "Crypto"],
-    },
-  ];
-
-  const renderIcon = (iconName: string, color: string, size: number = 22) => {
-    switch (iconName) {
-      case "websecurity":
-        return <WebSecurityIcon size={size} color={color} />;
-      case "terminal":
-        return <TerminalIcon size={size} color={color} />;
-      case "target":
-        return <TargetIcon size={size} color={color} />;
-      case "trophy":
-        return <TrophyIcon size={size} color={color} />;
-      default:
-        return null;
-    }
-  };
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      if (headerRef.current) {
+      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.fromTo(
-          headerRef.current.children,
-          { opacity: 0, y: 24 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            stagger: 0.08,
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-
-      if (platformsRef.current) {
-        const cards = platformsRef.current.querySelectorAll(".platform-card");
-        gsap.fromTo(
-          cards,
-          { opacity: 0, y: 24 },
+          el,
+          { opacity: 0, y: 16 },
           {
             opacity: 1,
             y: 0,
             duration: 0.6,
             ease: "power3.out",
-            stagger: 0.08,
-            scrollTrigger: {
-              trigger: platformsRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
           }
         );
-      }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  const tabs = [
+    { id: "exploit", label: t("redBlue.exploitTab"), dot: "bg-red-400" },
+    { id: "patch", label: t("redBlue.patchTab"), dot: "bg-emerald-400" },
+  ] as const;
+
   return (
     <section
       ref={sectionRef}
       id="labs"
-      className="relative py-24 sm:py-28 px-4 sm:px-6 lg:px-8"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div ref={headerRef} className="mb-12 sm:mb-14 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <span className="font-mono text-[#0066ff] text-xs tracking-widest uppercase mb-3 block">
-              {t("sectionTag")}
-            </span>
-            <h2 className="font-[family-name:var(--font-cabinet)] text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.08]">
+        <header data-reveal className="mb-12 sm:mb-16 grid lg:grid-cols-2 gap-6 lg:items-end">
+          <div>
+            <span className="font-mono text-xs text-zinc-500">{t("sectionTag")}</span>
+            <h2 className="mt-3 font-[family-name:var(--font-cabinet)] text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 tracking-[-0.03em] leading-[1.05]">
               {t("title")}
             </h2>
           </div>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-md leading-relaxed">
+          <p className="text-zinc-400 text-base leading-relaxed max-w-md lg:justify-self-end">
             {t("description")}
           </p>
-        </div>
+        </header>
 
-        {/* Clean 2x2 Platforms Grid — No Percentage Bars, Standardized Counters */}
+        {/* Platforms — 2x2 hairline grid */}
         <div
-          ref={platformsRef}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-10"
+          data-reveal
+          className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-zinc-800/80"
         >
           {platforms.map((platform) => (
-            <GlassCard
-              key={platform.id}
-              variant="default"
-              className="platform-card group p-5 sm:p-6 border-zinc-800/80 bg-zinc-950/80 hover:border-zinc-700/80 transition-all"
-              hover
+            <a
+              key={platform.key}
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-r border-b border-zinc-800/80 p-6 sm:p-8 flex flex-col gap-4 transition-colors duration-200 hover:bg-zinc-900/40"
             >
-              <div className="flex flex-col h-full justify-between space-y-4">
-                <div>
-                  {/* Top Row: Icon + Platform Name + Standardized Metric Counter */}
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#0066ff]/10 border border-[#0066ff]/25 flex items-center justify-center flex-shrink-0">
-                        {renderIcon(platform.icon, "#0066ff", 20)}
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <h3 className="font-[family-name:var(--font-cabinet)] text-lg font-bold text-white group-hover:text-[#0066ff] transition-colors">
-                            {t(`platforms.${platform.key}.name`)}
-                          </h3>
-                          <a
-                            href={platform.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={t(`platforms.${platform.key}.name`)}
-                            className="text-zinc-500 hover:text-[#0066ff] transition-colors"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
-                        </div>
-                        <span className="font-mono text-[11px] text-zinc-500">
-                          {t(`platforms.${platform.key}.badge`)}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Clean Monospace Counter Pill */}
-                    <span className="px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
-                      {t(`platforms.${platform.key}.metric`)}
-                    </span>
-                  </div>
-
-                  {/* Concise 2-Line Description */}
-                  <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2">
-                    {t(`platforms.${platform.key}.description`)}
-                  </p>
-                </div>
-
-                {/* Compact Monospace Skill Tags */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-800/70">
-                  {platform.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-[11px] font-mono text-zinc-300 px-2 py-0.5 bg-zinc-900 rounded border border-zinc-800"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 font-mono text-xs">
+                <span className="text-zinc-500">{t(`platforms.${platform.key}.badge`)}</span>
+                <span className="text-zinc-100">{t(`platforms.${platform.key}.metric`)}</span>
               </div>
-            </GlassCard>
+              <h3 className="flex items-start justify-between gap-3 text-lg font-semibold text-zinc-100 tracking-tight">
+                {t(`platforms.${platform.key}.name`)}
+                <ArrowUpRight className="w-4 h-4 mt-1 flex-shrink-0 text-zinc-600 transition-[color,transform] duration-200 group-hover:text-zinc-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </h3>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                {t(`platforms.${platform.key}.description`)}
+              </p>
+              <p className="mt-auto font-mono text-xs text-zinc-500">
+                {platform.skills.join(" · ")}
+              </p>
+            </a>
           ))}
         </div>
 
-        {/* Visual Component: Red Team vs. Blue Team (Exploit & Patch) in Tabs */}
-        <GlassCard
-          variant="default"
-          className="border-zinc-800/90 bg-zinc-950/95 overflow-hidden"
-        >
-          {/* Header & Tab Switcher */}
-          <div className="p-5 sm:p-6 border-b border-zinc-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-zinc-900/30">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-[#0066ff]" />
-                <span className="font-mono text-xs uppercase tracking-wider text-[#0066ff]">
-                  AppSec Case Study • OWASP API1:2023
-                </span>
-              </div>
-              <h3 className="font-[family-name:var(--font-cabinet)] text-xl sm:text-2xl font-bold text-white tracking-[-0.02em]">
+        {/* Red Team vs. Blue Team — code inspector */}
+        <div data-reveal className="mt-16 sm:mt-20">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6">
+            <div className="max-w-2xl">
+              <span className="font-mono text-xs text-zinc-500">
+                AppSec Case Study · OWASP API1:2023
+              </span>
+              <h3 className="mt-2 font-[family-name:var(--font-cabinet)] text-2xl sm:text-3xl font-bold text-zinc-100 tracking-[-0.02em]">
                 {t("redBlue.title")}
               </h3>
-              <p className="text-zinc-400 text-xs sm:text-sm mt-0.5">
-                {t("redBlue.subtitle")}
+              <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                {t(`redBlue.${redBlueTab === "exploit" ? "redDescription" : "blueDescription"}`)}
               </p>
             </div>
 
-            {/* Interactive Tabs: Red Team (Exploit) vs Blue Team (Patch) */}
-            <div className="inline-flex p-1 rounded-xl bg-zinc-900 border border-zinc-800 self-start lg:self-auto">
-              <button
-                type="button"
-                onClick={() => setRedBlueTab("exploit")}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition-all ${
-                  redBlueTab === "exploit"
-                    ? "bg-red-500/15 text-red-300 border border-red-500/30 shadow-sm"
-                    : "text-zinc-400 hover:text-zinc-200"
-                }`}
-              >
-                <ShieldAlert className="w-3.5 h-3.5 text-red-400" />
-                {t("redBlue.exploitTab")}
-              </button>
-              <button
-                type="button"
-                onClick={() => setRedBlueTab("patch")}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition-all ${
-                  redBlueTab === "patch"
-                    ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shadow-sm"
-                    : "text-zinc-400 hover:text-zinc-200"
-                }`}
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                {t("redBlue.patchTab")}
-              </button>
+            <div
+              role="tablist"
+              className="grid grid-cols-2 sm:inline-flex sm:self-start lg:self-auto rounded-md border border-zinc-800/80 p-0.5 font-mono text-xs"
+            >
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={redBlueTab === tab.id}
+                  onClick={() => setRedBlueTab(tab.id)}
+                  className={cn(
+                    "flex items-center justify-center gap-2 h-8 px-3 rounded-[5px] whitespace-nowrap transition-colors cursor-pointer",
+                    redBlueTab === tab.id
+                      ? "bg-zinc-800/80 text-zinc-100"
+                      : "text-zinc-500 hover:text-zinc-300"
+                  )}
+                >
+                  <span className={cn("w-1.5 h-1.5 rounded-full", tab.dot)} />
+                  <span className="sm:hidden">{tab.label.split(" (")[0]}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Code Window Content */}
-          <div className="p-5 sm:p-6 bg-[#09090b]">
+          <div className="rounded-lg border border-zinc-800/80 bg-black overflow-hidden">
+            <div className="flex items-center justify-between gap-4 px-4 sm:px-5 h-10 border-b border-zinc-800/80 font-mono text-[11px]">
+              <span className="text-zinc-500 truncate">
+                {redBlueTab === "exploit" ? t("redBlue.exploitTitle") : t("redBlue.patchTitle")}
+              </span>
+              <span
+                className={cn(
+                  "flex-shrink-0",
+                  redBlueTab === "exploit" ? "text-red-400" : "text-emerald-400"
+                )}
+              >
+                {redBlueTab === "exploit" ? "CVSS 8.6 · High" : "Mitigated"}
+              </span>
+            </div>
+
             {redBlueTab === "exploit" ? (
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-zinc-800/80">
-                  <div className="flex items-center gap-2 font-mono text-xs text-red-400">
-                    <Terminal className="w-4 h-4" />
-                    <span>{t("redBlue.exploitTitle")}</span>
-                  </div>
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-red-500/10 text-red-400 border border-red-500/20">
-                    CVSS 8.6 (High) — Unauthorized S3 Asset Leak
-                  </span>
-                </div>
-
-                <div className="grid lg:grid-cols-2 gap-4 font-mono text-xs">
-                  {/* Request */}
-                  <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-800/90 overflow-x-auto">
-                    <div className="text-[11px] text-zinc-500 mb-2 flex justify-between">
-                      <span>// 1. Manipulated HTTP Request (Burp Repeater)</span>
-                      <span className="text-red-400">Attacker JWT</span>
-                    </div>
-                    <pre className="text-zinc-300 leading-relaxed">
-                      <code>
-                        <span className="text-red-400 font-semibold">GET</span> /api/v1/orders/<span className="text-amber-300 underline decoration-red-500/60">9b1deb4d-3b7d-4bad-9bdd</span> HTTP/1.1{"\n"}
-                        <span className="text-zinc-500">Host:</span> api.target-saas.internal{"\n"}
-                        <span className="text-zinc-500">Authorization:</span> Bearer eyJhbGciOiJIUzI1Ni... (sub: <span className="text-emerald-400">&quot;user_attacker_99&quot;</span>){"\n"}
-                        <span className="text-zinc-500">Accept:</span> application/json
-                      </code>
-                    </pre>
-                  </div>
-
-                  {/* Vulnerable Response / Controller flaw */}
-                  <div className="p-4 rounded-xl bg-zinc-950 border border-red-500/20 overflow-x-auto">
-                    <div className="text-[11px] text-zinc-500 mb-2 flex justify-between">
-                      <span>// 2. Vulnerable Endpoint Response (200 OK — BOLA)</span>
-                      <span className="text-red-400">Missing Ownership Check</span>
-                    </div>
-                    <pre className="text-zinc-300 leading-relaxed">
-                      <code>
-                        HTTP/1.1 <span className="text-red-400 font-semibold">200 OK</span>{"\n"}
-                        {"{"}{"\n"}
-                        {"  "}&quot;orderId&quot;: &quot;9b1deb4d-3b7d-4bad-9bdd&quot;,{"\n"}
-                        {"  "}&quot;buyerId&quot;: <span className="text-amber-300">&quot;user_victim_01&quot;</span>, <span className="text-zinc-500">// != user_attacker_99</span>{"\n"}
-                        {"  "}&quot;downloadUrl&quot;: &quot;https://s3.amazonaws.com/raw-photos/signed?...&quot;{"\n"}
-                        {"}"}
-                      </code>
-                    </pre>
-                  </div>
-                </div>
+              <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-zinc-800/80">
+                <CodePane label="request · burp repeater" meta="attacker JWT">
+                  <span className="text-zinc-100">GET</span> /api/v1/orders/<span className="text-red-400">9b1deb4d-3b7d-4bad-9bdd</span> HTTP/1.1{"\n"}
+                  <span className="text-zinc-600">Host:</span> api.target-saas.internal{"\n"}
+                  <span className="text-zinc-600">Authorization:</span> Bearer eyJhbGciOi… <span className="text-zinc-600">(sub: &quot;user_attacker_99&quot;)</span>{"\n"}
+                  <span className="text-zinc-600">Accept:</span> application/json
+                </CodePane>
+                <CodePane label="response · missing ownership check" meta="200 OK">
+                  HTTP/1.1 <span className="text-red-400">200 OK</span>{"\n"}
+                  {"{"}{"\n"}
+                  {"  "}&quot;orderId&quot;: &quot;9b1deb4d-3b7d-4bad-9bdd&quot;,{"\n"}
+                  <span className="block -mx-4 sm:-mx-5 px-4 sm:px-5 bg-red-500/10 text-red-300">{"  "}&quot;buyerId&quot;: &quot;user_victim_01&quot;,</span>
+                  <span className="block -mx-4 sm:-mx-5 px-4 sm:px-5 bg-red-500/10 text-red-300">{"  "}&quot;downloadUrl&quot;: &quot;https://s3.amazonaws.com/raw-photos/signed?…&quot;</span>
+                  {"}"}
+                </CodePane>
               </div>
             ) : (
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-zinc-800/80">
-                  <div className="flex items-center gap-2 font-mono text-xs text-emerald-400">
-                    <Code2 className="w-4 h-4" />
-                    <span>{t("redBlue.patchTitle")}</span>
-                  </div>
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    Mitigated — Zero-Trust Scoped Query
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl bg-zinc-950 border border-emerald-500/20 font-mono text-xs overflow-x-auto">
-                  <pre className="text-zinc-300 leading-relaxed">
-                    <code>
-                      <span className="text-purple-400">@UseGuards</span>(JwtAuthGuard){"\n"}
-                      <span className="text-purple-400">@Get</span>(<span className="text-emerald-300">&apos;:id&apos;</span>){"\n"}
-                      <span className="text-purple-400">async</span> <span className="text-blue-400">getOrder</span>(@Param(<span className="text-emerald-300">&apos;id&apos;</span>, ParseUUIDPipe) orderId: <span className="text-amber-300">string</span>, @CurrentUser() user: JwtPayload) {"{"}{"\n"}
-                      {"  "}<span className="text-zinc-500">// Enforce tenant/ownership isolation directly at the Prisma query layer</span>{"\n"}
-                      {"  "}<span className="text-purple-400">const</span> order = <span className="text-purple-400">await</span> <span className="text-purple-400">this</span>.prisma.order.<span className="text-blue-400">findFirst</span>({"{"}{"\n"}
-                      {"    "}where: {"{"} id: orderId, <span className="text-emerald-400 font-semibold">buyerId: user.sub</span>, status: <span className="text-emerald-300">&apos;PAID&apos;</span> {"}"},{"\n"}
-                      {"  "}{"}"});{"\n"}
-                      {"  "}<span className="text-purple-400">if</span> (!order) <span className="text-purple-400">throw new</span> <span className="text-amber-300">NotFoundException</span>(<span className="text-emerald-300">&apos;Order not found or unauthorized&apos;</span>);{"\n"}
-                      {"  "}<span className="text-purple-400">return</span> <span className="text-purple-400">this</span>.s3Service.<span className="text-blue-400">getPresignedOrderAssets</span>(order.id);{"\n"}
-                      {"}"}
-                    </code>
-                  </pre>
-                </div>
-              </div>
+              <CodePane label="orders.controller.ts" meta="NestJS + Prisma">
+                <span className="text-zinc-100">@UseGuards</span>(JwtAuthGuard){"\n"}
+                <span className="text-zinc-100">@Get</span>(&apos;:id&apos;){"\n"}
+                <span className="text-zinc-100">async</span> getOrder(@Param(&apos;id&apos;, ParseUUIDPipe) orderId: string, @CurrentUser() user: JwtPayload) {"{"}{"\n"}
+                {"  "}<span className="text-zinc-600">{"// Enforce ownership at the query layer"}</span>{"\n"}
+                {"  "}<span className="text-zinc-100">const</span> order = <span className="text-zinc-100">await</span> this.prisma.order.findFirst({"{"}{"\n"}
+                <span className="block -mx-4 sm:-mx-5 px-4 sm:px-5 bg-red-500/10 text-red-300/80 line-through decoration-red-400/40">{"-   where: { id: orderId },"}</span>
+                <span className="block -mx-4 sm:-mx-5 px-4 sm:px-5 bg-emerald-500/10 text-emerald-300">{"+   where: { id: orderId, buyerId: user.sub, status: 'PAID' },"}</span>
+                {"  "}{"}"});{"\n"}
+                {"  "}<span className="text-zinc-100">if</span> (!order) <span className="text-zinc-100">throw new</span> NotFoundException();{"\n"}
+                {"  "}<span className="text-zinc-100">return</span> this.s3Service.getPresignedOrderAssets(order.id);{"\n"}
+                {"}"}
+              </CodePane>
             )}
-
-            {/* Footer Link to Write-ups & PoCs Repository */}
-            <div className="mt-5 pt-4 border-t border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2 text-xs text-zinc-400">
-                <FileText className="w-4 h-4 text-[#0066ff]" />
-                <span>
-                  PortSwigger Business Logic PoC (Python) & Hacker101 CTF (7 Flags) Write-ups
-                </span>
-              </div>
-              <MagneticButton
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  window.open(
-                    "https://github.com/keodanic/web-sec-labs-and-exploits",
-                    "_blank"
-                  )
-                }
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span>{t("ctaButton")}</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </MagneticButton>
-            </div>
           </div>
-        </GlassCard>
+
+          <div className="mt-5 flex flex-col lg:flex-row lg:items-center justify-between gap-3 font-mono text-xs">
+            <span className="text-zinc-500">
+              PortSwigger Business Logic PoC (Python) · Hacker101 CTF write-ups
+            </span>
+            <a
+              href="https://github.com/keodanic/web-sec-labs-and-exploits"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-zinc-100 transition-colors"
+            >
+              {t("ctaButton")}
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
