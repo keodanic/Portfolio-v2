@@ -1,0 +1,397 @@
+<!-- SOURCE REFERENCE: https://hackvector.io -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vahe Demirkhanyan - Penetration Tester & Cybersecurity Consultant</title>
+
+  <!-- Base styles for interactive background -->
+  <link rel="stylesheet" href="css/background.css">
+
+  <!-- Main page styles -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- All page-specific styles -->
+  <link rel="stylesheet" href="css/certificates.css">
+  <link rel="stylesheet" href="css/elegant-timeline.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/learn.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/article.css">
+
+
+<!-- Syntax highlight theme (optional but nice) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css">
+
+<!-- Markdown + sanitize + highlight -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Canvas for interactive background -->
+  <canvas id="canvas"></canvas>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="brand nav-link" data-page="home" aria-label="Home">
+      <span class="brand-mark">HV</span>
+      <span class="brand-name">Vahe Demirkhanyan</span>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <nav class="main-nav" id="site-nav">
+      <ul>
+        <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+        <li><a href="#" data-page="about" class="nav-link">About</a></li>
+        <li><a href="#" data-page="projects" class="nav-link">Projects</a></li>
+        <li><a href="#" data-page="learn" class="nav-link">Learn</a></li>
+        <!--<li><a href="#" data-page="blog" class="nav-link">Blog</a></li> //-->
+        <li><a href="#" data-page="blog" class="nav-link">Blog</a></li>
+        <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Dynamic content container -->
+  <div id="content-container">
+    <!-- Home page content (inline since it's the landing page) -->
+    <div id="home" class="page-content active">
+      <div class="content">
+        <h1>Welcome to My Page!</h1>
+        <h1 class="terminal-text">
+  <span class="prompt">vahe@hackvector:~$</span> 
+  <span id="typewriter-text"></span><span class="cursor">_</span>
+</h1>
+        <p>I'm Vahe, this is my personal site. I am a cybersecurity consultant with passion for ethical hacking, security research, and uncovering vulnerabilities before the bad guys do. Whether it's web, network security, or red teaming, I help businesses stay ahead of cyber threats.</p>
+        <div class="buttons">
+          <a href="#" class="button nav-link" data-page="about">About Me</a>
+          <a href="#" class="button nav-link" data-page="contact">Contact</a>
+        </div>
+
+        <!-- Certifications Showcase -->
+        <div class="certifications-section">
+          <h2>Professional Certifications</h2>
+          <div class="certificates-container">
+            <div class="certificate-item">
+              <div class="certificate-img">
+                <img src="images/oscp.jpg" alt="Offensive Security Certified Professional">
+                <div class="certificate-overlay"><span>Click to view</span></div>
+              </div>
+              <div class="certificate-title">OSCP</div>
+            </div>
+
+            <div class="certificate-item">
+              <div class="certificate-img">
+                <img src="images/osce.jpg" alt="Offensive Security Certified Expert">
+                <div class="certificate-overlay"><span>Click to view</span></div>
+              </div>
+              <div class="certificate-title">OSCE</div>
+            </div>
+
+            <div class="certificate-item">
+              <div class="certificate-img">
+                <img src="images/ewptx.jpg" alt="eLearnSecurity Web Application Penetration Tester eXtreme">
+                <div class="certificate-overlay"><span>Click to view</span></div>
+              </div>
+              <div class="certificate-title">eWPTXv2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <section class="section section-services">
+        <div class="container">
+          <h2 class="section-title">Security services that move the needle</h2>
+          <p class="section-subtitle">Focused, senior-led engagements with crisp reporting and actionable fixes.</p>
+
+          <div class="services-grid">
+            <!-- Web App Pentest -->
+            <article class="service-card">
+              <div class="service-title-row">
+                <i class="service-icon fas fa-shield-alt" aria-hidden="true"></i>
+                <h3>Web Application Pentesting</h3>
+              </div>
+              <p class="service-blurb">Deep, manual testing beyond scanners - auth flows, business logic, and chained issues.</p>
+              <ul class="service-points">
+                <li>OWASP ASVS-informed coverage</li>
+                <li>Auth/session, access control, logic flaws</li>
+                <li>API & file upload abuse, RCE paths</li>
+              </ul>
+              <a href="#" data-page="contact" class="btn btn-ghost nav-link">Request a quote</a>
+            </article>
+
+            <!-- External Network Testing -->
+            <article class="service-card">
+              <div class="service-title-row">
+                <i class="service-icon fas fa-network-wired" aria-hidden="true"></i>
+                <h3>External Network Testing</h3>
+              </div>
+              <p class="service-blurb">Realistic perimeter attacks to map, prioritize and reduce your external risk.</p>
+              <ul class="service-points">
+                <li>Attack surface enumeration</li>
+                <li>Exposure & misconfiguration checks</li>
+                <li>Credential & password hygiene tests</li>
+              </ul>
+              <a href="#" data-page="contact" class="btn btn-ghost nav-link">Test my perimeter</a>
+            </article>
+
+            <!-- Social Engineering -->
+            <article class="service-card">
+              <div class="service-title-row">
+                <i class="service-icon fas fa-user-secret" aria-hidden="true"></i>
+                <h3>Social Engineering</h3>
+              </div>
+              <p class="service-blurb">Human-first testing - phishing, pretexting and reporting to uplevel resilience.</p>
+              <ul class="service-points">
+                <li>Phishing campaigns & training</li>
+                <li>Pretext design & metrics</li>
+                <li>Executive/privileged user focus</li>
+              </ul>
+              <a href="#" data-page="contact" class="btn btn-ghost nav-link">Plan a campaign</a>
+            </article>
+
+            <!-- Secure Code Review -->
+            <article class="service-card">
+              <div class="service-title-row">
+                <i class="service-icon fas fa-code" aria-hidden="true"></i>
+                <h3>Secure Code Review</h3>
+              </div>
+              <p class="service-blurb">Targeted, manual review to catch vuln classes scanners miss.</p>
+              <ul class="service-points">
+                <li>AuthZ logic, data flows</li>
+                <li>Injection, deserialization, crypto</li>
+                <li>PR review & dev handoff</li>
+              </ul>
+              <a href="#" data-page="contact" class="btn btn-ghost nav-link">Review my code</a>
+            </article>
+            
+            <!-- AI / LLM Security Testing -->
+<article class="service-card">
+  <div class="service-title-row">
+    <i class="service-icon fas fa-robot" aria-hidden="true"></i>
+    <h3>AI / LLM Security Testing</h3>
+  </div>
+  <p class="service-blurb">If your product uses AI chat, copilots, or âask your dataâ features - I test how attackers can make it leak data or take unsafe actions.</p>
+  <ul class="service-points">
+    <li>Data leakage & privacy risks</li>
+    <li>Bypassing rules, guardrails, and access limits</li>
+    <li>Abuse testing (spam, cost spikes, unsafe outputs)</li>
+  </ul>
+  <a href="#" data-page="contact" class="btn btn-ghost nav-link">Secure my AI feature</a>
+</article>
+
+<!-- API Security Testing -->
+<article class="service-card">
+  <div class="service-title-row">
+    <i class="service-icon fas fa-plug" aria-hidden="true"></i>
+    <h3>API Security Testing</h3>
+  </div>
+  <p class="service-blurb">APIs are where real data lives. I test whether attackers can access other usersâ data, bypass permissions, or abuse endpoints at scale.</p>
+  <ul class="service-points">
+    <li>Broken access control & data exposure</li>
+    <li>Authentication, tokens, and session weaknesses</li>
+    <li>Rate limiting, business logic, and abuse paths</li>
+  </ul>
+  <a href="#" data-page="contact" class="btn btn-ghost nav-link">Audit my APIs</a>
+</article>
+            
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Why choose me -->
+      <section class="section section-why">
+        <div class="container">
+          <div class="why-card">
+            <h2 class="section-title">Why choose me instead of a big company?</h2>
+            <p class="why-intro">
+              With large vendors, you rarely control who actually performs your assessment. In many cases the work is staffed by juniors - or if youâre lucky, mid-level testers. Senior experts may exist there too, but being assigned one is a rare lottery.
+            </p>
+            <p>
+              When you work with me, you know exactly who youâre getting: the person doing the work is the person on the call - a highly experienced tester with OSCP, OSCE, eWPTX and 10+ years in the field.
+            </p>
+            <ul class="ticks">
+              <li>Manual-first testing, not just scanner output</li>
+              <li>Business-logic and chained exploit focus</li>
+              <li>Clear, prioritized remediation guidance</li>
+              <li>Direct collaboration and fast retests</li>
+            </ul>
+            <p class="why-outro">
+              If you want certainty about the caliber of your assessor - and a report that actually moves the needle - work with the person you know, not a rotating bench.
+            </p>
+            <!-- Match card button style -->
+            <a href="#" data-page="contact" class="btn btn-ghost nav-link">Talk to me about your scope</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /home -->
+  </div>
+
+  <!-- Certificate lightbox (for home page certificates) -->
+  <div id="certificate-lightbox" class="certificate-lightbox">
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Certificate">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+    <div class="lightbox-controls">
+      <button id="lightbox-prev" class="lightbox-nav">&lsaquo;</button>
+      <button id="lightbox-close" class="lightbox-close">&times;</button>
+      <button id="lightbox-next" class="lightbox-nav">&rsaquo;</button>
+    </div>
+  </div>
+
+
+
+
+<footer class="site-footer">
+  <!-- Compact CTA strip -->
+  <div class="footer-cta">
+    <div class="container">
+      <h3 class="footer-cta-title">Ready to harden your attack surface?</h3>
+      <p class="footer-cta-sub">Senior-led web & network testing, social engineering, and code review.</p>
+      <div class="footer-cta-actions">
+        <a href="#" data-page="contact" class="footer-btn primary nav-link">Talk to me</a>
+        <a href="#" data-page="projects" class="footer-btn outline nav-link">See recent work</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main footer -->
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <span class="brand-mark">HV</span>
+          <span class="brand-name">Vahe Demirkhanyan</span>
+        </div>
+        <p class="footer-text">
+          Penetration testing & security consulting with crisp reporting and actionable fixes.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#" data-page="learn" class="nav-link">Web Application Pentesting</a></li>
+          <li><a href="#" data-page="learn" class="nav-link">External Network Testing</a></li>
+          <li><a href="#" data-page="learn" class="nav-link">Social Engineering</a></li>
+          <li><a href="#" data-page="learn" class="nav-link">Secure Code Review</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:vahe@hackvector.io"><i class="fa-solid fa-envelope"></i> vahe@hackvector.io</a></li>
+          <li><a href="https://www.linkedin.com/in/vahearamian/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://github.com/5u5urrus" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom strip -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>Â© <span id="year"></span> HackVector</span>
+      <nav class="footer-mini">
+        <a href="#" data-page="about" class="nav-link">About</a>
+        <a href="#" data-page="projects" class="nav-link">Projects</a>
+        <a href="#" data-page="learn" class="nav-link">Learn</a>
+        <a href="#" data-page="contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // tiny helper to keep year current
+  (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+</script>
+
+
+  <!-- Keep your existing tracking elements -->
+  <img src="resources.php?cb=XYZ123" style="display:none;" alt="" />
+
+  <!-- Scripts -->
+  <script src="js/interactive-background.js"></script>
+  <script src="js/certificates.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/contact-form.js"></script>
+  <script defer src="js/articles.js"></script>
+
+  <!-- Initialize -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize the interactive background
+      new InteractiveBackground('canvas');
+
+      // Initialize navigation system
+      new PageNavigator();
+
+      // Original server ping function
+      function pingServer() {
+        fetch("tr142.php").catch(err => console.error("t. error:", err));
+      }
+      pingServer();
+      setInterval(pingServer, 30 * 60 * 1000); // Every 30 minutes
+      
+      // 1. Terminal Typewriter Effect
+      const textToType = "./execute_pentest.sh";
+      const typeWriterElement = document.getElementById('typewriter-text');
+      let typeIndex = 0;
+
+      function typeWriter() {
+        if (typeWriterElement && typeIndex < textToType.length) {
+          typeWriterElement.innerHTML += textToType.charAt(typeIndex);
+          typeIndex++;
+          setTimeout(typeWriter, Math.random() * 50 + 50); // Human-like variable typing speed
+        }
+      }
+      setTimeout(typeWriter, 800); // Start slightly after page load
+
+      // 2. Spotlight Hover Effect for Cards
+      document.addEventListener('mousemove', e => {
+        document.querySelectorAll('.service-card').forEach(card => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
+      // 3. Scroll Reveal Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Only animate once
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+
+      // Apply the observer to your cards and sections
+      document.querySelectorAll('.service-card, .why-card, .certifications-section').forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+      });
+      
+    });
+  </script>
+</body>
+</html>

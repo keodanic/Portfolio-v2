@@ -1,0 +1,336 @@
+{
+  "Metadata": {
+    "title": "Victor Daniel | Backend & Full-Stack Engineer • Application Security (AppSec & Pentest)",
+    "description": "Backend & Full-Stack Software Engineer (Node.js, NestJS, TypeScript, Python) and Offensive Security Researcher (AppSec, Web Pentesting & Bug Bounty)."
+  },
+  "Navigation": {
+    "work": "Projects",
+    "labs": "Security Labs",
+    "certifications": "Education",
+    "about": "Experience",
+    "contact": "Contact",
+    "ctaButton": "Let's Talk"
+  },
+  "Hero": {
+    "badge": "Software Engineering & Offensive Security",
+    "subtitle1": "Backend / Full-Stack Engineer (NestJS, Next.js, TypeScript & Python) and AppSec & Web Pentesting Researcher.",
+    "subtitle2": "Scalable REST APIs, async worker queues, and offensive security auditing against critical OWASP Top 10 and business logic flaws.",
+    "ctaDownloadCV": "Download Resume",
+    "ctaTalkToMe": "Talk to Me",
+    "stats": {
+      "yearsExperience": {
+        "value": "2+",
+        "label": "Years Engineering"
+      },
+      "projectsDelivered": {
+        "value": "12+",
+        "label": "Systems & APIs"
+      },
+      "companies": {
+        "value": "4",
+        "label": "Organizations"
+      }
+    },
+    "cards": {
+      "webSecurity": {
+        "title": "Backend & APIs",
+        "description": "NestJS, Node.js, TypeScript, Python (FastAPI), Prisma ORM, PostgreSQL, BullMQ/Redis, and Docker."
+      },
+      "reconnaissance": {
+        "title": "AppSec & Hardening",
+        "description": "BOLA/IDOR prevention, JWT/OAuth2, CASL RBAC, RLS, Rate Limiting, and strict DTO validation."
+      },
+      "bugBounty": {
+        "title": "Offensive Security",
+        "description": "Web Pentesting (SQLi, XSS, SSRF, CSRF, Business Logic) and Python exploit automation."
+      },
+      "codeReview": {
+        "title": "Full-Stack & Mobile",
+        "description": "Next.js 15, React Native (Expo), WebSockets, and AWS Serverless architectures."
+      }
+    },
+    "scrollIndicator": "Scroll"
+  },
+  "FeaturedWork": {
+    "sectionTag": "Technical Portfolio",
+    "title": "Production Systems & APIs",
+    "subtitle": "Real-world systems combining Backend/Full-Stack Engineering, mobile apps, and Offensive Security research.",
+    "viewDetails": "Inspect Architecture",
+    "viewAll": "View All Projects",
+    "privateBadge": "Private Repository / Commercial Case",
+    "publicBadge": "Open Source / GitHub",
+    "liveDemo": "Live Demo"
+  },
+  "SecurityLabs": {
+    "sectionTag": "Offensive Security & AppSec",
+    "title": "Pentest & AppSec Labs",
+    "description": "The most effective way to harden production systems is mastering how to break them. Continuous web exploitation practice, Python automation, and architectural remediation.",
+    "tabs": {
+      "labs": "Platforms & Metrics",
+      "redblue": "Red Team vs. Blue Team (Exploit & Patch)",
+      "writeups": "Write-ups & PoCs"
+    },
+    "platforms": {
+      "portswigger": {
+        "name": "PortSwigger Web Security Academy",
+        "metric": "45+ Labs Solved",
+        "badge": "OWASP Top 10 & Business Logic",
+        "description": "Hands-on exploitation of SQLi, XSS, CSRF, SSRF, BOLA/IDOR, and business logic flaws using custom Python scripts."
+      },
+      "htb": {
+        "name": "HackerOne & Bug Bounty Recon",
+        "metric": "12+ Reports & Triages",
+        "badge": "Active (@keodanic)",
+        "description": "Vulnerability research on real-world targets, subdomain enumeration, REST API auditing, and access control testing."
+      },
+      "tryhackme": {
+        "name": "TryHackMe",
+        "metric": "30+ Rooms Completed",
+        "badge": "Red Team & Linux",
+        "description": "Practical intrusion labs, Linux network enumeration, privilege escalation, and traffic analysis."
+      },
+      "hacker101": {
+        "name": "Hacker101 CTF",
+        "metric": "10+ Flags Captured",
+        "badge": "Web Exploitation",
+        "description": "HackerOne CTF challenges focused on session hijacking, parameter tampering, and broken authorization."
+      }
+    },
+    "redBlue": {
+      "title": "Red Team vs. Blue Team (Exploit & Patch)",
+      "subtitle": "Direct comparison between an exploited BOLA/IDOR HTTP request and the architectural remediation in NestJS + Prisma ORM.",
+      "exploitTab": "Red Team — Exploit (BOLA / IDOR)",
+      "patchTab": "Blue Team — Patch (NestJS + Prisma)",
+      "exploitTitle": "Manipulated HTTP Request (Ownership Bypass on /api/v1/orders/:id)",
+      "patchTitle": "Architectural Remediation in NestJS + Prisma ORM (Zero-Trust Query)",
+      "redTab": "Red Team — Exploit (BOLA / IDOR)",
+      "blueTab": "Blue Team — Patch (NestJS + Prisma)",
+      "redDescription": "An attacker swaps the order UUID on GET /api/v1/orders/:id using their own valid JWT. Because the backend queries only by primary key without checking ownerId, sensitive data and third-party S3 URLs leak.",
+      "blueDescription": "The patch enforces ownership scoping directly in Prisma's WHERE clause using the authenticated JWT subject, alongside strict UUID Pipe validation and audit logging."
+    },
+    "ctaButton": "View Exploits Repository on GitHub",
+    "writeups": {
+      "emptyState": {
+        "title": "Write-ups Published on GitHub",
+        "description": "Check out my automated Python exploit scripts and detailed technical write-ups.",
+        "status": "Active on HackerOne (keodanic)"
+      }
+    }
+  },
+  "Certifications": {
+    "sectionTag": "Academic Foundation & Certifications",
+    "title": "Education, Training & Certifications",
+    "description": "Software Engineering degree from IFMA combined with specialized training in Offensive Security and Bug Bounty.",
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Preparation",
+      "planned": "Planned"
+    },
+    "certificationsList": {
+      "ifma": {
+        "name": "B.Tech in Internet Systems (Sistemas para Internet)",
+        "issuer": "IFMA — Federal Institute of Maranhão",
+        "description": "Graduated (2023–2025). 3rd Place at the IFMA Ideathon (Smart Cities), FAPEMA Research Fellow (IoT/NestJS), and English Teaching Assistant.",
+        "skills": ["Software Engineering", "API Architecture", "Databases"]
+      },
+      "bugbounty": {
+        "name": "Do Bug ao Bounty (Web Pentesting & Bug Bounty)",
+        "issuer": "Academia Do Bug ao Bounty — Gabriel Pato",
+        "description": "Intensive training in offensive web security, advanced reconnaissance (OSINT/Recon), OWASP Top 10 exploitation, and Bug Bounty methodology.",
+        "skills": ["Web Pentesting", "Reconnaissance", "OWASP Top 10", "Bug Bounty"]
+      },
+      "sycp": {
+        "name": "SYCP — Solyd Certified Pentester & Solyd Training",
+        "issuer": "Solyd Offensive Security",
+        "description": "Professional Pentesting coursework by Solyd and active preparation for the practical SYCP certification exam, covering network and web exploitation.",
+        "skills": ["Network Pentest", "Web Exploitation", "Privilege Escalation", "Reporting"]
+      },
+      "bscp": {
+        "name": "BSCP — Burp Suite Certified Practitioner",
+        "issuer": "PortSwigger",
+        "description": "Target certification focused on advanced web application security auditing and deep mastery of Burp Suite Pro and Web Security Academy.",
+        "skills": ["Advanced Web Attacks", "Burp Suite", "Business Logic", "Auth Bypass"]
+      }
+    },
+    "dateLabels": {
+      "earned": "Completed",
+      "target": "Target"
+    },
+    "verifyLink": "Academic Lattes CV",
+    "bugBountyJourney": {
+      "title": "Offensive Security Metrics",
+      "subtitle": "Labs, CTFs & Vulnerability Research",
+      "stats": {
+        "reports": "Labs & CTFs",
+        "accepted": "OWASP Top 10",
+        "programs": "Scripts & PoCs"
+      },
+      "description": "Production software engineering in NestJS/TypeScript combined with controlled web application intrusion."
+    },
+    "activePlatforms": {
+      "title": "Practice Tracks",
+      "gettingStarted": "Active",
+      "reports": "labs solved"
+    },
+    "currentlyStudying": {
+      "title": "Current Technical Focus",
+      "items": [
+        "Active preparation for the SYCP (Solyd Certified Pentester) practical exam",
+        "Automated exploit development and security scripting in Python 3",
+        "Secure RESTful API architecture with NestJS, TypeScript, and Prisma ORM"
+      ]
+    }
+  },
+  "About": {
+    "sectionTag": "About & Career",
+    "title": "Engineering & Security",
+    "bio": {
+      "paragraph1": "Holding a degree in Internet Systems from IFMA, I engineer production systems with Node.js, NestJS, TypeScript, Python (FastAPI), PostgreSQL, React Native, and Next.js.",
+      "paragraph2": "I bridge scalable backend architecture (BullMQ/SQS queues, microservices, RBAC/CASL, and S3) with an Offensive Security mindset (AppSec/Pentesting) — uncovering critical authorization and business logic flaws and fixing them at the code level."
+    },
+    "skills": {
+      "webAttacks": {
+        "category": "Engineering",
+        "items": ["Node.js", "NestJS", "TypeScript", "Python (FastAPI)", "PostgreSQL / Prisma", "React Native & Next.js", "BullMQ / Redis", "Docker & AWS"]
+      },
+      "recon": {
+        "category": "AppSec & Web",
+        "items": ["OWASP Top 10", "BOLA / IDOR", "SQLi / XSS / CSRF", "SSRF", "JWT & CASL RBAC", "Business Logic Flaws"]
+      },
+      "tools": {
+        "category": "Sec & DevOps",
+        "items": ["Burp Suite", "Nmap", "Nuclei", "FFUF", "SQLMap", "Wireshark", "Linux & GitHub Actions"]
+      }
+    },
+    "experience": {
+      "title": "Professional Experience",
+      "items": [
+        {
+          "title": "Simplifit Academias — Full-Stack & Mobile Developer",
+          "description": "Architected RESTful APIs in NestJS + Prisma + PostgreSQL, led the React Native mobile app, integrated OpenAI LLMs on AWS Serverless (Lambda, SQS, S3), and enforced OWASP controls (JWT, CASL RBAC, Rate Limiting).",
+          "period": "September 2025 – February 2026"
+        },
+        {
+          "title": "Developer Community — Full-Stack Developer",
+          "description": "Developed backend services for a SaaS platform (ConstructEasy) using NestJS, TypeScript, and PostgreSQL. Implemented Row Level Security (RLS), Docker + Nginx reverse proxy, Linux hardening, and CI/CD.",
+          "period": "November 2024 – September 2025"
+        },
+        {
+          "title": "Timon Municipal Government (ATI) — Software Developer Intern",
+          "description": "Deployed and integrated REST APIs for the Electronic Information System (SEI) and institutional portals in Next.js, Node.js, PostgreSQL, and Docker, applying CSP headers, HTTPS, and server hardening.",
+          "period": "June 2025 – August 2025"
+        },
+        {
+          "title": "FAPEMA / IFMA — Research Fellow (IoT & Backend)",
+          "description": "Engineered a real-time environmental telemetry system using ESP32 microcontrollers (ENS160 sensor), NestJS + Prisma backend, and Next.js dashboard, alongside Offensive Security research.",
+          "period": "November 2024 – July 2025"
+        }
+      ]
+    },
+    "education": {
+      "label": "Higher Education",
+      "course": "B.Tech in Internet Systems (Sistemas para Internet)",
+      "institution": "IFMA | Federal Institute of Maranhão (3rd Place Ideathon)",
+      "period": "2023 — November 2025 (Graduated)"
+    },
+    "stats": {
+      "yearsEngineering": {
+        "value": "2+",
+        "label": "Years Engineering"
+      },
+      "systemsDeployed": {
+        "value": "12+",
+        "label": "Systems & APIs"
+      },
+      "partnerships": {
+        "value": "4",
+        "label": "Organizations"
+      },
+      "seniority": {
+        "value": "Dev+Sec",
+        "label": "Hybrid Profile"
+      }
+    }
+  },
+  "Contact": {
+    "sectionTag": "Get in Touch",
+    "title": "Let's build and secure together",
+    "description": "Looking for a Backend/Full-Stack Engineer with a Security-First mindset or an AppSec/Pentesting professional who deeply understands production code? Let's talk.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "victordanielsnt@gmail.com"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Teresina, Brazil — Available 100% Remote Worldwide"
+      }
+    },
+    "social": {
+      "title": "Direct channels"
+    },
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "your@email.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell me about the role, project, or architecture/security challenge..."
+      },
+      "submit": {
+        "default": "Send Message",
+        "sending": "Sending...",
+        "success": {
+          "title": "Message Sent!",
+          "description": "Thank you for reaching out! I will get back to you shortly."
+        }
+      }
+    }
+  },
+  "Footer": {
+    "role": "Backend / Full-Stack Engineer & AppSec Researcher",
+    "copyright": "© {year} Victor Daniel Santos Cardoso. Software Engineering & Offensive Security.",
+    "backToTop": "Back to Top",
+    "availability": "Available for Remote & Hybrid opportunities",
+    "location": "Based in Teresina, PI — Brazil"
+  },
+  "CVModal": {
+    "title": "View & Download Resume",
+    "subtitle": "Choose your preferred language",
+    "languages": {
+      "pt": {
+        "name": "Português (PT-BR)",
+        "description": "Brazilian Portuguese CV"
+      },
+      "en": {
+        "name": "English (EN-US)",
+        "description": "International US Resume"
+      }
+    },
+    "footer": "PDF format • Updated {date}"
+  },
+  "ContactModal": {
+    "title": "Let's Talk",
+    "subtitle": "Choose your preferred channel",
+    "platforms": {
+      "whatsapp": {
+        "name": "WhatsApp",
+        "description": "+55 (86) 9 8150-9299"
+      },
+      "linkedin": {
+        "name": "LinkedIn",
+        "description": "in/victordaniel-dev"
+      },
+      "gmail": {
+        "name": "Email",
+        "description": "victordanielsnt@gmail.com"
+      }
+    },
+    "footer": "I typically respond within 24 hours"
+  }
+}

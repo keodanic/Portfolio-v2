@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-// Redireciona para o locale padrão (pt)
+// Fallback for "/" if the middleware doesn't run (e.g. static hosting): always land on /pt.
 export default function RootPage() {
-  redirect("/en");
+  redirect("/pt");
 }
